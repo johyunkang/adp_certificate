@@ -686,8 +686,50 @@
 
 1.   집합론적 방법
      -   각 객체들 간의 관계를 관계 쌍(pairs of elements)으로 표현
-     -   
+2.   그래프 이론을 이용한 방법
+     - 객체를 점(노드 or 꼭지점)으로 표현하고, 연결은 두 점을 연결하는 선으로 표현
+3.   행렬을 이용한 방법
+     - 각 객체를 행과 열에 배치하고, 각 객체간의 관계가 존재하면 1을 넣고, 존재하지 않으면 0을 넣음.
 
+#### 2. 사회연결망 분석에서 네트워크 구조를 파악하기 위한 기법
+
+##### 가. 중심성(Centrality)
+
+- 연결정도 중심성 (Degree centrality) : 한 점에 직접적으로 연결된 점들의 합
+- 근접 중심성 (Closeness centrality) : 한 노드로부터 다른 노드에 도달하기까지 필요한 최소 단계의 합
+- 매개 중심성 (Betweenness centrality) : 네트워크 내에서 한 점이 담당하는 매개자 혹은 중재자 역할의 정도
+- 위세 중심성 (Eigenvector centrality) : 보나시치(Bonacich) 권련지수 : 위에 중심성의 일반적인 형태로, 연결된 노드의 중요성에 가중치를 둬 노드의 중심성을 측정하는 방법
+
+#### 3. SNA 적용
+
+- 소셜 네트워크 분석은 통신, 온라인 소셜 미디어, 게임 및 유통업체에서 관심이 높다.
+- 분석용 솔루션으로는 KXEN, SAS, XTRACT, Indiro, Onalytica, Unicet, Pajek, Inflow 등이 있다.
+
+#### 4. SNA 단계
+
+1. 그래프 생성단계
+2. 그래프를 목적에 따라 가공하여 분석하는 단계
+3. 커뮤니티를 탐지하고 각 객체 또는 노드의 역할(롤)을 정의해 어떠한 롤도 다른 객체들에게 영향력을 더 효율적으로 줄 수 있는지를 정의하는 단계
+4. 위 결과를 데이터화하여 다른 데이터마이닝 기법과 연계하는 단계
+
+
+
+#### 5. R에서의 SNA
+
+##### 가. 네트워크 레벨 통계량
+
+degree, shortest paths, reachability, density, reciprocity, transitivity, triad census 등
+
+##### 나. 커뮤니티의 수를 측정하는 방법 (community detection)
+
+1. WALKRAP 알고리즘
+   - 일련의 random walk 과정을 통해 커뮤니티를 발견한다.
+2. Edge Betweenness method
+   - 그래프에 존재하는 최단거리 (shortest path) 중 몇 개가 그 edge (연결, link)를 거쳐가는 지를 이용해 edge-betweenness 점수를 측정한다.
+
+#### 6. 활용방안
+
+- 소셜 네트워크 분석은 데이터가 몇개의 집단으로 구성되는지, 집단 간의 특징은 무엇이고, 해당 집단에서 영향력 있는 고객은 누구인지, 시간의 흐름과 고객 상태의 변화에 따라 다음에 누가 영향을 받을지를 기반으로 churn/acquisition prediction, fraud, product recommendation 등에 활용한다.
 
 
 
