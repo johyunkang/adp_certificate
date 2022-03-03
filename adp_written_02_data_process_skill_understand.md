@@ -183,3 +183,7 @@
 ### 2절 분산 컴퓨팅 기술
 
 #### 1. MapReduce (p.250)
+![map-reduce-word-chart-process](https://user-images.githubusercontent.com/291782/156508689-850f108f-de71-4437-8d77-b7259f638420.png)
+
+#### 2. 병렬 쿼리 시스템 (p.257)
+
