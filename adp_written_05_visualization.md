@@ -848,7 +848,65 @@
   library(ggplot2)
   ```
 
-- 
+##### 나. XY 그래프
+
+1. 기본 XY 그래프
+
+```R
+ggplot(DF, aes(x=Time, y=weight, colour=Diet, group=Chick) + geom_line())
+```
+
+- aes() : 그래프의 X축과 Y축을 지정하는 함수, colour 로 색을 지정 및 group으로 각 행마다 그래프를 그리는 것이 가능
+- geom_line() : ggplot 에서 선 그래프를 그리는 함수
+
+2. 포인트 그래프
+
+    ```R
+    h	<- ggplot(DF, aes(x=Time, y=weight, colour=Diet))
+    h + geom_point(alpha=.3)
+    ```
+
+    - geom_point(alpha=.3) : xy 그래프에서 diet에 따라 점의 투명도와 사이즈를 지정하여 출력, 투명도를 0.3으로 조정
+
+3. 스무스 그래프 (Smooth Graph)
+
+    ```R
+    h	<- ggplot(DF, aes(x=Time, y=weight, colour=Diet))
+    h + geom_smooth(alpha=.4, size=3)
+    ```
+
+    - geom_smooth(alpha=.4, size=3) : XY 그래프에서 배경 색상의 투명도와 평균값 선의 굵기를 지정하여 출력
+
+4. 개선된 그래프
+
+    - 포인트 그래프와 스무스 그래프를 동시에 표현
+
+        ```R
+        ggplot(DF, aes(x=Time, y=weight, colour=Diet)) + geom_point(alpha=.3) + geom_smooth(alpha=.2, size=1)
+        ```
+
+
+
+##### 다. 히스토그램
+
+- 히스토그램은 도수분포표를 그래프로 나타낸 것
+
+    ```R
+    ggplot(subset(DF, Time=21), aes(x=weight, fill=Diet)) +
+    geom_histogram(colour="black",binwidth=50) + facet_grid(Diet ~.)
+    ```
+
+    - subset(DF, Time=21) : DF 데이터의 Time 변수가 21인 행만 선택하는 함수
+    - geom_histogram(colour="black", binwidth=50) : 막대 테두리의 색상을 black으로 지정, binwidth=50은 구간의 weight 간경을 50으로 설정
+    - facet_grid(Diet ~.) : 가로로 출력 (가로로 꽉 차고 세로로 분할되어 정렬되는 형태)
+    - facet_grid(.~ Diet) : 세로로 출력 (세로로 꽉 차고 가로로 분할되어 정렬되는 형태)
+
+    ![histogram](https://user-images.githubusercontent.com/291782/158398144-a1f12fe7-b23d-4ab4-81f5-79eaf56ce6b0.png)
+
+
+
+##### 라. 포인트 그래프
+
 
 
      
