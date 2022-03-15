@@ -862,7 +862,7 @@ ggplot(DF, aes(x=Time, y=weight, colour=Diet, group=Chick) + geom_line())
 2. 포인트 그래프
 
     ```R
-    h	<- ggplot(DF, aes(x=Time, y=weight, colour=Diet))
+    h <- ggplot(DF, aes(x=Time, y=weight, colour=Diet))
     h + geom_point(alpha=.3)
     ```
 
@@ -871,7 +871,7 @@ ggplot(DF, aes(x=Time, y=weight, colour=Diet, group=Chick) + geom_line())
 3. 스무스 그래프 (Smooth Graph)
 
     ```R
-    h	<- ggplot(DF, aes(x=Time, y=weight, colour=Diet))
+    h <- ggplot(DF, aes(x=Time, y=weight, colour=Diet))
     h + geom_smooth(alpha=.4, size=3)
     ```
 
@@ -907,11 +907,84 @@ ggplot(DF, aes(x=Time, y=weight, colour=Diet, group=Chick) + geom_line())
 
 ##### 라. 포인트 그래프
 
+-   가장 간단하게 데이터를 정적으로 보여주며, 유형별로 색상을 다르게 하여 특성을 파악할 수 있다는 장점이 있음
+
+    ```R
+    p = qplot(wt, mpg, colour=hp, data=mtcars) # x축 wt, y축 mpg
+    p + coord_cartesian(ylim=c(0,40))
+    p + scale_colour_continous(breaks=c(100, 300))
+    p + guides(colour = "colourbar")	
+    ```
+
+    -   coord_cartesian(ylim=c(0,40)) : y축을 0 ~ 40으로 범위 지정
+    -   scale_colour_continuous(breaks=c(100, 300)) : hp(컬러)의 범위를 100에서 300사이로 지정
+    -   guides(colour = "colourbar") : hp의 수치에 따른 색의 범위를 알려줌
+
+-   치환 데이터를 이용한 포인트 그래프
+
+    ```R
+    m <- DF[1:10,]
+    p%+%m
+    ```
+
+    -   mtcars 데이터의 앞 부분 10건만 추출하여 m으로 설정한 뒤, 해당 m을 앞에서 그린 그래프 p 에 설정한다.
 
 
-     
+
+##### 마. 막대 그래프
+
+-   ```R
+    c <- ggplot(mtcars, aes(factor(cyl)))
+    c + geom_bar()
+    ```
+
+    -   factor(cyl) : cyl 변수와 같이 범주형 데이터는 factor로 전환해 범주화
+    -   geom_bar() : 막대그래프를 그리는 함수
+
+-   옵션 적용
+
+    -   ```R
+        c + geom_bar(fill="white", colour="red")
+        ```
+
+    -   fill="white", colour="red" : 막대 내부색상 흰색, 막대 테두리 색상 red
+
+    -   히스토그램 형식에 색상을 적용할 수도 있음
+
+    -   ```R
+        install.packages("ggplot2movies") # 패키지 설치
+        library(ggplot2movies) # 라이브러리 활성화
+        m = ggplot(movies, aes(x=rating))
+        m + geom_histogram()
+        m + geom_histogram(aes(fill=..count..))
+        ```
+
+    -   ggplot2movies 패키지의 movies 데이터를 활용하여 히스토그램 형식으로 표시 후 count를 색상으로 표시한 것
 
 
 
+##### 바. 선 그래프
+
+-   기본 선 그래프
+
+    -   ```R
+        b = ggplot(economics, aes(x=date, y=unemploy))
+        b + geom_line()
+        ```
+
+    -   x축을 date, y축을 unemploy로 지정한 선 그래프
+
+-   옵션 적용
+
+    -   ```R
+        b = ggplot(economics, aes(x=date, y=unemploy))
+        b + geom_line(colour="blue", size=0.3, linetype=3)
+        ```
+
+    -   colour="blue", size=0.3, linetype=3 : 선 색상을 블루, 선의 굵기 0.3, 선의 종류를 3으로 지정
+
+    -   linetype 선의 종류 : 1 (실선), 2(선이 긴 점선), 3(선이 짧은 점선), 4(선이 길고 짧음이 반복되는 점선)
 
 
+
+p.411
