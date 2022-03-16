@@ -987,4 +987,218 @@ ggplot(DF, aes(x=Time, y=weight, colour=Diet, group=Chick) + geom_line())
 
 
 
-p.411
+
+
+##### 사. 효과주기
+
+-   사용할 diamonds 데이터 예시
+
+-   ```R
+      carat cut       color clarity depth table price     x     y     z
+      <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+    1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+    2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+    3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+    4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+    5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+    6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+    ```
+
+-   캐럿(carat)에 따른 질량을 그래프화할 때, 히스토그램으로 cut 등급별로 캐럿을 나타내기 위한 방법
+
+-   ```R
+    k <- ggplot(diamonds, aes(carat, ..density..)) + geom_histogram(binwidth=0.2)
+    k + facet_grid(.~cut)
+    ```
+
+    -   facet_grid(.~cut) : carat 종류를 그래프 위쪽에 표시
+    -   ![diamonds-carat](https://user-images.githubusercontent.com/291782/158610678-0db1f7c3-3415-43dc-b1d0-3116ecb18af0.png)
+
+-   diamonds 데이터를 이용하여 막대그래프를 나타내는 방법
+
+-   ```R
+    w <- ggplot(diamonds, aes(clarity, fill=cut))
+    w + geom_bar()
+    # w + geom_bar(aes(order=desc(cut))) # <= 예제에 이렇게 되어 있으나 오류남 (p.412)
+    # 오류 메시지 : could not find function "desc" 
+    ```
+
+    -   ![diamonds-barchart](https://user-images.githubusercontent.com/291782/158612577-54fe9af5-c2d5-47eb-ac44-034c037d81f0.png)
+
+-   25가지 유형의 shape 이용
+
+    -   데이터 안에 x,y 축을 지정하고 shape을 z로 지정하여 1~25번 모양까지 한 그래프 안에 들어가게 하는 방법
+
+    -   ```R
+        df2 <- data.frame(x=1:5, y=1:25, z=1:25)
+        s <- ggplot(df2, aes(x=x, y=y))
+        s + geom_point(aes(shape=z), size=4) + scale_shape_identity()
+        ```
+
+    -   ![r-shape-25](https://user-images.githubusercontent.com/291782/158614351-5a1597bb-8161-4bef-9bbc-feb9fa715eb8.png)
+
+-   임의의 선 삽입
+
+    -   포인트 그래프에 임의의 가로 선을 삽입할 수 있다.
+
+    -   ```R
+        p <- ggplot(mtcars, aes(wt, mpg))
+        p + geom_point(size=2.5) + geom_hline(yintercept = 25, size=1)
+        ```
+
+    -   ![geom_hline](https://user-images.githubusercontent.com/291782/158616377-853a3bec-6f35-4323-8807-223fdfc61ce9.png)
+
+    -   geom_hline(yintercept=25, size=1) : 포인트 그래프에 y축 25 이며 선의 굵기가 1인 임의의 선 삽입
+
+    
+
+-   선형 모델링 (pointrange)
+
+    -   cut 정보를 이용해 다이아몬드 가격을 예측하는 선형 모델링을 수행해 값의 범위를 point range 그래프로 표현할 수 있다.
+
+    -   ```R
+        dmod <- lm(price ~ cut, data=diamonds)
+        cuts <- data.frame(cut=unique(diamonds$cut), 
+                           predict(dmod, data.frame(cut=unique(diamonds$cut)),
+                                   se=TRUE
+                                   )[c("fit", "se.fit")]
+                           )
+        se <- ggplot(cuts, aes(x=cut, y=fit, 
+                               ymin = fit - se.fit, ymax= fit + se.fit,
+                               colour=cut)
+                     )
+        se + geom_pointrange()
+        ```
+
+    -   ![geom_pointrange](https://user-images.githubusercontent.com/291782/158615762-9dbdf635-85cf-4ff8-a8fe-945df5a26349.png)
+
+
+
+-   포인트 그래프 - 박스 강조
+
+    -   포인트 그래프에서 강조할 특정 영역을 박스로 지정
+
+    -   박스 보여주기 위해 xmin, xmax 로 x축 범위 지정, ymin, ymax로 y축 범위 지정 필요
+
+    -   ```R
+        p <- ggplot(mtcars, aes(wt, mpg)) + geom_point()
+        p + annotate("rect", xmin=2, xmax=3.5, 
+                     ymin=2, ymax=25, fill="dark grey", alpha=0.5)
+        ```
+
+    -   ![box-annotate](https://user-images.githubusercontent.com/291782/158617552-9c26eb6d-d852-403b-8a0c-3c0fcb6d21d8.png)
+
+
+
+-   축의 범위 지정
+
+    -   limits로 범위를 지정해 원하는 범위에서만 그래프를 그릴 수 있음
+
+    -   ```R
+        p <- qplot(disp, wt, data=mtcars) + geom_smooth()
+        p + scale_x_continuous(limits=c(325, 500))
+        ```
+
+    -   ![limits](https://user-images.githubusercontent.com/291782/158618416-93370802-ad2b-408f-8960-311a5c580e6c.png)
+
+
+
+-   Boxplot
+
+    -   기본적인 boxplot 작성 방법
+
+    -   ```R
+        qplot(cut, price, data=diamonds, geom="boxplot")
+        ```
+
+    -   ![boxplot](https://user-images.githubusercontent.com/291782/158618755-1da82f23-8b14-47a7-8aeb-2bd2f50f3e59.png)
+
+    -   위 이미지의 가운데 가로선은 중앙값, 아래선은 1사분위, 상단선은 4사분위, 세로선 위의 점은 이상값
+
+    -   boxplot을 가로로 눕히는 방법 : coord_flip()
+
+    -   ```R
+        qplot(cut, price, data=diamonds, geom="boxplot") + coord_flip()
+        ```
+
+    -   ![coord_flip](https://user-images.githubusercontent.com/291782/158619414-fbf5affd-7489-4770-9b8c-85010c4a1e70.png)
+
+
+
+##### 아. 다축 (Multiple Axis)
+
+-   2중축, 3중축을 그리는 절차를 설명
+
+-   ```R
+    # multiple axis
+    # 1. data 생성
+    time <- seq(7000, 3400, -200)
+    pop <- c(200, 400, 450, 500, 300, 100, 400, 700, 830, 1200, 
+             400, 350, 200, 700, 370, 800, 200, 100, 120)
+    grp <- c(2, 5, 8, 3, 2, 2, 4, 7, 9, 4, 4, 2, 2, 7, 5, 12, 5, 4, 4)
+    med <- c(1.2, 1.3, 1.2, 0.9, 2.1, 1.4, 2.9, 3.4, 2.1, 1.1,
+             1.2, 1.5, 1.2, 0.9, 0.5, 3.3, 2.2, 1.1, 1.2)
+    par(mar = c(5, 12, 4, 4) + 0.1)
+    
+    # 2. 첫번째 그래프 생성 (축이 없는 그래프)
+    plot(time, pop, axes=F, xlim=c(7000, 3400), ylim=c(0, max(pop)),
+          xlab= "", ylab="", type="l", col="black", main="", )
+    
+    # 3. 첫번째 그래프에 점 추가 (pch=20 이 검은점)
+    points(time, pop, pch = 20, col="black")
+    
+    # 4. 첫번째 그래프의 y축 생성 (lwd=2 : 세로 축 선 굵기)
+    axis(2, ylim = c(0, max(pop)), col="black", lwd = 2)
+    
+    # 5. 첫번째 y축 이름 지정 
+    # (line=1 : y축과 이름 사이 거리, 1로하면 y축 위에 이름이 생김)
+    mtext(2, text="Population", line=2)
+    
+    # 6. 두 번째 그래프 생성 : 축을 지정하지 않은 두 번째 그래프
+    par(new = T)
+    plot(time, med, axes=F, xlim=c(7000, 3400), ylim=c(0, max(med)),
+         xlab= "", ylab="", type="l", lty=2, lwd=2,  col="blue", main="", )
+    
+    
+    # 7. 두 번째 그래프에 점 추가. (points())
+    points(time, med, pch=20, col="black")
+    
+    # 8. 두 번째 그래프의 y축 생성
+    # lwd : y축 선 굵기, line : 이전 y 축과의 거리 (3.5는 되어야 안정적)
+    axis(2, ylim = c(0, max(med)), col="blue", lwd=2, line=3.5)
+    
+    # 9. 두 번째 y축 이름 지정
+    mtext(2, text = "Median Group Size", line=5.5)
+    
+    
+    # 10. 세 번째 그래프 생성 : y축을 지정하지 않은 그래프
+    par(new = T)
+    plot(time, grp, axes=F, xlim=c(7000, 3400), ylim=c(0, max(grp)),
+         xlab= "", ylab="", type="l", lty=3, lwd=2, col="red", main="", )
+    
+    # 11. 세 번째 그래프의 y축 생성
+    axis(2, ylim=c(0, max(grp)), col="red", lwd=2, line=7)
+    
+    # 13 세번째 그래프에 점 추가
+    points(time, grp, pch=20, col = "black")
+    
+    # 14 세 번째 y축 이름 지정
+    mtext(2, text="Number of Groups", line=9)
+    
+    # 15. x축 생성 및 이름 지정
+    axis(1, pretty(range(time), 10)) # x축 생성
+    mtext(side=1, text="cal BP", col="green", line = 2) # x축 이름
+    
+    # 16. 범례 추가
+    legend(x=7000, y=12, legend=c("Population", "Median Group Size", 
+                                  "Number of Groups"), lty=c(1,2,3)
+           )
+    ```
+
+-   ![multiple-axis](https://user-images.githubusercontent.com/291782/158628671-dfef81e5-608c-4dce-9b3b-f5a060b807b4.png)
+
+
+
+##### 자. 그 외 다양한 그래프
+
+p.430
