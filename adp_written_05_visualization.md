@@ -1201,4 +1201,61 @@ ggplot(DF, aes(x=Time, y=weight, colour=Diet, group=Chick) + geom_line())
 
 ##### 자. 그 외 다양한 그래프
 
-p.430
+-   aplpack 패키지
+
+    -   줄기-잎 그림, 체르노프 페이스, 스타차트 등의 시각화 방법을 제공
+
+    -   ```R
+        # 줄기 잎 그림, 체르노프 페이스, 스타차트 시각화를 위한 aplpack 패키지 설치
+        install.packages("aplpack")
+        library(aplpack)
+        
+        # WorldPhones 는 R에서 기본 제공하는 데이터
+        head(WorldPhones)
+             N.Amer Europe Asia S.Amer Oceania Africa Mid.Amer
+        1951  45939  21574 2876   1815    1646     89      555
+        1956  60423  29990 4708   2568    2366   1411      733
+        1957  64721  32510 5230   2695    2526   1546      773
+        1958  68484  35218 6662   2845    2691   1663      836
+        1959  71799  37598 6856   3000    2868   1769      911
+        1960  76036  40341 8220   3145    3054   1905     1008
+        
+        
+        stem.leaf(WorldPhones) # 줄기 잎 그림
+        faces(WorldPhones) # 체르노프 페이스
+        stars(WorldPhones) # 스타 차트
+        ```
+
+    -   ```R
+        # 위 stem.leaf(WorldPhones) 결과
+        > stem.leaf(WorldPhones)
+        1 | 2: represents 12000
+         leaf unit: 1000
+                    n: 49
+          (30)   0* | 000000111111111222222222333334
+           19    0. | 56689
+                 1* | 
+                 1. | 
+           14    2* | 1
+           13    2. | 9
+           12    3* | 2
+           11    3. | 57
+            9    4* | 03
+            7    4. | 5
+                 5* | 
+                 5. | 
+            6    6* | 04
+            4    6. | 8
+            3    7* | 1
+            2    7. | 69
+        ```
+
+    -   ![chernope-face](https://user-images.githubusercontent.com/291782/159026738-6e0eb432-963c-43f6-b15c-72e5a4a1e6c0.png)
+
+    -   ![star-chart](https://user-images.githubusercontent.com/291782/159026908-a778a85c-e6bd-4fc7-913f-dba69ce37179.png)
+
+
+
+#### 3. 공간분선 (p.432)
+
+
