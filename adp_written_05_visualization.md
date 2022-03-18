@@ -1224,6 +1224,7 @@ ggplot(DF, aes(x=Time, y=weight, colour=Diet, group=Chick) + geom_line())
         stem.leaf(WorldPhones) # 줄기 잎 그림
         faces(WorldPhones) # 체르노프 페이스
         stars(WorldPhones) # 스타 차트
+        # 줄기 잎 그림 부터 스타차트 까지 아래에 차례로 결과 나열
         ```
 
     -   ```R
@@ -1256,6 +1257,102 @@ ggplot(DF, aes(x=Time, y=weight, colour=Diet, group=Chick) + geom_line())
 
 
 
-#### 3. 공간분선 (p.432)
+#### 3. 공간분석 (p.432)
+
+구글 비즈(Google Vis)는 구글에서 지원하는 다양한 그래프이다. R 그래프보다 보기 좋고, 움직이는 그래프도 그릴 수 있다. 그래프는 브라우저에 그려진다.
+
+##### 가. 구글 비즈 1
+
+```R
+install.packages("googleVis")
+library(googleVis)
+
+# motion chart
+# gvisMotionChart 더 이상 지원하지 않음.
+M1 <- gvisMotionChart(Fruits, idvar="Fruit", timevar="Year")
+plot(M1)
+
+# geo chart
+G2 <- gvisGeoChart(Exports, "Country", "Profit", options=list(region="150"))
+plot(G2)
+```
+
+-   geo chart
+-   ![gvis-geo-chart](https://user-images.githubusercontent.com/291782/159029350-73b8c1ce-ccfc-4725-a48d-af36e56496bf.png)
+
+
+
+##### 다. 샤이니
+
+-   샤이니(shiny) 서버를 설치하면 서버와 클라이언트의 적합한 R 스크립트를 저장한 뒤, R로 분석 결과를 퍼블리싱 할 수 있다. 사용 방법은 아래와 같다.
+
+-   ```R
+    options(repos=c(RStudio='http://rstudio.org/_packages', getOption('repos')))
+    install.packages('shiny')
+    library(shiny)
+    
+    # 아래 명령어 실행 시 새로운 R프로그램에서 아래 이미지와 같은 이미지 뜬다.
+    runExample("01_hello")
+    runExample("02_text")
+    runExample("03_reactivity")
+    
+    # 아래 이미지는 '03_reactivity' 실행 예시
+    ```
+
+-   ![r-shiny-exampl1](https://user-images.githubusercontent.com/291782/159030687-80e82f4c-da9e-45de-8d40-15fb5a00a41a.png)
+
+
+
+##### 라. 모자이크 플롯
+
+-   개요 : 모자이크 플롯(mosaic plot)은 복수의 categorical variable 분포 파악에 도움이 되는 시각화 방법.
+
+-   패키지 설치 : vcd (visualize categorical data) 패키지를 설치해야 함
+
+-   ```R
+    install.packages("vcd")
+    library(vcd) 
+    
+    mosaic(Titanic)
+    # 위 mosaic(Titanic) 사용 시 아래 이미지
+    ```
+
+-   ![mosaic-titanic](https://user-images.githubusercontent.com/291782/159032117-c6694dcf-d2de-4b44-9ca2-1f2cbc4a60cc.png)
+
+-   위 이미지를 통해 1등석 여성 승객의 생존율이 상대적으로 높은것을 파악 할 수 있다.
+
+-   ```R
+    mosaic(Titanic, shade=T, legend=T) # mosaic 이미지에 색상 추가
+    # 위 명령어 실행 시 나타나는 이미지
+    ```
+
+-   ![mosaic-shade-titanic](https://user-images.githubusercontent.com/291782/159032780-66fb5490-571a-44c0-b195-1b89542fbb9b.png)
+
+
+
+#### 4. 샤이니 사용  (p.442)
+
+##### 가. 샤이니 특징
+
+-   R에서 곧바로 인터랙티브하게 웹 앱을 만들 수 있는 패키지
+-   이미 구현된 동적 시각화 자료를 웹으로 쉽게 배포 가능
+
+**중요하지 않을 것 같아 건너 뜀.**
+
+
+
+### 3절 라이브러리 기반 시각화 구현 : D3.js
+
+#### 1. D3.js 개요 (p.462)
+
+##### 가. 특징
+
+
+
+-   자바스크립트 기반의 데이터 시각화 라이브러리
+-   HTML5, SVG, CSS로 데이터 시각화
+-   SVG 객체, canvas 객체 등을 기반으로 동작
+-   CSS를 통해 레이아웃과 속성 변경을 통해 디자인적 요소 조작 가능
+-   모든 브라우저에서 동일한 코드에 대한 일관적인 결과 얻을 수 있음
 
 
