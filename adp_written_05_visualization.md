@@ -1346,13 +1346,252 @@ plot(G2)
 #### 1. D3.js 개요 (p.462)
 
 ##### 가. 특징
-
-
-
 -   자바스크립트 기반의 데이터 시각화 라이브러리
 -   HTML5, SVG, CSS로 데이터 시각화
 -   SVG 객체, canvas 객체 등을 기반으로 동작
 -   CSS를 통해 레이아웃과 속성 변경을 통해 디자인적 요소 조작 가능
 -   모든 브라우저에서 동일한 코드에 대한 일관적인 결과 얻을 수 있음
+
+
+##### 나. D3.js를 통한 시각화 구현 절차
+
+1.   데이터 획득
+
+     시각화 할 데이터를 결정해 해당 데이터 확보
+
+2.   데이터 파싱
+
+     D3는 csv, xml, json 형식 등의 다양한 형식을 파싱할 수 있는 API 제공
+
+3.   데이터 필터링
+
+     표현에 필요하지 않은 데이터 제거
+
+4.   데이터 표현
+
+     가장 중요한 사항은 매핑의 스케일(scale). D3에서는 시각적 요소에 데이터를 직접 입력하는 대신, scale 이라는 객체로 데이터와 시각적 요소 간의 관계를 정의한다. scale 객체를 통해 웹, 모바일, 태블릿 등 다양한 화면에서 동일한 차트나 지도를 구현 가능
+
+5.   상호작용 추가
+
+     인터랙티브 한 차트 구현. 특정 구간 선택 시 상세한 화면을 보여주는 형태로 상호작용 추가
+
+
+
+#### 2. 시각화 구현을 위한 기본 개념 (p.463)
+
+##### 가. D3.js로 시각화 구현
+
+-   D3는 객체지향 언어라 객체를 생성해야 함
+-   SVG 객체를 생성해야 하며, 해당 객체는 이미지 시각화에 사용되는 함수 등을 모아놓은 것
+
+##### 나. SVG
+
+-   svg : 그림을 그리기 위한 html 태그
+-   rect, circle, line, path, ellipse, polyline 등의 객체를 사용하여 그림
+-   D3를 활용해 시각화를 구현하기 위해서는 HTML5의 SVG 객체가 필요함
+
+
+
+##### 다. scale
+
+-   SVG로 구현한 시각화 그림들이 화면에 부자연스럽게 표현되는 것을 방지하기 위해 사용
+-   **시각화의 최적화**를 도움
+-   domain과 range를 지정하는 것으로 정의됨
+-   domain() : scale 입력 값의 범위 지정
+-   range() : scale 출력 값의 범위 지정
+
+
+
+#### 3. 막대 차트로 시간 시각화 구현
+
+##### 가. 객체 생성
+
+```javascript
+// 객체 생성. 넓이 500, 높이 200 의 객체 생성
+var width = 500;
+var height = 200;
+var svg = d3.select("#chart")
+    .append("svg")
+    .attr('width', width)
+    .attr('height', height);
+
+// 데이터 입력
+var dataset = [5, 10, 13, 19, 21, 25];
+
+// scale 정의
+var padding = 20;
+var y = d3.scale.linear()
+    .domain([0, d3.max(dataset)])
+    .range([height - padding+5, 5]);
+var x = d3.scale.linear()
+    .domain([0, dataset.length])
+    .range([padding, width])
+```
+
+
+
+#### 4. 파이 차트로 분포 시각화 구현 (p.470)
+
+##### 가. 객체 생성
+
+```javascript
+var dataset = [10, 40, 80]
+var svg = d3.select('#chart')
+    .append("svg")
+    .attr('width', 400)
+    .attr('height', 400);
+
+// svg 객체의 중심축을 x축 200, y축 200 이동
+var group = svg.append("g")
+    .attr("transform", "translate(200, 200)");
+
+// 파이 차트를 위해 arc 모양을 결정하는 객체 생성
+// 파이차트 안쪽 호의 반지름인 innerRadius, 바깥호의 반지름 outerRadius 설정
+var arc = d3.svg.arc()
+    .innerRadius(100)
+    .outerRadius(200);
+
+// arc를 그리기 위한 pie layout 작성
+var pie = d3.layout.pie()
+    .value(function(d){
+        return d;
+    });
+var arcs = group.selectAll(".arc")
+    .data(pie(dataset))
+    .enter()
+    .append("g")
+    .attr("class", "arc");
+```
+
+
+
+#### 5. 스캐터 플롯으로 관계 시각화 구현
+
+##### 가. 객체 생성
+
+```javascript
+// 객체 생성
+// 그래프 배경 설정
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+// 여백 생성
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate("+margin.left + ","+margin.top+")");
+
+// 축의 범위 지정
+var x = d3.scale.linear()
+    .range([0, width]);
+var y = d3.scale.linear()
+    .range([height, 0]);
+var color = d3.scale.category10();    // 10개의 카테고리 순차로 scale된 color 객체 생성
+
+// 축 생성 (x축은 하단, y축은 왼쪽 정렬)
+var xAxis = d3.svg.axis()
+    .scale(x).orient("bottom");
+var yAxis = d3.svg.axis()
+    .scale(y).orient("left");
+
+// 데이터 입력 (배열형태 데이터이며, 각 각 x값, y값, class는 plot의 점 색상 표현)
+var data = [
+    {y:5.1, x:3.5, class:"class1"},
+    {y:4.9, x:3.3, class:"class1"},
+    {y:5.2, x:3.7, class:"class1"},
+    {y:4.6, x:3.4, class:"class2"},
+    {y:5.0, x:3.7, class:"class2"}
+];
+
+// 스케일 정의 (extent 함수를 활용하면 domain의 최솟값과 최대값 지정이 용이)
+x.domain(d3.extent(data, function(d){return d.x;})).nice();
+y.domain(d3.extent(data, function(d){return d.y;})).nice();
+// extent : 배열의 최소값 최대값을 찾아 반환
+// nice : domain을 보기 좋은 숫자로 반올림해 확장하는 함수
+
+// dot 생성 (원의 반지름은 3.5, 원 중심점의 x,y 좌표값을 데이터로 부터 지정)
+svg.selectAll(".dot")
+    .data(data)
+    .enter().append("circle")
+    .attr("class", "dot")
+    .attr("r", 3.5)
+    .attr("cx", function(d){ return x(d.x);})
+    .attr("cy", function(d){ return y(d.y);})
+    .style("fill", function(d){ return color(d.class);});
+
+// X, Y 축 구현 (x축 아래쪽, y축 왼쪽 정렬)
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0, "+height+")")
+    .call(xAxis)
+    .append("text")
+    .attr("class", "label")
+    .attr("x", width)
+    .attr("y", -6)
+    .style("text-anchor", "end")
+    .text("Sepal Width (cm)");
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+    .append("text")
+    .attr("class", "label")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("Sepal Length (cm)");
+
+// 범례 추가
+// 범례 객체 생성
+var legend = svg.selectAll(".legend")
+    .data(color.domain())
+    .enter().append("g")
+    .attr("class", "legend")
+    .attr("transform", function(d, i) { return "translate(0, "+i * 20 +")";});
+// 범례에 사각형 삽입
+legend.append("rect")
+    .attr("x", width - 18)
+    .attr("width", 18)
+    .attr("height", 18)
+    .style("fill", color);
+// 범례에 텍스트 삽입
+legend.append("text")
+    .attr("x", width - 24)
+    .attr("y", 9)
+    .attr("text-anchor", "end")
+    .text(function(d) { return d; });
+```
+
+![d3-plot-chart](https://user-images.githubusercontent.com/291782/159128349-8a3ea735-df17-4c64-bda2-e3bca187829f.png)
+
+
+
+#### 6. 히트맵으로 비교 시각화 구현 (p.479)
+
+-   **히트맵을 구현하기 위해서는 canvas 객체 필요**
+
+-   drawImage : canvas에 준비한 이미지를 출력하기 위한 함수
+
+-   SVG 객체와 canvas 객체 차이점
+
+-   |                  |     SVG     |   canvas    |
+    | ---------------- | :---------: | :---------: |
+    | 용도             | 시각화 구현 | 시각화 구현 |
+    | 객체에 정보 저장 |      O      |      X      |
+    | 다시 그리기      |    유리     |    불리     |
+    | 성능             |    낮다     |    높다     |
+
+-   SVG 객체는 화면에 출력할 모든 정보를 객체에 담고 있기 때문에 상호작용을 처리하는 이벤트 핸들러를 연결 가능. 그래서 필요한 객체만 화면에 다시 그릴때 유리하지만, 모든 정보를 저장하고 있어 성능의 문제가 발생 가능하다.
+
+
+
+#### 7. 지도로 공간 시각화
+
+-   SVG 객체를 생성하여 지도를 그릴 수 있음
+-   시, 도를 그리기 위한 좌표 입력 및 앞서 정의한 path 객체를 할당하는 방법으로 구현 가능
+-   path 객체를 통해 입력된 좌표 정보를 픽셀로 변환해 화면에 도형을 그릴 수 있음
+
 
 
