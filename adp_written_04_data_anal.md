@@ -796,54 +796,134 @@ degree, shortest paths, reachability, density, reciprocity, transitivity, triad 
 
      #### 4. 확률 및 확률분포 (p.285)
 
-  ##### 나. 확률분포
+     ##### 나. 확률분포
 
-1)   이산형 확률변수
+     1.   이산형 확률변수
 
-     -   베르누이 확률분포 (Bernoulli distribution)
+          -   베르누이 확률분포 (Bernoulli distribution)
 
-         -   결과가 2개만 나오는 경우 **성공 또는 실패** (예. 동전 던기지, 시험의 합격/불합격 등)
-         -   $P(X = x) = P^x . (1-p)$<sup>1-x</sup> 
-         -   (x= 1 or 0), 기댓값: $E(x) = p$, 분산 :$var(x) = p(1-p)$
-         -   예) 추신수가 안타를 칠 확률은 베르누이 분포를 따른다.
-     -   이항분포 (Binomial distribution)
+              -   결과가 2개만 나오는 경우 **성공 또는 실패** (예. 동전 던기지, 시험의 합격/불합격 등)
+              -   $P(X = x) = P^x . (1-p)$<sup>1-x</sup> 
+              -   (x= 1 or 0), 기댓값: $E(x) = p$, 분산 :$var(x) = p(1-p)$
+              -   예) 추신수가 안타를 칠 확률은 베르누이 분포를 따른다.
+          -   이항분포 (Binomial distribution)
 
-         -   베르누이 시행을 n번 반복했을 때 k번 성공할 확률
-         -   n번 시행 중에 각 시행의 확률이 p일 때, k번 성공할 확률분포
-         -   $P(X = k) = _nC_kP^k(1-p)$<sup>n-k</sup> , $_nC_k = \dfrac {n!}{k!(n-k)!}$
-         -   기댓값 : $E(X) = np$, 분산 : $V(X) = np(1-p) $  (단, n과 k가 1이면 베르누이 시행)
-         -   추신수가 오늘 경기에서 5번 타석에 들어와서 3번 안타를 칠 확률은 이항분포를 따른다. (n=5, k=3, 안타를 칠 확률 P(x) = 타율로 적용 가능)
-         -   성공할 확률 p가 0이나 1에 가깝지 않고 n이 충분히 크면 이항분포는 정규분포에 가까워 진다. 성공할 확률 p가 1/2에 가까우면 종모양이 된다.
-     -   기하분포 (Geometric distribution)
-         -   성공확률이 p인 베르누이 시행에서 첫번째 성공이 있기까지 X번 실패할 확률
-         -   예) 추신수가 오늘 경기에서 5번 타석에 들어와서 3번째 타석에서 안타를 칠 확률은 기하분포를 따른다.
-     -   다항분포 (Multinomial distribution)
-         -   이항분포를 확장한 것으로 세가지 이상의 결과를 가지는 반복 시행에서 발생하는 확률 분포
-     -   포아송분포 (Poisson distiribution)
-         -   시간과 공간 내에서 발생하는 사건의 발생횟수에 대한 확률분포
-         -   예) 책에 오타가 5page 당 10개씩 나온다고 할 떄, 한 페이지에 오타가 3개 나올 확률, 추신수가 최근 5경기에서 홈런을 쳤을 경우, 오늘 경기에서 홈런을 못 칠 확률은 포아송 분포
-         -   &lambda; (람다) = 정해진 시간 안에 어떤 사건이 일어날 횟수에 대한 기댓값, y= 사건이 일어난 수
-         -   $P = \dfrac {\lambda^ne^{-\lambda}} {n!}$ (e는 자연상수)
-         -   기댓값 : $E(X) = \lambda$, 분산 : $V(X) = \lambda $
-2)   연속형 확률변수
-     - 가능한 값이 실수의 어느 특정구간 전체에 해당하는 확률변수 (확률밀도함수)
-     - $ f(x)\ge 0 $     $\int_{-\infty}^{\infty}f(x)dx = 1$
-     - 균일분포 (일양분포, Uniform distiribution)
-       - 모든 확률변수 X가 균일한 확률을 가지는 확률분포 (다트의 확률분포)
-       - $E(X) = \dfrac {a+b}{2}, Var(X) = {(b-a)^2}{12}$
-       - ![uniform-distribution](https://user-images.githubusercontent.com/291782/161756609-ae577e06-5c55-410f-b205-63f1c5afd9b6.png)
-     - 정규분포 (Normal distribution)
-       - 평균이 &mu; (뮤) 이고, 표준편차가 &sigma; (시그마) 인 X의 확률밀도 함수
-       - 표준편차가 클 경우 퍼져보이는 그래프가 나타남
-       - 표준정규분포는 평균이 0 이고, 표준편차가 1인 정규분포
-       - 정규분포를 표준정규분포로 만들기 위해서는 $Z = \dfrac {X - \mu} {\sigma}$  식을 이용
-       - ![normal-distribution](https://user-images.githubusercontent.com/291782/161757336-f8a45f83-945c-4560-98b3-eee70cde4fa1.png)
-     - 지수분포 (Exponential distribution)
-       - 어떤 사건이 발생할 때까지 경과 시간에 대한 연속확률분포이다.
-       - 예) 전자렌지의 수명시간, 콜센터에 전화가 걸려올때 까지의 시간, 은행에 고객이 내방하는데 걸리는 시간, 정류소에서 버스가 올 때까지의 시간
-       - ![exponential-distribution](https://user-images.githubusercontent.com/291782/161757625-0f01dde3-c578-4d62-b92d-8e2c667ec95c.png)
-     - t분포 (t-distribution)
-       - p.291
+              -   베르누이 시행을 n번 반복했을 때 k번 성공할 확률
+              -   n번 시행 중에 각 시행의 확률이 p일 때, k번 성공할 확률분포
+              -   $P(X = k) = _nC_kP^k(1-p)$<sup>n-k</sup> , $_nC_k = \dfrac {n!}{k!(n-k)!}$
+              -   기댓값 : $E(X) = np$, 분산 : $V(X) = np(1-p) $  (단, n과 k가 1이면 베르누이 시행)
+              -   추신수가 오늘 경기에서 5번 타석에 들어와서 3번 안타를 칠 확률은 이항분포를 따른다. (n=5, k=3, 안타를 칠 확률 P(x) = 타율로 적용 가능)
+              -   성공할 확률 p가 0이나 1에 가깝지 않고 n이 충분히 크면 이항분포는 정규분포에 가까워 진다. 성공할 확률 p가 1/2에 가까우면 종모양이 된다.
+          -   기하분포 (Geometric distribution)
+              -   성공확률이 p인 베르누이 시행에서 첫번째 성공이 있기까지 X번 실패할 확률
+              -   예) 추신수가 오늘 경기에서 5번 타석에 들어와서 3번째 타석에서 안타를 칠 확률은 기하분포를 따른다.
+          -   다항분포 (Multinomial distribution)
+              -   이항분포를 확장한 것으로 세가지 이상의 결과를 가지는 반복 시행에서 발생하는 확률 분포
+          -   포아송분포 (Poisson distiribution)
+              -   시간과 공간 내에서 발생하는 사건의 발생횟수에 대한 확률분포
+              -   예) 책에 오타가 5page 당 10개씩 나온다고 할 떄, 한 페이지에 오타가 3개 나올 확률, 추신수가 최근 5경기에서 홈런을 쳤을 경우, 오늘 경기에서 홈런을 못 칠 확률은 포아송 분포
+              -   &lambda; (람다) = 정해진 시간 안에 어떤 사건이 일어날 횟수에 대한 기댓값, y= 사건이 일어난 수
+              -   $P = \dfrac {\lambda^ne^{-\lambda}} {n!}$ (e는 자연상수)
+              -   기댓값 : $E(X) = \lambda$, 분산 : $V(X) = \lambda $
+
+     2.   연속형 확률변수
+
+          - 가능한 값이 실수의 어느 특정구간 전체에 해당하는 확률변수 (확률밀도함수)
+
+          - $ f(x)\ge 0 $     $\int_{-\infty}^{\infty}f(x)dx = 1$
+
+          - 균일분포 (일양분포, Uniform distiribution)
+
+              - 모든 확률변수 X가 균일한 확률을 가지는 확률분포 (다트의 확률분포)
+              - $E(X) = \dfrac {a+b}{2}, Var(X) = {(b-a)^2}{12}$
+              - ![uniform-distribution](https://user-images.githubusercontent.com/291782/161756609-ae577e06-5c55-410f-b205-63f1c5afd9b6.png)
+
+          - 정규분포 (Normal distribution)
+
+              - 평균이 &mu; (뮤) 이고, 표준편차가 &sigma; (시그마) 인 X의 확률밀도 함수
+              - 표준편차가 클 경우 퍼져보이는 그래프가 나타남
+              - 표준정규분포는 평균이 0 이고, 표준편차가 1인 정규분포
+              - 정규분포를 표준정규분포로 만들기 위해서는 $Z = \dfrac {X - \mu} {\sigma}$  식을 이용
+              - ![normal-distribution](https://user-images.githubusercontent.com/291782/161757336-f8a45f83-945c-4560-98b3-eee70cde4fa1.png)
+
+          - 지수분포 (Exponential distribution)
+
+              - 어떤 사건이 발생할 때까지 경과 시간에 대한 연속확률분포이다.
+              - 예) 전자렌지의 수명시간, 콜센터에 전화가 걸려올때 까지의 시간, 은행에 고객이 내방하는데 걸리는 시간, 정류소에서 버스가 올 때까지의 시간
+              - ![exponential-distribution](https://user-images.githubusercontent.com/291782/161757625-0f01dde3-c578-4d62-b92d-8e2c667ec95c.png)
+
+          - t분포 (t-distribution)
+
+              - 표준정규분포와 같이 평균이 0을 중심으로 좌우가 동일한 분포를 따른다.
+              - 표본이 커져서 (30개 이상) 자유도가 증가하면 표준정규분포와 거의 같은 분포가 된다.
+              - 데이터가 연속형일 경우 활용한다.
+              - **두 집단의 평균이 동일한지** 알고자 할 때 검정통계량으로 활용된다.
+              - ![t-distribution](https://user-images.githubusercontent.com/291782/161783614-810d0d10-ffe0-483c-99c2-93a7f7159e2f.png)
+
+          - X<sup>2</sup>-분포 (chi-square distribution, 카이제곱분포)
+
+              - 모평균과 모분산이 알려지지 않은 모집단의 모분산에 대한 가설 검정에 사용되는 분포
+              - **두 집단 간의 동질성 검정에 활용**된다. (범주형 자료에 대해 얻어진 관측값과 기대값의 차이를 보는 적합성 검정에 활용)
+              - ![x2-distribution](https://user-images.githubusercontent.com/291782/161784229-f6906799-74d1-4fd5-a6c6-06bcf9cadaaa.png)
+
+          - F-분포 (F-distribution)
+
+              - **두 집단간 분산의 동일성 검정**에 사용되는 검정 통계량 분포
+              - 확률변수는 항상 양의 값만을 갖고 X<sup>2</sup> 분포와 달리 자유도를 2개 가지고 있으며 자유도가 커질수록 정규분포에 가까워진다.
+              - ![f-distribution](https://user-images.githubusercontent.com/291782/161784584-b404679b-b455-40d9-91f8-1ffbb0589f98.png)
+
+              
+
+
+
+#### 5. 추정과 가설검정 (p.293)
+
+##### 가. 추정의 개요
+
+1.   확률표본 (random sample)
+     -   확률분포는 분포를 결정하는 평균, 분산 등의 모수(parameter)를 가지고 있다.
+     -   특정한 확률분포로부터 독립적으로 반복해 표본을 추출하는 것이다.
+     -   각 관찰값들은 서로 독립적이며 동일한 분포를 갖는다.
+2.   추정
+     -   표본으로부터 미지의 모수를 추측하는 것이다.
+     -   추정은 점추정 (point estimation)과 구간추정(interval estimation)으로 구분된다.
+     -   점추정 (point estimation)
+         -   '**모수가 특정한 값일 것**'이라고 추정하는 것이다.
+         -   표본의 평균, 중위수, 최빈값 등을 사용한다.
+         -   불편성 (unbiasedness) : 표본에서 얻는 추정량의 **기댓값**은 모집단의 모수와 차이가 없다.
+         -   효율성 (efficiency) : 추정량의 분산이 작을수록 좋다.
+         -   일치성 (consistency) : 표본의 크기가 아주 커지면, 추정량이 모수와 거의 같아진다.
+         -   충족성 (sufficient) : 추정량은 모수에 대하여 모든 정보를 제공한다.
+         -   표본평균 (sample mean) : 모집단의 평균(모평균)을 추정하기 위한 추정량. 확률표본의 평균값.
+         -   $\overline{X} = \dfrac {1}{n}\displaystyle \sum_{i=1}^{n}X_i$
+         -   표본분산 (sample variance) : 모집단의 분산 (모분산)을 추정하기 위한 추정량
+         -   $S^2 = \dfrac {1}{n-1} \displaystyle \sum_{i=1}^{n} (X_i - \overline{X})^2$
+     -   구간추정 (interval estimation)
+         -   **모수가 특정한 구간에 있을 것이라고 선언하는 것**이다.
+         -   항상 추정량의 분포에 대한 전제가 주어져야 하고, 구해진 구간 안에 모수가 있을 가능성의 크기 (신뢰수준(confidence interval))가 주어져야 한다.
+         -   95% 신뢰수준 하에서 모평균의 신뢰구간 (모분산을 알때는 분자에 &sigma;(시그마)를 넣고, 모분산을 모를땐 분자에 s를 넣는다.)
+         -   모분산 &sigma;<sup>2</sup> 이 알려져 있는 경우
+         -   $(\overline{X} - 1.96 \dfrac {\sigma}{\sqrt{n}}, \overline{X} + 1.96 \dfrac {\sigma}{\sqrt{n}})$ , 표준정규분포 N(0, 1)를 따르는 $Z = \dfrac {\overline{X} - \mu} {\dfrac {\sigma} {\sqrt{n}}}$
+         -   모분산 &sigma;<sup>2</sup> 이 알려져 있지 않은 경우에는 모분산 대신 표본분산을 사용
+         -   $(\overline{X} - 2.26 \dfrac {S}{\sqrt{n}}, \overline{X} + 2.26 \dfrac {S}{\sqrt{n}})$ , 자유도가 n-1인 t-분포를 따르는 $T = \dfrac {\overline{X} - \mu} {\dfrac {S} {\sqrt{n}}}$
+
+
+
+##### 나. 가설검정
+
+-   귀무가설 (null hypothesis, H<sub>0</sub>) : **비교하는 값과 차이가 없다, 동일하다**를 기본개념으로 하는 가설
+-   대립가설 (alternative hypothesis, H<sub>1</sub>) : **뚜렷한 증거가 있을 때 주장하는 가설**
+-   검정통계량 (test statistic) : 관찰된 표본으로부터 구하는 통계량, 검정 시 가설의 진위를 판단하는 기준
+-   **유의수준** (significance level, &alpha;) : 귀무가설을 기각하게 되는 확률의 크기로 '귀무가설이 옳은데도 이를 기각하는 확률의 크기'
+-   기각역 (critical region, C) : 귀무가설이 옳다는 전제하에서 구한 검정통계량의 분포에서 확률이 유의수준 &alpha;인 부분 (반대는 채택역 (acceptance region))
+-   ![hypothesis](https://user-images.githubusercontent.com/291782/161790640-44316c2d-58db-4eb9-94e8-182c00887aa5.png)
+-   ![alpha-beta](https://user-images.githubusercontent.com/291782/161790831-f7bb96a8-8f59-4a83-b303-0b85d53a9c76.png)
+
+
+
+
+
+#### 6. 비모수 검정 (p.296)
 
 
 
