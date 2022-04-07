@@ -957,6 +957,49 @@ degree, shortest paths, reachability, density, reciprocity, transitivity, triad 
 ### 2절 기초 통계분석
 
 #### 1. 기술통계 (Descriptive Statistics) (p.298)
+##### 가. 기술통계의 정의
+
+- 자료의 특성을 표, 그림, 통계량 등을 사용하여 쉽게 파악할 수 있도록 정리/요약하는 것
+- 대략저인 통계적 수치를 계산해봄으로써 데이터에 대한 대략적인 이해와 앞으로 분석에 대한 통찰력을 얻기 유리
+
+
+
+##### 나. 통계량에 의한 자료 정리
+
+1. 중심위치의 측도
+   - 표본평균 (sample mean) : $\overline{X} = \dfrac {1}{n}(X_1 + X_2 + ... X_n) = \displaystyle \sum_{i=1}^{n} \dfrac{X_i}{n}$
+   - 중앙값 (median) : 크기순으로 나열 시 중앙에 위치하는 값
+     - n이 홀수인 경우 : $\dfrac {(n+1)}{2}$
+     - n이 짝수인 경우 : $\dfrac {n}{2}$ 번째 값과 $\dfrac {(n+1)}{2} + 1$번째 값의 평균
+2. 산포의 측도
+   - 대표적인 산포도 (dispersion)는 분산, 표준편차, 범위 및 사분위수범위
+   - 분산 : $S^2 = \dfrac {1}{n-1} \displaystyle \sum_{i=1}^{n}(X_i - \overline{X})^2 = \dfrac {1}{n-1}(\displaystyle \sum_{i=1}^{n}X_i^2 - n\overline{X}^2) $
+   - 표준편차 : $S = \sqrt{S^2} = \sqrt{\dfrac {1}{n-1} \displaystyle \sum_{i=1}^{n} (X_i - \overline{X})^2}$
+   - 사분위수범위 (interquartile range) : IQR = Q3 - Q1
+   - 사분위수 : Q1 (25백분위수), Q2 (50백분위수), Q3 (75백분위수)
+   - 백분위수 (percentile) : $\dfrac {(n-1)p} {100 + 1}$번째 값
+   - 변동계수 (coefficient of variation) : $V = \dfrac {S} {\overline{X}}$
+   - 평균의 표준오차 : $SE(X) = \dfrac {S} {\sqrt{n}}$
+   - ![percentile-iqr](https://user-images.githubusercontent.com/291782/162159496-84d2c7a6-f413-4748-ba66-ea6d5a62c71b.png)
+3. 분포의 형태에 관한 측도
+   - 왜도 (skewness) :분포의 비대칭정도를 나타내는 측도. 왜도가 양수인 경우 왼쪽에 밀집되어 있고, 오른쪽으로 긴 꼬리를 갖는 분포, 음수인 경우는 반대. 왜도가 0 일 경우는 좌우 대칭인 분포
+     - ![skewness](https://user-images.githubusercontent.com/291782/162161124-9884c740-21f4-42f1-898f-997cfa30063e.png)
+   - 첨도 (kurtosis) : 분포의 중심에서 뾰족한 정도를 나타내는 측도
+     - ![kurtosis](https://user-images.githubusercontent.com/291782/162162023-a35083f7-7fbf-4389-9e61-7a552528df08.png)
+
+
+
+##### 다. 그래프를 이용한 자료 정리
+
+1. 히스토그램 : 도수분포표를 그래프로 나타낸 것
+2. 막대그래프와 히스토그램의 비교
+   - 막대그래프 : **범주형 (category)**으로 구분된 데이터 (예. 직업, 종교, 음식)를 표시하며 범주의 순서를 의도에 따라 바꿀수 있다.
+   - 히스토그램 : **연속형(continuous)**으로 표시된 데이터 (키, 몸무게, 성적, 연봉)을 표현하며 임의의 순서를 바꿀수 없고 막대의 간격이 없다.
+
+
+
+#### 2. 인과관계의 이해 (p.303)
+
 
 
 
