@@ -999,6 +999,116 @@ degree, shortest paths, reachability, density, reciprocity, transitivity, triad 
 
 
 #### 2. 인과관계의 이해 (p.303)
+##### 가. 용어
+
+-   종속변수 (반응변수, y) : 다른 변수의 영향을 받는 변수
+-   독립변수 (설명변수, x) : 영향을 주는 변수
+-   산점도에서 확인할 사항
+    -   두 변수 사이의 선형관계(직선관계)가 성립하는가?
+    -   두 변수 사이의 함수관계(직선관계 또는 곡선관계)가 성립하는가?
+    -   이상값이 존재하는가?
+    -   몇 개의 집단으로 구분(층별)되는 가?
+
+
+
+##### 나. 공분산 (covariance)
+
+-   두 확률변수 X, Y의 방향성의 조합(선형성)이다.
+-   공분산의 부호가 + 이면 양의 방향성, - 이면 음의 방향성을 가짐
+-   X, Y가 서로 독립이면 $Cov (X, Y) = 0$ 이다.
+
+
+
+#### 3. 상관분석 (Correlation Analysis)
+
+##### 가. 상관분석 정의
+
+-   두 변수의 상관관계를 알아보기 위해 상관계수 (correlation coefficient)를 이용하며, 그 공식은 아래와 같다.
+-   $r = \dfrac {cov(x, y)} {S_x ⅹ S_y} = \dfrac {\displaystyle \sum_{i=1}^n [(x - \overline{x})(y - \overline{y})]} {n(S_x ⅹ S_y)}$
+
+
+
+##### 나. 상관관계의 특성
+
+-   $0.7 \lt  r \le 1$ : 강한 양(+)의 상관관계, $0 \lt  r \le 0.3$ : 거의 상관 음다. ,r = 0 : 상관관계(선형, 직선)가 없다.
+-   $-1 \le  r \lt 0.7$ : 강한 음(-)의 상관관계, $-0.7 \le  r \lt 0.3$ : 약한 음(-)의 상관관계
+
+
+
+##### 다. 상관분석의 유형
+
+|   구분   | 피어슨                                                  | 스피어만                                                  |
+| :------: | ------------------------------------------------------- | --------------------------------------------------------- |
+|   개념   | 등간척도 이상으로 측정된 두 변수들의 상관관계 측정 방식 | 서열척도인 두 변수들의 상관관계 측정 방식                 |
+|   특징   | 연속형 변수, 정규성 가정, 대부분 많이 사용              | 순서형 변수, 비모수적 방법, 순위를 기준으로 상관관계 측정 |
+| 상관계수 | 피어슨 $r$ (적률상관계수)                               | 순위상관계수 $(p, 로우)$                                  |
+
+>   피어슨 스피어만 구분 Tip : 스피어만, 서열척도, 순서, 순위상관계수 등의 단어는 모두 "ㅅ" 으로 시작
+
+
+
+##### 라. 상관분석을 위한 R코드
+
+```R
+# 분산
+var(x,y = NULL, na.rm = FALSE)
+
+# 공분산
+cov(x,y = NULL, use="everything",
+   method = c("pearson", "kendall", "spearman"))
+
+# 상관관계
+cor(x,y = NULL, use = "everything",
+   method = c("pearsono", "kendall", "spearman"))
+# 상관관계 Hmisc 패키지의 rcorr 사용
+rcorr(matrix(data명), type=c("pearson", "kendall", "spearman"))
+```
+
+
+
+##### 마. 상관분석의 가설 검정
+
+-   상관계수 $r$이 0이면 입력변수 x와 출력변수 y 사이에는 아무런 관계가 없다. (귀무가설: $r = 0$, 대립가설 $r\neq 0$)
+-   t 검정통계량을 통해 얻은 p-value 값이 0.05이하인 경우, 대립가설을 채택하게 되어 우리가 구한 상관계수를 활용할 수 있게 됨
+
+
+
+##### 바. 상관분석 예제
+
+mtcars 데이터셋의 마일(mpg), 총마력(hp)의 상관관계 분석
+
+```R
+> data("mtcars")
+> a <- mtcars$mpg
+> b <- mtcars$hp
+> cov(a, b)
+[1] -320.7321
+> cor(a, b)
+[1] -0.7761684
+> cor.test(a, b, method="pearson")
+
+	Pearsons product-moment correlation
+
+data:  a and b
+t = -6.7424, df = 30, p-value = 1.788e-07
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.8852686 -0.5860994
+sample estimates:
+       cor 
+-0.7761684 
+```
+
+-   분석결과 : 공분산 (covariance)은 -320.73, 상관계수 (correlation coefficient)는 -0.776
+-   따라서 mpg와 hp는 음의 방향성을 가지며, 상관계수로 강한 음의 상관관계가 있음을 알 수 있음
+-   cor.test를 이용해 나온 p-value 가 1.788e-07로 유의수준 0.05보다 작게 나타나므로 mpg와 hp가 상관관계가 있다고 할 수 있다.
+
+
+
+### 3절 회귀분석 (중요. 3 ~ 5문제)
+
+#### 1. 회귀분석의 개요 (p.309)
+
 
 
 
