@@ -1679,6 +1679,131 @@ F-statistic: 35.19 on 1 and 7 DF,  p-value: 0.0005805
 
 #### 6. 성과분석 (p.389)
 
+##### 가. 오분류에 대한 추정치
+
+- |      |          | 예측     | 예측     |      |
+  | ---- | -------- | -------- | -------- | ---- |
+  |      |          | Positive | Negative |      |
+  | 실제 | Positive | TP       | FN       | P    |
+  | 실제 | Negative | FP       | TN       | N    |
+
+  - 참긍정률(TPR)  = $\dfrac{TP}{TP+FN}$ = 재현율(Recall) = 민감도(Sensitive) = ROC의 세로축
+  - 거짓긍정률(FPR) = $\dfrac {FP}{FP+TN}$ = (1 - 특이도(Specificity)) = ROC의 가로축
+  - 정확도(Accuracy, 정분류율) = $\dfrac {TP+TN}{P+N}$
+  - 오분류율(Error Rate) : $1 - Accuracy = \dfrac {FN + FP} {P + N}$
+  - 정밀도(Precision) = $\dfrac {TP}{TP+FP}$
+  - 재현도(Recall) = 민감도(Sensitive) = $\dfrac {TP}{TP+FN}$ = FPR(참긍정률)
+  - 특이도(Specificity, TNR, True Negative Rate) = $\dfrac{TN}{TN+FP}$
+  - F1-Score 에 들어가는 지표는? 정밀도(Precision) 와 재현율(Recall, 민감도)
+    - 식 = $2 × \dfrac {Precision × Recall}{Precision + Recall}  $ 
+    - 재현율과 정밀도 값이 모두 클 때 F1-Score도 큰 값을 가진다
+    - F1-Score는 민감도와 정밀도를 합한 **성능평가지표**로 0~1 사이의 값을 가진다. 1이 좋음
+
+
+
+##### 나. ROCR 패키지로 성과분석
+
+1. ROC Curve (Receiver Operating Characteristic Curve)
+   - ROC 커브란 가로축을 FPR (False Positive Rate = 1 - 특이도) 값으로 두고, 세로축을 TPR (True Positive Rate, 민감도) 값으로 두어 시각화한 그래프
+   - 2진 분류 (binary classfication)에서 모형의 성능을 평가하기 위해 많이 사용되는 척도
+   - ROC 곡선 아래의 면적을 의미하는 AUROC (Area Under ROC) 값이 크면 클수록 (1에 가까울수록 ) 모형의 성능이 좋다고 평가.
+   - AUROC : 0.9 ~ 1.0 (excellent), 0.8 ~ 0.9 (good), 0.7 ~ 0.8 (fair), 0.6 ~ 0.7 (poor), 0.5 ~ 0.6 (fail)
+
+
+
+##### 다. 이익도표 (Lift chart)
+
+1. 이익도표의 개념
+
+   - 이익도표는 분류모형의 성능을 평가하기 위한 척도로, 분류된 관측치에 대해 얼마나 예측이 잘 이루어졌는지를 나타내기 위해 임의로 나눈 각 등급별로 반응검출율, 반응률, 리프트 등의 정보를 산출하여 나타내는 도표
+
+2. 이익도표의 활용 예시
+
+   ![lift-chart](https://user-images.githubusercontent.com/291782/162685389-03b19520-81e3-49ca-b533-8c816820138f.png)
+
+   - 전체 2000명 중 381명 구매
+   - Frequency of 'buy' : 2000명 중 실제로 구매한 사람
+   - % Captured of response : 반응검출율: 해당 등급의 실제 구매자 / 전체 구매자
+   - % response : 반응률 = 해당 등급의 실제 구매자 / 200명 (=2000명 / 10구간)
+   - Lift : 향상도 : 반응률 / 기본 향상도 (좋은 모델이라면 Lift가 빠른 속도로 감소해야 한다.)
+
+   
+
+   
+
+
+
+
+
+
+
+### 2절 분류분석
+
+#### 1. 분류분석과 예측분석 (p.396)
+
+##### 가. 분류분석의 정의
+
+- 데이터가 어떤 그룹에 속하는지 예측하는데 사용
+- 클러스터링과 유사하지만, 분류분석은 각 그룹이 정의되어 있음
+- 교사학습 (supervised learning)에 해당하는 예측기법
+
+
+
+##### 나. 예측분석의 정의
+
+- 시계열분석처럼 시간에 따른 값 두 개만을 이용해 앞으로의 매출 또는 온도 등을 예측하는 것
+- 여러 개의 설명변수(독립변수)가 아닌, 한 개의 설명변수로 생각하면 됨
+
+
+
+##### 다. 분류분석과 예측분석의 공통점과 차이점
+
+- 공통점
+  - 레코드의 특정 속성의 값을 미리 알아맞히는 점
+- 차이점
+  - 분류  :레코드(튜플)의 **범주형 속성**의 값을 알아 맞춤
+  - 예측 : 레코드 (튜플)의 **연속형 속성**의 값을 알아 맞춤
+
+
+
+##### 라. 예
+
+- 분류
+  - 학생들의 국어, 영어, 수학 점수를 통해 내신등급을 맞추는 것
+  - 카드회사에서 회원들의 가입 정보를 통해 1년 후 신용등급을 맞추는 것
+- 예측
+  - 학생들의 여러 가지 정보를 입력하여 수능점수를 맞추는 것
+  - 카드회사 회원들의 가입정보를 통해 년 매출액을 맞추는 것
+
+
+
+##### 마. 분류 모델링
+
+- 신용평가모형 (우량, 불량)
+- 사기방지모형 (사기, 정상)
+- 이탈모형 (이탈, 유지)
+- 고객세분화 (VVIP, VIP, GOLD, SIVER, BRONZE)
+
+
+
+##### 바.  분류 기법
+
+- 회귀분석, 로지스틱 회귀분석 (logistic regression)
+- 의사결정나무 (DT), CART (Classification and Regression Tree), C5.0
+- 베이지안분류 (Bayesian classification), Naive Bayesian
+- 인공신경망 (ANN, artificial neural network)
+- SVM (support vector machine, 지지도벡터기계)
+- KNN (K-nearest neighborhood)
+- 규칙기반의 분류와 사례기반추론 (Case-Based Reasoning)
+
+
+
+#### 2. 로지스틱 회귀분석 (Logistic Regression) (p.397)
+
+- 반응변수가 
+
+
+
 
 
 
