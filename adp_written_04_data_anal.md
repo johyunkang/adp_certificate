@@ -1947,7 +1947,117 @@ F-statistic: 35.19 on 1 and 7 DF,  p-value: 0.0005805
 
 #### 5. 의사결정나무 알고리즘 (p.408)
 
-- CART (Classification And Regression Tree)
+1. CART (Classification And Regression Tree)
+   - 가장 많이 활용되는 의사결정나무 알즘으로 불순도의 측도로 출력(목적) 변수가 **범주형일 경우 지니지수**를, **연속형인 경우 이진분리**(binary split)를 사용
+   - 개별 입력변수 뿐만 아니라 입력변수들의 선형겹할들 중에서 최적의 분리를 찾을 수 있다.
+2. C4.5와 C5.0
+   - CART와는 다르게 각 마디에서 다지분리(multiple split)가 가능하며 범주형 입력변수에 대해서는 범주의 수만큼 분리가 일어난다.
+   - 불순도의 측도로는 **엔트로피지수**를 사용한다.
+3. CHAID (Chi-squared Automatic Interaction Detection)
+   - 가지치기를 하지 않고 적당한 크기에서 나무모형의 성장을 중지하며 입력변수가 반드시 범주형 변수이어야 한다.
+   - 불순도의 측도로는 **카이제곱** 통계량을 사용
+
+
+
+#### 6. 의사결정나무 예시 (p.408)
+
+```R
+> # install.packages("party")
+> # party 패키지를 이용하여 의사결정나무 사용 
+> library(party)
+> # 7:3 으로 train , test 데이터 나누기
+> idx <- sample(2, nrow(iris), replace = TRUE, prob = c(0.7, 0.3))
+> train.data <- iris[idx==1,]
+> test.data <- iris[idx==2,]
+> head(train.data)
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+4           4.6         3.1          1.5         0.2  setosa
+5           5.0         3.6          1.4         0.2  setosa
+6           5.4         3.9          1.7         0.4  setosa
+7           4.6         3.4          1.4         0.3  setosa
+9           4.4         2.9          1.4         0.2  setosa
+10          4.9         3.1          1.5         0.1  setosa
+> iris.tree <- ctree(Species~., data=train.data)
+> plot(iris.tree)
+```
+
+![dt-plot1](https://user-images.githubusercontent.com/291782/163331102-a0caafe6-b2e8-4b1e-9516-5028ad874a3a.png)
+
+```R
+> plot(iris.tree, type="simple")
+```
+
+![dt-plot-simple](https://user-images.githubusercontent.com/291782/163331226-b5ca401e-fba8-4ce0-b210-9a1dd09cd533.png)
+
+```R
+> # 예측된 데이터와 실제 데이터 비교
+> table(predict(iris.tree), train.data$Species)
+            
+             setosa versicolor virginica
+  setosa         36          0         0
+  versicolor      0         36         3
+  virginica       0          0        30
+
+> # test data를 적용하여 정확성 확인 
+> test.pre <- predict(iris.tree, newdata=test.data)
+> table(test.pre, test.data$Species)
+            
+test.pre     setosa versicolor virginica
+  setosa         12          0         0
+  versicolor      2         12         1
+  virginica       0          2        16
+```
+
+
+
+
+
+### 3절 앙상블 분석
+
+#### 1. 앙상블 (ensemble) (p.412)
+
+##### 가. 정의
+
+- 여러 예측모형들을 만든 후 예측모형들을 조합하여 하나의 최종 예측 모형을 만드는 방법으로 다중 모델 조합(combining multiple models), 분류기 조합(classifier combination)이 있다.
+
+
+
+
+
+##### 나. 학습방법의 불안정성
+
+- 가장 안정적인 방법으로는 1-nearest neighbor (가장 가까운 자료만 변하지 않으면 예측 모형이 변하지 않음), 선형회귀모형(최소제곱법으로 추정해 모형 결정)이 존재한다.
+- 가장 불안정한 방법으로는 의사결정나무가 있다.
+
+
+
+##### 다. 앙상블 기법의 종류
+
+1. 배깅
+   - 여러개의 붓스트랩(bootstrap) 자료를 생성하고 각 붓스트랩 자료에 예측 모형을 만든 후 결합하여 최종 예측모형을 만드는 방법이다. 붓스트랩은(bootstrap)은 주어진 자료에서 동일한 크기의 표본을 랜덤 복원추출로 뽑은 자료를 의미
+   - 보팅(voting)은 여러 개의 모형으로부터 산출된 결과를 다수결에 의해서 최종 결과를 선정하는 과정
+   - 최적 의사결정나무를 구축 시 가장 어려운 작업이 가지치기(pruning)이지만 배깅에서는 가지치기를 하지 않고 최대한 성장한 의사결정나무들을 활용
+2. 부스팅
+   - 예측력이 약한 모형(weak learner)들을 결합하여 강한 예측모형을 만드는 방법
+   - 부스팅 방법 중 Freund & Schapire가 제안한 **Adaboost**는 이진분류 문제에서 랜덤 분류기보다 조금 더 좋은 분류기 n개에 각각 가중치를 설정하고 n개의 분류기를 결합하여 최종 분류기를 만드는 방법을 제안하였다. (단, 가중치의 합은 1)
+   - 훈련 오차를 빨리 그리고 쉽게 줄일 수 있음
+   - 예측 오차가 향상되어 Adaboost의 성능이 배깅보다 뛰어난 경우가 많다.
+3. 랜덤포레스트 (random forest)
+   - 의사결정나무의 특징인 분산이 크다는 점을 고려하여 배깅과 부스팅보다 더 많은 무작위성을 주어 **약한 학습기들을 생성한 후 이를 선형결합하여 최종 학습기를 만드는 방법**
+   - random forest 패키지는 random input 에 따른 forest of tree를 이용한 분류방법
+   - 수천 개의 변수를 통해 변수제거 없이 실행되므로 정확도 측면에서 좋은 성과를 보인다.
+   - 이론적 설명이나 최종 결과해석이 어렵다는 단점이 있지만 예측력이 매우 높은 것으로 알려져 있다. 특히 입력변수가 많은 경우, 배깅과 부스팅보다 비슷하거나 좋은 예측력을 보인다.
+
+
+
+### 4절 인공신경망 분석
+
+#### 1. 인공신경망 분석 (ANN) (p.418)
+
+##### 가. 인공신경망이란?
+
+- 뇌를 기반으로 한 추론 모델
+- 뉴런은 기본적인 정보처리 단위
 
 
      
