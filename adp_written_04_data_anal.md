@@ -2060,6 +2060,66 @@ test.pre     setosa versicolor virginica
 - 뉴런은 기본적인 정보처리 단위
 
 
+
+##### 나. 인공신경망의 연구
+
+- 헵(Hebb) : 신경세포(뉴런) 사이의 연결강도(weight)를 조정하여 학습규칙을 개발
+- 로젠블럿(Rosenblatt, 1955) : 퍼셉트론 (perceptron)이라는 인공세포를 개발
+- 비선형성의 한계점 발생 : XOR (eXclusive OR) 문제를 풀지 못하는 한계를 발견
+- 홉필드(Hopfild), 러멜하트(Rumelhart), 맥클랜드(McClelland) : 역전파알고리즘(Backpropagation)을 활용하여 비선형성을 극복한 다계층 퍼셉트론으로 새로운 인공신경망 모형이 등장했다.
+
+
+
+##### 라. 인공신경망의 학습     
+
+- 신경망은 가중치를 반복적으로 조정하며 학습한다.
+- 뉴런은 링크(Link)로 연결되어 있고, 각 링크에는 수치적인 가중치가 있다.
+
+
+
+##### 마. 인공신경망의 특징
+
+- 뉴런의 활성화 함수
+
+    - **시그모이드 함수**의 경우 로지스틱 회귀분석과 유사하며, 0 ~ 1의 확률값을 가진다.
+
+        <img width="878" alt="sigmoid-fn" src="https://user-images.githubusercontent.com/291782/163423927-052bd171-81cc-45b6-97d8-70ba67c1a4e5.png">
+
+    - softmax 함수 : 표준화지수 함수로도 불리며, 출력값이 여러개로 주어지고 목표치가 다범주인 경우 각 범주에 속할 사후확률을 제공하는 함수
+
+        - $y_i = \dfrac {exp(z_j)} {\displaystyle \sum_{i=1}^Lexp(z_i)}, j = 1, ... ,L$
+
+    - Relu함수 : 입력값이 0 이하는 0, 0 초과는 x값을 가지는 함수. 최근 딥러닝에서 많이 활용하는 활성화 함수
+
+        - $Y^{relu} = \begin{cases} 0,\; if \quad x \le 0 \\ x, \; if \quad x \gt 0  \end{cases}$
+
+    - 단일 뉴런의 학습 (단층 퍼셉트론)
+
+        - 퍼셉트론은 선형 결합기와 하드 리미터로 구성된다.
+
+        - 초평면(hyperplane)은 n차원 공간을 두 개의 영역으로 나눈다.
+
+            <img width="818" alt="hyperplane" src="https://user-images.githubusercontent.com/291782/163426523-78c739e8-fe97-499d-8d72-f111438f3988.png">
+
+
+
+##### 바. 신경망 모형 구축 시 고려사항
+
+1. 입력 변수
+2. 가중치의 초기값과 다중 최소값 문제
+3. 학습모드
+4. 은닉층(hidden layer)과 은닉노드(hidden node)의 수
+5. 과대 적합 문제
+
+
+
+### 5절 군집분석
+
+#### 1. 군집분석 (p.424)
+
+
+
+
      
 
 
