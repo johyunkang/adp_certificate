@@ -2360,7 +2360,47 @@ n개의 개체를 g개의 군집으로 나눌 수 있는 모든 가능한 방법
 ##### 가. iris 데이터를 활용한 기법 확인
 
 1. Hierarchical Clustering (R 예제)
+
+    ```R
+    > idx <- sample(1:dim(iris)[1], 40)
+    > iris.s <- iris[idx,]
+    > iris.s$Species <- NULL
+    > hc <- hclust(dist(iris.s), method="ave")
+    > plot(hc, hang=-1, labels=iris$Species[idx])
+    ```
+
+    ![iris-dendrogram](https://user-images.githubusercontent.com/291782/163717239-dfae4a63-53d9-4f32-839a-557368465b31.png)
+
+    
+
 2. K-means Clustering (R 예제) 꼭 해봐라
+
+    -   비계층적 군집방법으로 사용가능
+
+    2-1 군집화
+
+    ```R
+    > # k-means
+    > # 군집화 
+    > data(iris)
+    > newiris <- iris
+    > newiris$Species <- NULL
+    > kc <- kmeans(newiris, 3)
+    > # 결과비교 
+    > table(iris$Species, kc$cluster)
+                
+                  1  2  3
+      setosa     50  0  0
+      versicolor  0  2 48
+      virginica   0 36 14
+    > # 군집화 그래프
+    > plot(newiris[c("Sepal.Length", "Sepal.Width")], col=kc$cluster)
+    ```
+
+    ![k-means-cluster](https://user-images.githubusercontent.com/291782/163717403-9c05da80-59ce-476a-931f-078491605354.png)
+
+    
+
 
 
 
@@ -2453,7 +2493,69 @@ n개의 개체를 g개의 군집으로 나눌 수 있는 모든 가능한 방법
 
 #### 5. 연관성분석 예제 (p.441)
 
-R 예제.
+-   분석내용 : Groceries 데이터셋은 식료품 판매점의 1달 동안의 POS 데이터이며, 총 169개의 제품과 9835건의 거래건수를 포함하고 있다. 거래내역을 **inspect** 함수로 확인할 수 있으며, **apriori** 함수로 최소지지도와 신뢰도는 각각 0.01, 0.3으로 설정한 뒤 연관규칙분석을 실시했다.
+
+-   ```R
+    > # 연관성분석
+    > # Groceries 데이터셋
+    > #install.packages("arules") # Groceries 데이터셋을 위한 패키지 설치
+    > library(arules)
+    > # 분석결과
+    > data(Groceries)
+    > inspect(Groceries[1:3])
+        items                                                      
+    [1] {citrus fruit, semi-finished bread, margarine, ready soups}
+    [2] {tropical fruit, yogurt, coffee}                           
+    [3] {whole milk}
+    
+    
+    > apriori(Groceries, parameter = list (support = 0.01, confidence=0.3))
+    Apriori
+    
+    Parameter specification:
+     confidence minval smax arem  aval originalSupport maxtime support minlen maxlen target  ext
+            0.3    0.1    1 none FALSE            TRUE       5    0.01      1     10  rules TRUE
+    
+    Algorithmic control:
+     filter tree heap memopt load sort verbose
+        0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+    
+    Absolute minimum support count: 98 
+    
+    set item appearances ...[0 item(s)] done [0.00s].
+    set transactions ...[169 item(s), 9835 transaction(s)] done [0.00s].
+    sorting and recoding items ... [88 item(s)] done [0.00s].
+    creating transaction tree ... done [0.00s].
+    checking subsets of size 1 2 3 4 done [0.00s].
+    writing ... [125 rule(s)] done [0.00s].
+    creating S4 object  ... done [0.00s].
+    set of 125 rules 
+    
+    
+    > inspect(sort(rules, by=c("lift"), decreasing=TRUE)[1:20])
+         lhs                                       rhs                support    confidence coverage   lift     count
+    [1]  {citrus fruit, other vegetables}       => {root vegetables}  0.01037112 0.3591549  0.02887646 3.295045 102  
+    [2]  {tropical fruit, other vegetables}     => {root vegetables}  0.01230300 0.3427762  0.03589222 3.144780 121  
+    [3]  {beef}                                 => {root vegetables}  0.01738688 0.3313953  0.05246568 3.040367 171  
+    [4]  {citrus fruit, root vegetables}        => {other vegetables} 0.01037112 0.5862069  0.01769192 3.029608 102  
+    [5]  {tropical fruit, root vegetables}      => {other vegetables} 0.01230300 0.5845411  0.02104728 3.020999 121  
+    [6]  {other vegetables, whole milk}         => {root vegetables}  0.02318251 0.3097826  0.07483477 2.842082 228  
+    [7]  {whole milk, curd}                     => {yogurt}           0.01006609 0.3852140  0.02613116 2.761356  99  
+    [8]  {root vegetables, rolls/buns}          => {other vegetables} 0.01220132 0.5020921  0.02430097 2.594890 120  
+    [9]  {root vegetables, yogurt}              => {other vegetables} 0.01291307 0.5000000  0.02582613 2.584078 127  
+    [10] {tropical fruit, whole milk}           => {yogurt}           0.01514997 0.3581731  0.04229792 2.567516 149  
+    [11] {yogurt, whipped/sour cream}           => {other vegetables} 0.01016777 0.4901961  0.02074225 2.533410 100  
+    [12] {other vegetables, whipped/sour cream} => {yogurt}           0.01016777 0.3521127  0.02887646 2.524073 100  
+    [13] {tropical fruit, other vegetables}     => {yogurt}           0.01230300 0.3427762  0.03589222 2.457146 121  
+    [14] {root vegetables, whole milk}          => {other vegetables} 0.02318251 0.4740125  0.04890696 2.449770 228  
+    [15] {whole milk, whipped/sour cream}       => {yogurt}           0.01087951 0.3375394  0.03223183 2.419607 107  
+    [16] {citrus fruit, whole milk}             => {yogurt}           0.01026945 0.3366667  0.03050330 2.413350 101  
+    [17] {onions}                               => {other vegetables} 0.01423488 0.4590164  0.03101169 2.372268 140  
+    [18] {pork, whole milk}                     => {other vegetables} 0.01016777 0.4587156  0.02216573 2.370714 100  
+    [19] {whole milk, whipped/sour cream}       => {other vegetables} 0.01464159 0.4542587  0.03223183 2.347679 144  
+    [20] {curd}                                 => {yogurt}           0.01728521 0.3244275  0.05327911 2.325615 170  
+    >
+    ```
 
 
 
