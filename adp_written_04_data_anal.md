@@ -717,7 +717,7 @@ degree, shortest paths, reachability, density, reciprocity, transitivity, triad 
 
 
 ### 4장 서술형 문제
-
+ - p.151 읽기
 
 
 ## ADP 데이터 분석 END
