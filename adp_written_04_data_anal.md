@@ -717,7 +717,109 @@ degree, shortest paths, reachability, density, reciprocity, transitivity, triad 
 
 
 ### 4장 서술형 문제
- - p.151 읽기
+#### 3. 회귀분석 (p.151)
+
+##### 나. 예상문제 (Cars93)
+
+Q. MASS 패키지의 Cars93 이라는 데이터셋의 가격(price)을 종속변수로 선정하고, 엔지크기, RPM, 무게를 이용해서 다중회귀분석을 실시했다. 아래의 결과를 해석하시오
+
+```R
+> # 회귀분석 (p.152)
+> library(MASS)
+> head(Cars93)
+  Manufacturer   Model    Type Min.Price Price Max.Price MPG.city MPG.highway            AirBags DriveTrain
+1        Acura Integra   Small      12.9  15.9      18.8       25          31               None      Front
+2        Acura  Legend Midsize      29.2  33.9      38.7       18          25 Driver & Passenger      Front
+3         Audi      90 Compact      25.9  29.1      32.3       20          26        Driver only      Front
+4         Audi     100 Midsize      30.8  37.7      44.6       19          26 Driver & Passenger      Front
+5          BMW    535i Midsize      23.7  30.0      36.2       22          30        Driver only       Rear
+6        Buick Century Midsize      14.2  15.7      17.3       22          31        Driver only      Front
+  Cylinders EngineSize Horsepower  RPM Rev.per.mile Man.trans.avail Fuel.tank.capacity Passengers Length Wheelbase
+1         4        1.8        140 6300         2890             Yes               13.2          5    177       102
+2         6        3.2        200 5500         2335             Yes               18.0          5    195       115
+3         6        2.8        172 5500         2280             Yes               16.9          5    180       102
+4         6        2.8        172 5500         2535             Yes               21.1          6    193       106
+5         4        3.5        208 5700         2545             Yes               21.1          4    186       109
+6         4        2.2        110 5200         2565              No               16.4          6    189       105
+  Width Turn.circle Rear.seat.room Luggage.room Weight  Origin          Make
+1    68          37           26.5           11   2705 non-USA Acura Integra
+2    71          38           30.0           15   3560 non-USA  Acura Legend
+3    67          37           28.0           14   3375 non-USA       Audi 90
+4    70          37           31.0           17   3405 non-USA      Audi 100
+5    69          39           27.0           13   3640 non-USA      BMW 535i
+6    69          41           28.0           16   2880     USA Buick Century
+> lm(Price~EngineSize+RPM+Weight, data=Cars93)
+
+Call:
+lm(formula = Price ~ EngineSize + RPM + Weight, data = Cars93)
+
+Coefficients:
+(Intercept)   EngineSize          RPM       Weight  
+ -51.793292     4.305387     0.007096     0.007271 
+
+> attach(Cars93) # 함수 호출 후 모든 코드에서 컬럼들을 직접 전근할 수 있게 해줌
+
+> lm(Price~EngineSize+RPM+Weight, data=Cars93)
+
+Call:
+lm(formula = Price ~ EngineSize + RPM + Weight, data = Cars93)
+
+Coefficients:
+(Intercept)   EngineSize          RPM       Weight  
+ -51.793292     4.305387     0.007096     0.007271  
+
+> summary(lm(Price~EngineSize+RPM+Weight, data = Cars93))
+
+Call:
+lm(formula = Price ~ EngineSize + RPM + Weight, data = Cars93)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-10.511  -3.806  -0.300   1.447  35.255 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -51.793292   9.106309  -5.688 1.62e-07 ***
+EngineSize    4.305387   1.324961   3.249  0.00163 ** 
+RPM           0.007096   0.001363   5.208 1.22e-06 ***
+Weight        0.007271   0.002157   3.372  0.00111 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 6.504 on 89 degrees of freedom
+Multiple R-squared:  0.5614,	Adjusted R-squared:  0.5467 
+F-statistic: 37.98 on 3 and 89 DF,  p-value: 6.746e-16
+
+> 
+```
+
+1.   해석방법 : 다변량 회귀분석은 아래와 같은 단계로 분석할 수 있다.
+     -   1단계: 다변량 모형에 대한 가설검정 실시
+     -   2단계: 각 변수의 계수에 대한 가설검정 실시
+     -   3단계: 결정계수를 통한 모형에 대한 설명력 확인
+     -   4단계: 다중공선성의 확인을 통한 모형의 안정성 확인
+     -   5단계: 잔차분석을 통한 다변량 회귀분석의 가정 확인
+2.   해석결과
+     -   위의 분석은 1~3단계 까지 해석 가능
+     -   모형의 구조는 formula를 통해 확인할 수 있으며, 가격(Price)을 종속변수로 예측하기 위해 엔진사이즈(EngineSize), 회전수(RPM), 무게(Weight)라는 3가지 설명변수를 활용하여 모형이 설계되었음을 확인할 수 있다.
+     -   1단계 : 다변량 회귀분석에서 종속변수인 가격(Price)에 대한 설명변수들 간의 모형에 대한 통계적 타당성을 가설 검정한다.
+         -   귀무가설(H<sub>0</sub>) : EngineSize = RPM = Weight = 0
+         -   대립가설(H<sub>1</sub>) : 적어도 하나의 설명변수는 0이 아니다.
+         -   F-통계량은 37.98이며 p-value 가 6.746e-16 로 귀무가설의 기각역인 0.05보다 작게 나타남에 따라 유의수준 5%하에서 대립가설을 채택하게 된다. 그러므로 추정된 회귀모형은 통계적으로 매우 유의함을 알 수 있다.
+     -   2단계 : 다변량 회귀분석에 활용된 각 설명변수들의 계수들에 대한 통계적 타당성을 가설 검정한다.
+         -   **첫 번째 설명변수인 엔지사이즈(EngineSize)**에 대한 통계적 가설검정을 실시
+             -   귀무가설(H<sub>0</sub>) : EngineSize = 0
+             -   대립가설(H<sub>1</sub>): EngineSize $\neq$ 0
+             -   t-통계량은 3.249 이며 p-value 값이 0.00163이므로 귀무가설의 기각역인 0.05보다 작게 나타남에 따라 유의수준 5%하에서 대립가설을 채택하게 된다. 그러므로 EngineSize는 통계적으로 유의함을 알 수 있다.
+         -   **두 번째 설명변수인 RPM**의 경우, t-통계량은 5.208이며 p-value 가 1.22e-06이므로 귀무가설의 기각역인 0.05보다 작게 나타남에 따라 유의수준 5%하에서 대립가설을 채택하게 된다.그러므로 RPM은 통계적으로 유의함을 알 수 있다.
+         -   **세 번째 설명변수인 Weigh**t의 경우, t-통계량은 3.372이며 p-value가 0.00111이므로 유의수준 5%하에서 대립가설을 채택하게 된다. 그러므로 추정된 회귀모형의 모든 설명변수는 통계적으로 유의함을 알 수 있다.
+     -   3단계 : 통계적으로 유의성을 확인한 다변량 회귀모형이 전체 데이터를 얼마나 **잘 설명하는지** 확인하기 위해 **결정계수(R<sup>2</sup>)**를 확인한다.
+         -   결정계수를 확인하기 위해 Multiple R-squared와 R-squared를 확인결과 0.5614 와 0.5467 로 나타났으며, 이는 전체 데이터를 설계된 다변량 회귀모형이 56.14%, 54.67%를 설명하고 있다고 해석할 수 있다.
+     -   최종적으로 결과를 종합해보면 **추정된 다변량 회귀식**은 아래와 같다.
+     -   ```Price = -51.79 + 4.31*EngineSize + 0.007*RPM + 0.007*Weight ```
+     -   회귀식을 통해 EngineSize, RPM, Weight 가 모두 증가할수록 가격(Price)도 증가하는 것을 확인할 수 있으며, **Price에 가장 영향을 많이 끼치는 변수는 EngineSize이며, 차량의 가격에서 EngineSize를 가장 많이 신경 써야한다고 결론을 도출**할 수 있다.
+
+
 
 
 ## ADP 데이터 분석 END
