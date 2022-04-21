@@ -820,6 +820,171 @@ F-statistic: 37.98 on 3 and 89 DF,  p-value: 6.746e-16
      -   회귀식을 통해 EngineSize, RPM, Weight 가 모두 증가할수록 가격(Price)도 증가하는 것을 확인할 수 있으며, **Price에 가장 영향을 많이 끼치는 변수는 EngineSize이며, 차량의 가격에서 EngineSize를 가장 많이 신경 써야한다고 결론을 도출**할 수 있다.
 
 
+##### 다. 예상문제 (swiss)
+
+Q. swiss 데이터는 프랑스어를 사용하는 스위스 내 지역의 출산율과 관련된 자료이다. 아래는 각 변수의 내용과 출산율을 농업종사자 비율 등 5개의 변수로 설명하기 위한 모형을 추정한 결과이다. 아래의 결과를 해석하시오
+
+```R
+> # 서술형 회귀분석 (swiss 데이터 p.154)
+> # 설명변수 : Agriculture : 농업, Infant.Mortality (영아사망률)
+> # 종속변수 : Fertility 출산
+> summary(step(lm(Fertility~1, data=swiss),
++             scope = list(lower = ~1, upper=~Agriculture+Examination+Education
++                           +Catholic+Infant.Mortality),
++             direction="both"))
+Start:  AIC=238.35
+Fertility ~ 1
+
+                   Df Sum of Sq    RSS    AIC
++ Education         1    3162.7 4015.2 213.04
++ Examination       1    2994.4 4183.6 214.97
++ Catholic          1    1543.3 5634.7 228.97
++ Infant.Mortality  1    1245.5 5932.4 231.39
++ Agriculture       1     894.8 6283.1 234.09
+<none>                          7178.0 238.34
+
+Step:  AIC=213.04
+Fertility ~ Education
+
+                   Df Sum of Sq    RSS    AIC
++ Catholic          1     961.1 3054.2 202.18
++ Infant.Mortality  1     891.2 3124.0 203.25
++ Examination       1     465.6 3549.6 209.25
+<none>                          4015.2 213.04
++ Agriculture       1      62.0 3953.3 214.31
+- Education         1    3162.7 7178.0 238.34
+
+Step:  AIC=202.18
+Fertility ~ Education + Catholic
+
+                   Df Sum of Sq    RSS    AIC
++ Infant.Mortality  1    631.92 2422.2 193.29
++ Agriculture       1    486.28 2567.9 196.03
+<none>                          3054.2 202.18
++ Examination       1      2.46 3051.7 204.15
+- Catholic          1    961.07 4015.2 213.04
+- Education         1   2580.50 5634.7 228.97
+
+Step:  AIC=193.29
+Fertility ~ Education + Catholic + Infant.Mortality
+
+                   Df Sum of Sq    RSS    AIC
++ Agriculture       1    264.18 2158.1 189.86
+<none>                          2422.2 193.29
++ Examination       1      9.49 2412.8 195.10
+- Infant.Mortality  1    631.92 3054.2 202.18
+- Catholic          1    701.74 3124.0 203.25
+- Education         1   2380.38 4802.6 223.46
+
+Step:  AIC=189.86
+Fertility ~ Education + Catholic + Infant.Mortality + Agriculture
+
+                   Df Sum of Sq    RSS    AIC
+<none>                          2158.1 189.86
++ Examination       1     53.03 2105.0 190.69
+- Agriculture       1    264.18 2422.2 193.29
+- Infant.Mortality  1    409.81 2567.9 196.03
+- Catholic          1    956.57 3114.6 205.10
+- Education         1   2249.97 4408.0 221.43
+
+Call:
+lm(formula = Fertility ~ Education + Catholic + Infant.Mortality + 
+    Agriculture, data = swiss)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-14.6765  -6.0522   0.7514   3.1664  16.1422 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      62.10131    9.60489   6.466 8.49e-08 ***
+Education        -0.98026    0.14814  -6.617 5.14e-08 ***
+Catholic          0.12467    0.02889   4.315 9.50e-05 ***
+Infant.Mortality  1.07844    0.38187   2.824  0.00722 ** 
+Agriculture      -0.15462    0.06819  -2.267  0.02857 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7.168 on 42 degrees of freedom
+Multiple R-squared:  0.6993,	Adjusted R-squared:  0.6707 
+F-statistic: 24.42 on 4 and 42 DF,  p-value: 1.717e-10
+```
+
+1.   해석 방법
+
+     -   벌점화 방식(AIC)의 변수선택법을 활용한 다변량 회귀분석은 아래와 같은 단계로 분석할 수 있다.
+     -   1단계 : 변수선택법을 결정하고, 초기모형을 세팅
+     -   2단계 : 선택된 최적 모형의 AIC를 계산
+     -   3단계 : 선택된 모형에서 변수를 추가/삭제 할 경우의 각 모형에서 AIC를 계산
+     -   4단계 : 각 모형에서 최소의 AIC 모형을 선택하여 최적 모형으로 선정
+     -   5단계 : 2 ~ 4단계를 반복하고 AIC가 더 이상 줄어들지 않을 때 최종모형을 최적모형으로 선정
+     -   6단계 : 다변량 모형에 대한 F-test를 통해 가설검정 실시
+     -   7단계 : 각 변수의 계수에 대한 t-test를 통해 가설검정 실시
+     -   8단계 : 결정계수를 통한 모형에 대한 설명력 확인
+     -   9단계 : 다중공선성의 확인을 통한 모형의 안정성 확인
+     -   10단계 : 잔차분석을 통한 다변량 회귀분석의 가정 확인
+
+2.   해석 결과
+
+     -   위의 분석 결과는 해석방법 10단계 중 1~8단계까지 해석이 가능. 모형의 구조는 formula를 통해 확인 가능하며, step 함수를 통해 종속변수에 대해 설명변수가 없을 경우부터 모든 설명변수가 포함될 때의 회귀모형을 비교해 최적의 회귀방정식을 도출할 수 있다. 또, direction에서 ```both```는 단계적 선택법, ```forward```는 전진선택법, ```backward```는 후진제거법을 의미
+
+     -   출산율(Fertility)을 종속변수로 설정하고, 설명변수가 없을 때 부터 최대 모든 설명변수가 포함된 회귀식까지 설정하여 최적의 회귀식을 도출한다
+
+     -   1단계 : 변수선택법을 결정하고, 초기 모형을 설정
+
+         위의 분석결과에서 direction이 ```both```로 설정되어 변수선택법을 단계적 선택법으로 선정했음을 확인할 수 있다. 또, 초기 모형은 ```Fertility~1``` 로 설명변수가 하나도 없는 상태에서부터 시작함을 의미한다.```scope```의 경우 모형 선정 중 최소 설명변수가 아무것도 없는것부터 설명변수가 모두 있는 것까지를 비교하여 모형을 선정한다는 것이다.
+
+     -   2단계 : 선택된 최적 모형의 AIC를 계산
+
+         분석 결과에서 시작 모혀은 ```Fertility~1```이 **최적모형**로 설정되어 있으며 start에서 **AIC 값이 238.35**로 계산되어 있다.
+
+     -   3단계 : 선택된 모형에서 변수를 추가/삭제 할 경우의 각 모형의 AIC를 계산한다.
+
+         ```Fertility~1``` 모형에 대해 설명변수 5개에 대한 각각의 AIC값을 계산하여 자유도 등과 함께 나타낸다. **Education의 AIC 값이 213.04, Examination의 AIC 값은 214.97등으로 나타나 있다.**
+
+     -   4단계 : 각 모형에서 최소의 AIC 모형을 선택하여 최적 모형으로 선정한다.
+
+         계산된 AIC 값을 비교하여 가장 작은 설명변수인 **Education을 추가하여 최적 모형으로 선정**한다.
+
+     -   5단계 : 2 ~ 4단계를 반복하여 AIC가 더 이상 줄어들지 않을 때 최종모형을 최적의 모형으로 선정한다.
+
+         위의 과정을 반복하여 ```Fertility~Education + Catholic + Infant.Mortality + Agriculture```이 최적의 모형으로 선정되고 마지막 **Step에서 AIC가 189.86으로 계산되고 추가되지 않은 설명변수 Examination의 AIC 값이 190.96**로 나타나 해당 변수를 모형에 추가하지 않고 **최적의 모형을 ```Fertility~Education + Catholic + Infant.Mortality + Agriculture```으로 선정**했다.
+
+     -   6단계 : 다변량 회귀분석에서 종속변수인 출산율(Fertility)에 대한 설명변수들 간의 모형에 대한 통계적 타당성을 가설 검정한다.
+
+         귀무가설 (H<sub>0</sub>) : Education = Catholic = Infant.Mortality = Agriculture = 0
+
+         대립가설 (H<sub>1</sub>) : 적어도 하나의 설명변수는 0이 아니다.
+
+         F-통계량은 24.42이며 p-value 값이 1.717e-10로 귀무가설의 기각역인 0.05보다 작게 나타남에 따라 유의수준 5%하에서 대립가설을 채택하게 된다. 그러므로 추정된 회귀모형은 통계적으로 매우 유의함을 알 수 있다.
+
+     -   7단계 : 다변량 회귀분석에서 활용된 각 설명변수들의 계수들에 대한 통계적 타당성을 가설 검정한다.
+
+         -   **첫 번째 설명변수인 Education에 대한 통계적 가설검정을 실시**한다.
+
+             귀무가설 (H<sub>0</sub>) : Education = 0
+
+             대립가설 (H<sub>1</sub>) : Education $\neq$ 0 
+
+             t-통계량은 -6.617이며 p-value 값이 5.14e-08 이므로 귀무가설의 기각역인 0.05보다 작게 나타남에 따라 유의수준 5%하에서 대립가설을 채택하게 된다. 그러므로 추정된 회귀모형의 첫 번째 설명변수인 Education은 통계적으로 유의함을 알 수 있다.
+
+         -   **두 번째 설명변수인 Catholic의 경우,** t-통계량은 4.315 이며 p-value 값이 9.50e-05이므로 귀무가설의 기각역인 0.05보다 작게 나타남에 따라 유의수준 5%하에서 대립가설을 채택하게 된다. 그러므로 추정된 회귀모형의 두 번째 설명변수인 Catholic은 통계적으로 유의함을 알 수 있다.
+
+         -   **세 번째 설명변수인 Weight의 경우**, t-통계량은 2.824 이며, p-value 값이 0.00722 이므로 유의수준 5%하에서 대립가설을 채택하고, **네번째 설명변수인 Agriculture의 경우**, t-통계량은 -2.267이며, p-value 값이 0.02857 이므로 유의수준 5%하에서 대립가설을 채택하게된다. 그러므로 모든 설명변수는 통계적으로 유의함을 알 수 있다.
+
+     -   8단계 : 통계적으로 유의성을 확인한 다변량 회귀모형이 전체 데이터를 얼마나 잘 설명하는지 확인하기 위해 결정계수 (R<sup>2</sup>)를 확인한다.
+
+         결정계수를 확인하기 위해 Multiple R-squared:  0.6993,	Adjusted R-squared:  0.6707 로 나타났으며, 이는 전체 데이터를 설계된 다변량 회귀모형이 69.93%, 67.07%를 설명하고 있다고 해석할 수 있다.
+
+     -   최종적으로 다변량 회귀분석 결과를 종합해 보면 추정된 다변량 회귀식은 Fertility = 62.1 - 0.98*Education + 0.13 * Catholic  + 1.08 * Infant.Mortality - 0.16 * Agriculture 이다. **Fertility 에 가장 영향을 많이 끼치는 변수는 Infant.Mortality이며 , 출산율에서 Infant.Mortality 를 가장 많이 신경 써야한다고 결론을 도출** 할 수 있다.
+
+     
+
+     #### 4. 주성분 분석(p.158)
+
+     
+
+     
 
 
 ## ADP 데이터 분석 END
