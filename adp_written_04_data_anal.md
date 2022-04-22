@@ -995,6 +995,12 @@ F-statistic: 24.42 on 4 and 42 DF,  p-value: 1.717e-10
 USArrests 데이터는 미국 50개 주에서 폭행, 살인 및 강간에 대한 10만명의 주민에 대한 체포 통계 포함하는 여러개의 변수가 있다. 아래의 결과를 해석하시오
 
 ```R
+> # pca
+> # install.packages("factoextra")
+> # install.packages("FactoMineR")
+> library(factoextra)
+> library(FactoMineR)
+     
 > pca_rslt = PCA(USArrests, graph = FALSE)
 > summary(pca_rslt)
 
