@@ -1217,6 +1217,131 @@ fviz_pca_biplot(pca_rslt, reple=FALSE)
 ### 2절  정형 데이터마이닝
 
 #### 1. 로지스틱 회귀분석 (p.165)
+##### 가. 개요
+
+-   유의한 설명변수 파악, 회귀 모형의 유의함, 결정 계수 해석, 모형 수식 작성, 오즈비를 이용한 해석 등에 대한 해석은 정확히 숙지해야 함
+
+
+
+##### 나. 예상문제 (Default)
+
+-   10,000명의 신용캌드 고객의 체납 여부 (default)와 학생여부(student), 카드잔고(balance), 연봉(income)을 포함하고 있다. 체납 여부를 예측하기 위해 로지스틱 회귀분석을 실시한다. 아래 결과를 해석하시오
+
+```R
+> # 로지스틱 회귀분석
+> # default 데이터
+> # install.packages("ISLR") # Credit Card Default dataset install
+> library(ISLR)
+> summary(step(glm(default ~ 1, data=Default, family = binomial),
++              scope = list(lower=~1, upper=~student + balance + income),
++              direction="both"))
+Start:  AIC=2922.65
+default ~ 1
+
+          Df Deviance    AIC
++ balance  1   1596.5 1600.5
++ student  1   2908.7 2912.7
++ income   1   2916.7 2920.7
+<none>         2920.7 2922.7
+
+Step:  AIC=1600.45
+default ~ balance
+
+          Df Deviance    AIC
++ student  1   1571.7 1577.7
++ income   1   1579.0 1585.0
+<none>         1596.5 1600.5
+- balance  1   2920.7 2922.7
+
+Step:  AIC=1577.68
+default ~ balance + student
+
+          Df Deviance    AIC
+<none>         1571.7 1577.7
++ income   1   1571.5 1579.5
+- student  1   1596.5 1600.5
+- balance  1   2908.7 2912.7
+
+Call:
+glm(formula = default ~ balance + student, family = binomial, 
+    data = Default)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.4578  -0.1422  -0.0559  -0.0203   3.7435  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -1.075e+01  3.692e-01 -29.116  < 2e-16 ***
+balance      5.738e-03  2.318e-04  24.750  < 2e-16 ***
+studentYes  -7.149e-01  1.475e-01  -4.846 1.26e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 2920.6  on 9999  degrees of freedom
+Residual deviance: 1571.7  on 9997  degrees of freedom
+AIC: 1577.7
+
+Number of Fisher Scoring iterations: 8
+```
+
+-   해석방법
+
+    -   벌점화 방식(AIC)의 변수선택법을 활용한 로지스틱 회귀분석은 아래와 같은 단계로 분석할 수 있다.
+    -   1단계 : 변수선택법을 결정하고, 초기 모형을 세팅
+    -   2단계 : 선택된 최적 모형의 AIC를 계산
+    -   3단계 : 선택된 모형에서 변수를 추가 / 삭제 할 경우의 각 모형에서 AIC를 계산
+    -   4단계 : 각 모형에서 최소의 AIC 모형을 선택하여 최적 모형으로 선정
+    -   5단계 : 2단계에서 4단계를 반복하고 AIC가 더 이상 줄어들지 않을 때 최종모형을 최적 모형으로 선정
+    -   6단계 : 각 변수의 계수에 대한 가설검정 실시
+
+-   해석결과
+
+    -   위 분석결과는 6단계 해석이 모두 가능. 분석에 앞서 모형의 구조는 formula를 통해 확인 할 수 있고, step 함수를 통해 종속변수에 대해 설명변수가 없을 경우부터 모든 설명변수가 포함될 때의 회귀모형을 비교해 최적의 회귀방정식을 도출할 수 있다. 또, direction에서 'both'는 단계적 선택법, 'forward'는 전진선택법, 'backward'는 후진제거법을 의미한다.
+
+    -   Default를 종속변수로 설정, 설명변수가 없을 때부터 최대 모든 설명변수가 포함된 회귀식까지 설정하여 최적의 회귀식을 도출
+
+    -   1단계 : 변수 선택법을 결정하고, 초기 모형을 설정한다.
+
+        -   위의 분석결과에서 direction이 both로 설정되어 변수선택법을 단계적 선택법으로 선정
+        -   초기 모형은 default ~ 1로 설명변수가 하나도 없는 상태에서 부터 모두 있는 것까지를 비교를 의미
+
+    -   2단계 : 선택된 최적 모형의 AIC를 계산
+
+        -   분석 결과에서 시작 모형은 **default~1이 최적모형**으로 설정되어 있으며 start에서 **AIC 값이 2922.65**로 계산
+
+    -   3단계 : 선택된 모형에서 변수를 추가 / 삭제 할 경우의 각 모형의 AIC를 계산한다.
+
+        -   default~1 모형에 대해 설명변수 3개에 대한 각각의 AIC 값을 계산하여 자유도 등과 함께 나타낸다. **balance의 AIC 값이 1600.5, student 의 AIC 값은 2912.7, income의 AIC 값은 2920.7**로 나타나있다.
+
+    -   4단계 : 각 모형에서 최소의 AIC 모형을 선택하여 최적 모형으로 선정한다.
+
+        -   계산된 AIC 값을 비교하여 가장 작은 설명변수인 **balance를 추가하여 최적 모형으로 선정**한다.
+
+    -   5단계 : 2~4단계를 반복하여 AIC가 더 이상 줄어들지 않을 때 최종모형을 최적의 모형으로 선정한다
+
+        -   위의 과정을 반복하여 default ~ balance + student이 최적의 모형으로 선정되고 마지막 **step 에서 AIC가 1577.68로 계산되고 추가되지 않은 설명변수 income의 AIC 값이 1579.5**로 나타나 해당 변수를 모형에 추가하지 않고 **최적의 모형을 default~balance + student로 선정**했다.
+
+    -   6단계 : 로지스틱 회귀분석에 활용된 각 설명변수들의 계수들에 대한 통계적 타당성을 가설 검정한다.
+
+        -   첫 번째 설명변수인 balance에 대한 통계적 가설검정을 실시한다.
+            -   귀무가설 (H<sub>0</sub>) : balance = 0
+            -   대립가설 (H<sub>1</sub>) : balance $\neq$ 0
+            -   z-통계량은 24.75 이며 p-value 값이 < 2e-16 이므로 귀무가설의 기각역인 0.05보다 작게 나타남에 따라 유의수준 5%하에서 대립가설을 책택하게 된다ㅏ. 그러므로 추정된 회귀 모형의 첫 번째 설명변수인 balance는 통계적으로 유의함을 알 수 있다.
+            -   두 번째 설명변수인 studentYes의 경우 , z-통계량은 -4.846 이며 p-value 값이  1.26e-06 이므로 0.05보다 작게 나타남에 따라 유의수준 5%하에서 대립가설을 채택하게 된다. 그러므로 추정된 회귀모형의 두 번째 설명변수인 studentYes는 통계적으로 유의함을 알수 있다. 그러므로 추정된 회귀모형의 모든 설명변수는 통계적으로 유의함을 알 수 있다.
+
+    -   최종적으로 로지스틱 회귀분석 결과를 종합해 보면 추정된 로지스틱 회귀식은
+
+        $P(X) = \dfrac {1} {1 + exp(-(-10.75 + 0.005738*balance - 0.7149*studentYes))}$
+
+        또 다른 설명변수의 조건이 동일할 떄, studentYes이 1 증가할수록 졸업할 확률이 exp(-0.715) = 0.49배 증가, 즉 학생일수록 체납확률이 낮아딘다고 할 수 있다. 회귀식을 통해 balance가 증가할수록 default는 증가하고, studentYes가 증가할수록 default는 감소한다. default에 가장 영향을 많이 끼치는 변수는 studentYes 이다.
+
+##### 다. 예상문제 (Crabs)
+
+p.168
+
 
 
 
