@@ -1338,9 +1338,53 @@ Number of Fisher Scoring iterations: 8
 
         또 다른 설명변수의 조건이 동일할 떄, studentYes이 1 증가할수록 졸업할 확률이 exp(-0.715) = 0.49배 증가, 즉 학생일수록 체납확률이 낮아딘다고 할 수 있다. 회귀식을 통해 balance가 증가할수록 default는 증가하고, studentYes가 증가할수록 default는 감소한다. default에 가장 영향을 많이 끼치는 변수는 studentYes 이다.
 
+
 ##### 다. 예상문제 (Crabs)
 
-p.168
+- crabs 데이터는 참게 중 암참게에 붙어사는 숫참게에 대한 데이터이다. 암참게가 부수체를 갖는지 여부에 영향을 미치는 요인을 조사했으며, 암참게가 한 마리 이상의 부수체를 가지면 y=1로 정의, 그렇지 않으면 y=0으로 정의했다. 아래는 부수체(y) 예측에 너비(width)를 이용한 로지스틱회귀모형을 적합했다. 아래의 물음에 답하시오
+
+  ```R
+  # > install.packages("glmbb")
+  > library(glmbb)
+  > head(crabs)
+     color spine width satell weight y
+  1 medium   bad  28.3      8   3050 1
+  2   dark   bad  22.5      0   1550 0
+  3  light  good  26.0      9   2300 1
+  4   dark   bad  24.8      0   2100 0
+  5   dark   bad  26.0      4   2600 1
+  6 medium   bad  23.8      0   2100 0
+  
+  > glm(formula = crabs$y~crabs$width, family=binomial, data=crabs)
+  
+  Call:  glm(formula = crabs$y ~ crabs$width, family = binomial, data = crabs)
+  
+  Coefficients:
+  (Intercept)  crabs$width  
+     -12.3508       0.4972  
+  
+  Degrees of Freedom: 172 Total (i.e. Null);  171 Residual
+  Null Deviance:	    225.8 
+  Residual Deviance: 194.5 	AIC: 198.5
+  ```
+
+- 해석결과
+
+  1. 너비 x에 대한 부수체의 예측 확률을 구하는 식을 작성하시오
+
+  - 예측확률을 구하는 식은 로지스틱 회귀식을 작성하면 됨
+  - 회귀식은 $\dfrac {1} {1 + exp^{12.3508 - 0.4972width}}$ 이다.
+
+  2. 로지스틱 회귀모형은 오즈 (odds)를 이용하여 해석가능. x가 한 단위 증가함에 따라 오즈는 (a) 증가한다. 그러므로 암참게 자료에 대하여 부수체의 오즈는 너비가 1cm 증가함에 따라 (a)=1.64배 증가하는 것으로 추정된다.
+     - x가 한 단위 증가함에 따라 오즈는 exp(0.4972) 만큼 증가한다. 또한 x+1에서의 오즈는 x일때의 오즈와 동일하므로 exp(0.4972) 만큼 증가한다. 그러므로 1cm 증가함에 따라 exp(0.4972)=1.64배 증가
+  3. 평균 너비값이 x=26.3인 경우에는 부수체의 확률이 0.671로 예측되고 오즈는 (b)=2.07이다. x=27.3(=26.3+1) 일 때의 예측확률은 0.773이고 이데 대한 오즈는 (c)=3.40 임을 확인할 수 있다.
+     - x=26.3 일때 (1)에서 구한 로지스틱 회귀식으로 확률을 구하면 0.671이 나타나게 되고 오즈는 $\dfrac {0.671} {1-0.671} = 2.07$로 나타난다. 또한 x=27.3 일 때의 예측확률도 (1)에서 구한 로지스틱 회귀식으로 확률을 구하면 0.773이 나타나게 되고 오즈는 $\dfrac {0.773} {1-0.773} = 3.40$으로 나타난다.
+
+
+
+#### 2. 의사결정나무 (p.169)
+
+
 
 
 
