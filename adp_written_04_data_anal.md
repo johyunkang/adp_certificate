@@ -1384,6 +1384,90 @@ Number of Fisher Scoring iterations: 8
 
 #### 2. 의사결정나무 (p.169)
 
+##### 가. 개요
+
+-   의사결정나무 모델링 결과, 교차타당성오차에 대한 해석을 정확히 숙지
+
+
+
+##### 나. 예상문제 (iris)
+
+-   iris 데이터 셋
+
+    ```R
+    > library(rpart)
+    > head(iris)
+      Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+    1          5.1         3.5          1.4         0.2  setosa
+    2          4.9         3.0          1.4         0.2  setosa
+    3          4.7         3.2          1.3         0.2  setosa
+    4          4.6         3.1          1.5         0.2  setosa
+    5          5.0         3.6          1.4         0.2  setosa
+    6          5.4         3.9          1.7         0.4  setosa
+    
+    > tree <- rpart(Species~., data = iris)
+    > tree
+    n= 150 
+    
+    node), split, n, loss, yval, (yprob)
+          * denotes terminal node
+    
+    1) root 150 100 setosa (0.33333333 0.33333333 0.33333333)  
+      2) Petal.Length< 2.45 50   0 setosa (1.00000000 0.00000000 0.00000000) *
+      3) Petal.Length>=2.45 100  50 versicolor (0.00000000 0.50000000 0.50000000)  
+        6) Petal.Width< 1.75 54   5 versicolor (0.00000000 0.90740741 0.09259259) *
+        7) Petal.Width>=1.75 46   1 virginica (0.00000000 0.02173913 0.97826087) *
+    
+    > # install.packages("rpart.plot")
+    > library(rpart.plot)
+    > prp(tree, type=4, extra=2)
+    ```
+
+-   ![dt-iris](https://user-images.githubusercontent.com/291782/165328365-c87729fd-0b86-4d39-b34f-bbfb2bbc0461.png)
+
+
+
+-   해석방법
+    -   1단계: rpart 함수 설명
+    -   2단계 : rpart 결과에서 조건에 따른 분류에 대해 파악
+    -   3단계 : 시각화 결과에 대하여 해석하고 인사이트 도출
+-   해석결과
+    -   1단계 : 의사결정나무 다양한 패키지 중 rpart 패키지에 내장되어 있는 rpart 함수를 사용한다.  rpart 패키지는 CART (classification and Regression Tree)의 아이디어를 구현한 패키지이며, rpart(formula, data)의 기본 형태로 의사결정나무 모형을 구축할 수 있다. 또, rpart 함수 내에 모형의 적합을 위해 control 인자의 rpart.control 등의 명령어를 추가로 활용할 수 있다.
+    -   2단계 : 위의 결과에서 n=150은 데이터의 개수가 150개를 의미하고 1) root 부터 해석을 진행한다. 총 150개의 데이터 중 50개를 setosa로 분류하는데, 조건은 **2) Petal.Length < 2.45의 경우 모두 setosa로 분류**한다. 또, 100개 중 50개를 versicolor로 분류하는데 **Petal.Length >= 2.45 이며 Petal.Width < 1.75인 54개를 versicolor로 분류하고, Petal.Length >= 2.45이며 Petal.Width >= 1.75인 46개를 virginica로 분류**했다.
+    -   3단계 : rpart 함수 결과와 동일하지만, 시각화 결과만 보여주고 해석 문제 출제될 수 있으니 숙지 필요함. 그래프를 보면 **150개 중 50개는 Petal.Length < 2.5일 때, setosa 분류, Petal.Length >= 2.5이고, Petal.Width < 1.8인 54개 중 49개는 versicolor로, Petal.Width >= 1.8 인 46개 중 45개를 virginica로 분류**했다.
+    -   만약 3가지 꽃 종류 중 versicolor 의 판매가가 높다는 정보가 있다면, 도출된 결과를 바탕으로 '**Petal.Length >= 2.5 , Petal.Width < 1.8인 꽃만 추출해 판매한다**' 고 인사이트를 제시해 낼 수 있다.
+
+
+
+-   예상문제
+    -   아래 결과는 위의 의사결정나무 모형의 교차타당성오차에 대한 결과와 그래프이다. 아래의 결과를 해석하시오
+
+ ```R
+> tree$cptable
+    CP nsplit rel error xerror       xstd
+1 0.50      0      1.00   1.11 0.05372150
+2 0.44      1      0.50   0.56 0.05923963
+3 0.01      2      0.06   0.10 0.03055050
+
+> opt <- which.min(tree$cptable[, "xerror"])
+> cp <- tree$cptable[opt, "CP"]
+> prune.c <- prune(tree, cp=cp)
+> plotcp(tree)
+ ```
+
+![plotcp](https://user-images.githubusercontent.com/291782/165335460-023406d4-59fe-4cc6-bd0c-9cb062c1f509.png)
+
+
+
+-   해석방법
+    -   1단계 : 함수에 포함된 기능에 대해 설명
+    -   2단계 : 분석결과가 의미하는 바를 파악
+    -   3단계 : 시각화 결과에 대하여 해석하고 인사이트를 도출
+-   해석결과 (p.172)
+    -   1단계 : 
+
+
+
 
 
 
