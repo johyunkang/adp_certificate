@@ -120,7 +120,7 @@
 - **두 집단의 평균이 동일**한지 알고자 할 때 검정통계량으로 활용된다.
 - 표준정규분포와 같이 평균 값이 0이며, 자유도에 따라 분포의 모양이 변화한다.
 - 자유도가 30미만인 경우, 표준정규분포에 비해 양쪽 끝이 평평하고 두터운 꼬리 모양을 가진다.
-- [t-distribution](https://user-images.githubusercontent.com/291782/161783614-810d0d10-ffe0-483c-99c2-93a7f7159e2f.png)
+- ![t-distribution](https://user-images.githubusercontent.com/291782/161783614-810d0d10-ffe0-483c-99c2-93a7f7159e2f.png)
 
 
 
