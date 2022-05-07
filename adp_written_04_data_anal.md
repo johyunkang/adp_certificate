@@ -269,7 +269,7 @@
 
 ###### 6) 교호작용 (Interaction Effection)
 
--   두 가지 이사의 특정 변수 조합에서 일어나는 효과
+-   두 가지 이상의 특정 변수 조합에서 일어나는 효과
 
 ##### 라. 실험계획법 (DOE, Design Of Experiment)
 
