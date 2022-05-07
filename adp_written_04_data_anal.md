@@ -448,6 +448,7 @@
 ##### 나. 더미변수 생성
 
 -   더미변수는 변수의 범주의 수 -1 개 이다.
+-   ![dummy](https://user-images.githubusercontent.com/291782/167261233-9cc99675-dae4-4789-8fb7-90fbe525af71.png)
 
 ##### 다. Box-cox 변환
 
