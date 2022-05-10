@@ -1822,6 +1822,7 @@ Number of Fisher Scoring iterations: 8
 -   두 확률변수 X, Y의 방향성의 조합(선형성)이다.
 -   공분산의 부호가 + 이면 양의 방향성, - 이면 음의 방향성을 가짐
 -   X, Y가 서로 독립이면 $Cov (X, Y) = 0$ 이다.
+-   $Cov(X, Y) = E[(X-\mu_X)(Y - \mu_Y)]$
 
 
 
