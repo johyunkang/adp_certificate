@@ -2580,10 +2580,10 @@ Coefficients:
 
   - 참긍정률(TPR)  = $\dfrac{TP}{TP+FN}$ = 재현율(Recall) = 민감도(Sensitive) = ROC의 세로축
   - 거짓긍정률(FPR) = $\dfrac {FP}{FP+TN}$ = (1 - 특이도(Specificity)) = ROC의 가로축
-  - 정확도(Accuracy, 정분류율) = $\dfrac {TP+TN}{P+N}$
-  - 오분류율(Error Rate) : $1 - Accuracy = \dfrac {FN + FP} {P + N}$
+  - 정확도(Accuracy, 정분류율) = $\dfrac {TP+TN}{TP+TN+FP+FN}$
+  - 오분류율(Error Rate) : $1 - Accuracy = \dfrac {FN + FP} {TP+TN+FP+FN}$
   - 정밀도(Precision) = $\dfrac {TP}{TP+FP}$
-  - 재현도(Recall) = 민감도(Sensitive) = $\dfrac {TP}{TP+FN}$ = FPR(참긍정률)
+  - 재현도(Recall) = 민감도(Sensitive) = $\dfrac {TP}{TP+FN}$ = TPR(참긍정률)
   - 특이도(Specificity, TNR, True Negative Rate) = $\dfrac{TN}{TN+FP}$
   - F1-Score 에 들어가는 지표는? 정밀도(Precision) 와 재현율(Recall, 민감도)
     - 식 = $2 × \dfrac {Precision × Recall}{Precision + Recall}  $ 
