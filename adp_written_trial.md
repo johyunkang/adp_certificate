@@ -867,6 +867,60 @@
 
 
 
+#### 오분류표 (Confusion matrix)
+
+![precision_recall](https://user-images.githubusercontent.com/291782/150641056-4425fc9d-36be-4369-9c35-f76b1522c204.png)
+
+- 참긍정률(TPR)  = $\dfrac{TP}{TP+FN}$ = 재현율(Recall) = 민감도(Sensitive) = ROC의 세로축
+- 거짓긍정률(FPR) = $\dfrac {FP}{FP+TN}$ = (1 - 특이도(Specificity)) = ROC의 가로축
+- 정확도(Accuracy, 정분류율) = $\dfrac {TP+TN}{TP+TN+FP+FN}$
+- 오분류율(Error Rate) : $1 - Accuracy = \dfrac {FN + FP} {P + N}$
+- 정밀도(Precision) = $\dfrac {TP}{TP+FP}$
+- 재현도(Recall) = 민감도(Sensitive) = $\dfrac {TP}{TP+FN}$ = TPR(참긍정률)
+- 특이도(Specificity, TNR, True Negative Rate) = $\dfrac{TN}{TN+FP}$
+- F1-Score 에 들어가는 지표는? 정밀도(Precision) 와 재현율(Recall, 민감도)
+    - 식 = $2 × \dfrac {Precision × Recall}{Precision + Recall}  $ 
+    - 재현율과 정밀도 값이 모두 클 때 F1-Score도 큰 값을 가진다
+    - F1-Score는 민감도와 정밀도를 합한 **성능평가지표**로 0~1 사이의 값을 가진다. 1이 좋음
+
+
+
+
+
+#### 연관규칙
+
+-   개념
+    -   연관성 분석은 흔히 장바구니분석(market basket analysis) 또는 서열분석 (sequence analysis) 이라고 불린다.
+    -   기업의 데이터베이스에서 상품의 구매, 서비스 등 일련의 거래 또는 사건들 간의 규칙을 발견하기 위해 적용
+    -   장바구니 분석 : 장바구니에 무엇이 같이 들어 있는지에 대한 분석
+    -   서열분석 : A를 산 다음에 B를 산다.
+
+- 연관규칙의 측도 : 산업의 특성에 따라 지지도, 신뢰도, 향상도 값을 잘 보고 규칙을 선택해야 한다.
+
+1. 지지도 (support)
+
+    - 전체 거래 중 항목 A와 항목 B를 동시에 포함하는 거래의 비율로 정의
+    - 지지도(support) = $P(A \cap B) = \dfrac {A와 B가 동시에 포함된 거래수} {전체 거래수} = \dfrac {A \cap B} {전체}$
+
+2. 신뢰도 (confidence)
+
+    - 항목 A를 포함한 거래 중에서 항목 A와 항목 B가 같이 포함될 확률. 연관성의 정도를 파악 가능
+    - 신뢰도(confidence) = $\dfrac {P(A \cap B)} {P(A)} = \dfrac {A와 B가 동시에 포함된 거래수} {A를 포함하는 거래수} = \dfrac {지지도} {P(A)}$
+
+3. 향상도 (Lift)
+
+    - A가 구매되지 않았을 떄 품목 B의 구매확률에 비해 A가 구매됐을 때 품목 B의 구매확률의 증가 비이다. 연관규칙 A&rarr;B는 품목 A와 품목 B의 구매가 서로 관련이 없는 경우에 향상도가 1이 된다.
+
+    - 향상도(lift) = $\dfrac {P(B|A)} {P(B)} = \dfrac {P(A \cap B)} {P(A)P(B)} = \dfrac {A와 B가 동시에 포함된 거래수} {A를 포함하는 거래수 \; X \; B를 포함하는 거래수} = \dfrac {신뢰도} {P(B)}$ 
+
+        <img width="935" alt="support-confidence-lift" src="https://user-images.githubusercontent.com/291782/163676755-3b1a3876-f2d0-4ce5-b748-1bf5f4038e19.png">
+
+
+
+
+
+
+
 ### 5. 데이터 시각화
 
 #### 시각적 이해의 위계
