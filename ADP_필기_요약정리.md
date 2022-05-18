@@ -1013,10 +1013,11 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 #### 사회연결망분석의 중심성
 
 - 연결정도 중심성 (Degree centrality) : 한 점에 직접적으로 연결된 점들의 합
+  - 인디그리중심성(In-Degree) : 한 점이 다른점으로부터 화살표를 받는 관계의 정도(영향을 받는 관계)
+  - 아웃디그리중심성(Out-Degree) : 어떤점이 다른점에 화살표를 주는 정도 (영향을 주는 관계)
 - 근접 중심성 (Closeness centrality) : 한 노드로부터 다른 노드에 도달하기까지 필요한 최소 단계의 합
 - 매개 중심성 (Betweenness centrality) : 네트워크 내에서 한 점이 담당하는 매개자 혹은 중재자 역할의 정도
 - 위세 중심성 (Eigenvector centrality) : 보나시치(Bonacich) 권련지수 : 위에 중심성의 일반적인 형태로, 연결된 노드의 중요성에 가중치를 둬 노드의 중심성을 측정하는 방법
-
 
 
 
