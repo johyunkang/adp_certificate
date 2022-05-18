@@ -31,14 +31,14 @@
 빅데이터 시대의 위기요인과 통제방안
 
 - 사생활 침해
-  - 여행 사실 트위터를 통해 빈집 강도 (익명화 기술 발전 필요)
-  - 동의제에서 책임으로 : '개인정보 제공자의 동의' > '개인정보 사용자의 책임'. (사용주체의 적극적인 보호장치 강구)
+    - 여행 사실 트위터를 통해 빈집 강도 (익명화 기술 발전 필요)
+    - 동의제에서 책임으로 : '개인정보 제공자의 동의' > '개인정보 사용자의 책임'. (사용주체의 적극적인 보호장치 강구)
 - 책임 원칙 훼손
-  - 마이너리티 리포트 처럼 범행 저지르기 전에 체포. 민주주의 국가의 형사 처벌은 잠재적 위협이 아닌 행동 결과에 대해 책임을 물음
-  - 결과 기반 책임 원칙 고수 : 잘못된 예측 알고리즘을 통한 근거로 불이익을 줄 수 없으며, 이에 따른 피해 최소화 장치 마련
+    - 마이너리티 리포트 처럼 범행 저지르기 전에 체포. 민주주의 국가의 형사 처벌은 잠재적 위협이 아닌 행동 결과에 대해 책임을 물음
+    - 결과 기반 책임 원칙 고수 : 잘못된 예측 알고리즘을 통한 근거로 불이익을 줄 수 없으며, 이에 따른 피해 최소화 장치 마련
 - 데이터 오용
-  - 잘못된 지표를 사용하는 것도 빅데이터의 폐해. 적군 사망자 수를 전쟁의 진척 상황 지표로 활용해 전국 사망자 수가 과장돼 보고되는 경향
-  - 알고리즘 접근 허용 : '알고리즘에 대한 접근권'을 제공하여 알고리즘의 부당함을 반증할 수 있는 방법 명시해 공개할 것을 주문. 알고리즈미스트가 필요하게 됨.
+    - 잘못된 지표를 사용하는 것도 빅데이터의 폐해. 적군 사망자 수를 전쟁의 진척 상황 지표로 활용해 전국 사망자 수가 과장돼 보고되는 경향
+    - 알고리즘 접근 허용 : '알고리즘에 대한 접근권'을 제공하여 알고리즘의 부당함을 반증할 수 있는 방법 명시해 공개할 것을 주문. 알고리즈미스트가 필요하게 됨.
 
 
 
@@ -46,16 +46,16 @@
 
 - 의미 : 데이터 공학, 수학, 통계학, 컴퓨터공학, 시각화, 해커의 사고방식, 해당 분야의 전문지식을 종합한 학문이다. 데이터로부터 의미있는 정보를 추출해내는 학문
 - 역할
-  - 강력한 호기심으로 문제의 이면을 파고들고, 질문들을 찾고, 검증 가능한 가설을 세우는 능력을 의미
-  - 스토리텔링, 커뮤니케이션, 창의력, 열정, 직관련, 비판적 시각, 글쓰기 능력, 대화능력 등을 갖춰야 함
+    - 강력한 호기심으로 문제의 이면을 파고들고, 질문들을 찾고, 검증 가능한 가설을 세우는 능력을 의미
+    - 스토리텔링, 커뮤니케이션, 창의력, 열정, 직관련, 비판적 시각, 글쓰기 능력, 대화능력 등을 갖춰야 함
 - 요구역량
-  - Hard Skill
-    -   빅데이터에 대한 이론적 지식
-    -   분석 기술에 대한 숙련
-  - Soft Skill
-    -   통찰력 있는 분석 : 창의적 사고, 호기심, 논리적 비판
-    -   설득력 있는 전달 : 스토리텔링, 비주얼라이제이션
-    -   다분양간 협력 : 커뮤니케이션
+    - Hard Skill
+        -   빅데이터에 대한 이론적 지식
+        -   분석 기술에 대한 숙련
+    - Soft Skill
+        -   통찰력 있는 분석 : 창의적 사고, 호기심, 논리적 비판
+        -   설득력 있는 전달 : 스토리텔링, 비주얼라이제이션
+        -   다분양간 협력 : 커뮤니케이션
 
 
 
@@ -139,9 +139,9 @@
 
 - Input > Split > Map > Combine > Shuffle&Sort > Reduce > Output
 
-  ![map-reduce-word-chart-process](https://user-images.githubusercontent.com/291782/156508689-850f108f-de71-4437-8d77-b7259f638420.png)
+    ![map-reduce-word-chart-process](https://user-images.githubusercontent.com/291782/156508689-850f108f-de71-4437-8d77-b7259f638420.png)
 
-  
+    
 
 
 
@@ -184,9 +184,9 @@
 - 파일 데이터는 블록(또는 청크) 단위로 나뉘어 여러 데이터노드에 분산.복제.저장된다.
 - 낮은 데이터 접근지연시간보다는 높은 데이터 처리량에 중점을 두고 있음
 - 하나의 네임도드(NameNode), 다수의 데이터노드(DataNode)로 구성됨
-  - 네임노드 : 모든 메타데이터를 관리, 마스터/슬레이브 구조에서 마스터 역할. 클라이언트로 부터 파일 접근 요청을 처리
-  - 데이터노드 : 슬레이브 노드, 데이터 입출력 요청을 처리. 데이터 유실 방지를 위해 3중 복제하여 저장.
-  - 보조네임노드 : HDFS 상태 모니터링을 보조. 주기적으로 네임 노드의 이미지를 스냅샷해 저장
+    - 네임노드 : 모든 메타데이터를 관리, 마스터/슬레이브 구조에서 마스터 역할. 클라이언트로 부터 파일 접근 요청을 처리
+    - 데이터노드 : 슬레이브 노드, 데이터 입출력 요청을 처리. 데이터 유실 방지를 위해 3중 복제하여 저장.
+    - 보조네임노드 : HDFS 상태 모니터링을 보조. 주기적으로 네임 노드의 이미지를 스냅샷해 저장
 
 
 
@@ -222,7 +222,7 @@
 
 - 하이브(Hive)가 하둡에 저장된 다양한 형태의 비정형 데이터를 처리하는 표준 SQL솔루션으로 사용되고 있지만, 더 빠른 처리가 필요한 비즈니스 요구사항 때문에 임팔라와 같은 기술이 대두되고 있다.
 
-  ![impala-arch](https://user-images.githubusercontent.com/291782/168068690-c75b20ee-e8a4-4191-8dc7-09a3c6d0b799.png)
+    ![impala-arch](https://user-images.githubusercontent.com/291782/168068690-c75b20ee-e8a4-4191-8dc7-09a3c6d0b799.png)
 
 
 
@@ -283,11 +283,11 @@
 
 - IaaS (Infrastructure as a Service), SaaS (Sw as a Service), Paas (Platform as a Service) 3유형으로 나뉨
 
-  > IaaS : 네트워크 장비, 서버, 스토리지 등 IT 인프라 자원을 빌려주는 클라우드 서비스
-  >
-  > SaaS : 소프트웨어를 웹에서 사용할 수 있게 해주는 서비스
-  >
-  > Paas : 애플리케이션이나 SW 개발 및 구현 시 필요한 플랫폼을 제공하는 서비스
+    > IaaS : 네트워크 장비, 서버, 스토리지 등 IT 인프라 자원을 빌려주는 클라우드 서비스
+    >
+    > SaaS : 소프트웨어를 웹에서 사용할 수 있게 해주는 서비스
+    >
+    > Paas : 애플리케이션이나 SW 개발 및 구현 시 필요한 플랫폼을 제공하는 서비스
 
 - 서버 가상화 기술 : VMware, Xen, KVM 등의 서버 가상화 기술은 IaaS에 주로 활용
 
@@ -305,19 +305,19 @@
 #### CPU 가상화 방식의 분류
 
 - 완전 가상화
-  - VMware ESX server, MS Virtual Server 등이 완전 가상화 솔루션
-  - 장점
-    - CPU, 메모리, 네트워크 장치 등 모든 자원을 하이퍼바이저가 직접 제어.관리
-    - 어떠한 운영체제라도 수정하지 않고 설치 가능
-  - 단점
-    - 하이퍼바이저가 자원을 직접 제어하기 때문에 성능에 영향을 미침
-    - 운영중인 게스트 OS에서 할당된 CPU, 메모리 등의 자원에 대한 동적변경이 단일 서버내에서는 어려움
-    - 자원 동적변경을 위해서는 VMware의 VMotion 과 같은 솔루션의 도움이 필요
+    - VMware ESX server, MS Virtual Server 등이 완전 가상화 솔루션
+    - 장점
+        - CPU, 메모리, 네트워크 장치 등 모든 자원을 하이퍼바이저가 직접 제어.관리
+        - 어떠한 운영체제라도 수정하지 않고 설치 가능
+    - 단점
+        - 하이퍼바이저가 자원을 직접 제어하기 때문에 성능에 영향을 미침
+        - 운영중인 게스트 OS에서 할당된 CPU, 메모리 등의 자원에 대한 동적변경이 단일 서버내에서는 어려움
+        - 자원 동적변경을 위해서는 VMware의 VMotion 과 같은 솔루션의 도움이 필요
 - 반가상화
-  - privileged 명령어를 게스트 OS에서 hypercall로 하이퍼바이저에 전달하고, 하이퍼바이저는 hypercall에 대해서 privileged 레벨에 상관없이 HW로 명령을 수행 시킴
-  - CPU, 메모리 등의 자원에 대한 동적 변경이 서비스 중단 없이 가능
-  - 완전 가상화에 비해 성능이 뛰어남
-  - 반가상화는 커널 변경이 필요하고, 완전가상화는 커널 변경이 필요없다
+    - privileged 명령어를 게스트 OS에서 hypercall로 하이퍼바이저에 전달하고, 하이퍼바이저는 hypercall에 대해서 privileged 레벨에 상관없이 HW로 명령을 수행 시킴
+    - CPU, 메모리 등의 자원에 대한 동적 변경이 서비스 중단 없이 가능
+    - 완전 가상화에 비해 성능이 뛰어남
+    - 반가상화는 커널 변경이 필요하고, 완전가상화는 커널 변경이 필요없다
 
 
 
@@ -413,14 +413,14 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - 6단계 프로세스 : 각 단계는 단방향 구성이 아닌, **단계 간 피드백**을 통해 단계별 완성도를 높이게 되어 있음
 
-  ![crisp-dm-6phase](https://user-images.githubusercontent.com/291782/160157935-b0f7e9cc-c7db-4a58-92f1-aadb6b18b98f.png)
+    ![crisp-dm-6phase](https://user-images.githubusercontent.com/291782/160157935-b0f7e9cc-c7db-4a58-92f1-aadb6b18b98f.png)
 
-  -   1단계 : 업무이해 : 프로젝트의 목적과 요구사항을 이해하는 단계. 업무 목적 파악, 상황 파악, 목표 설정, 프로젝트 계획 수립
-  -   2단계 : 데이터 이해 : 데이터를 수집하고, 데이터 속성을 이해하기 위한 단계. 데이터 수집, 데이터 기술분석, 데이터 품질 확인
-  -   3단계 : 데이터 준비 : 분석 기법에 적합한 데이터를 편성하는 단계. 데이터셋 선택, 데이터 정제, 데이터 통합, 데이터 포맷팅
-  -   4단계 : 모델링 : 모델링 기법과 알고리즘 선택하고 파라미터를 최적화 하는 단계. 모델링 기법 선택, 모델 테스트 계획 설계, 모델 작성, 모델 평가
-  -   5단계 : 평가 : 모델링 결과가 프로젝트 목적에 부합하는지 평가하는 단계. 분석결과 평가, 모델링 과정 평가, 모델 적용성 평가
-  -   6단계 : 전개 : 모델을 실 업무에 적용하기 위한 계획 수립 단계. 전개 계획 수립, 유지보수 계획 수립, 종료보고서 작성 및 프로젝트 리뷰
+    -   1단계 : 업무이해 : 프로젝트의 목적과 요구사항을 이해하는 단계. 업무 목적 파악, 상황 파악, 목표 설정, 프로젝트 계획 수립
+    -   2단계 : 데이터 이해 : 데이터를 수집하고, 데이터 속성을 이해하기 위한 단계. 데이터 수집, 데이터 기술분석, 데이터 품질 확인
+    -   3단계 : 데이터 준비 : 분석 기법에 적합한 데이터를 편성하는 단계. 데이터셋 선택, 데이터 정제, 데이터 통합, 데이터 포맷팅
+    -   4단계 : 모델링 : 모델링 기법과 알고리즘 선택하고 파라미터를 최적화 하는 단계. 모델링 기법 선택, 모델 테스트 계획 설계, 모델 작성, 모델 평가
+    -   5단계 : 평가 : 모델링 결과가 프로젝트 목적에 부합하는지 평가하는 단계. 분석결과 평가, 모델링 과정 평가, 모델 적용성 평가
+    -   6단계 : 전개 : 모델을 실 업무에 적용하기 위한 계획 수립 단계. 전개 계획 수립, 유지보수 계획 수립, 종료보고서 작성 및 프로젝트 리뷰
 
 
 
@@ -441,18 +441,18 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 #### KDD(Knowledge Discovery in DB) 분석 절차
 
 1. 데이터셋 선택(Selection)
-   - 분석 대상의 **비즈니스 도메인에 대한 이해**와 **프로젝트 목표 설정**이 필수
-   - 분석에 필요한 데이터를 선택하는 단계
-   - **목표 데이터**(target data)를 구성하여 분석에 활용
+    - 분석 대상의 **비즈니스 도메인에 대한 이해**와 **프로젝트 목표 설정**이 필수
+    - 분석에 필요한 데이터를 선택하는 단계
+    - **목표 데이터**(target data)를 구성하여 분석에 활용
 2. 데이터 전처리 (preprocessing)
-   - **잡음(noise), 이상치(outlier), 결측치(missing value)를 식별**하거나 **제거**하여 데이터셋을 정제하는 단계
-   - **추가로 요구되는 데이터 셋**이 필요한 경우 선택 프로세스를 재실행 함
+    - **잡음(noise), 이상치(outlier), 결측치(missing value)를 식별**하거나 **제거**하여 데이터셋을 정제하는 단계
+    - **추가로 요구되는 데이터 셋**이 필요한 경우 선택 프로세스를 재실행 함
 3. 데이터 변환 (transformation)
-   - 분석 목적에 맞게 변수를 생성, 선택하고 **데이터의 차원을 축소**하여 효율적으로 데이터마이닝을 할 수 있도록 변경하는 단계
-   - **학습용 데이터**(training data)와 **검증용 데이터**(test data)로 분리하는 단계
+    - 분석 목적에 맞게 변수를 생성, 선택하고 **데이터의 차원을 축소**하여 효율적으로 데이터마이닝을 할 수 있도록 변경하는 단계
+    - **학습용 데이터**(training data)와 **검증용 데이터**(test data)로 분리하는 단계
 4. 데이터 마이닝 (data mining)
-   - 학습용 데이터를 이용하여 **데이터 마이닝 기법을 선택**하고, 적절한 알고리즘을 적용하는 단계
-   - 필요에 따라 **전처리**와 **변환** 단계를 **추가로 실행**하여 최적의 결과를 산출
+    - 학습용 데이터를 이용하여 **데이터 마이닝 기법을 선택**하고, 적절한 알고리즘을 적용하는 단계
+    - 필요에 따라 **전처리**와 **변환** 단계를 **추가로 실행**하여 최적의 결과를 산출
 
 
 
@@ -534,10 +534,10 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 - 장기적인 마스터 플랜 방식 : 지속적인 분석 내재화를 위함
 
 - |             | 당면한 분석 주제의 해결(과제 단위) | 지속적 분석 문화 내재화(마스터 플랜) |
-  | ----------- | ---------------------------------- | ------------------------------------ |
-  | 1차 목표    | Speed & Test                       | Accuracy & Deploy                    |
-  | 과제의 유형 | Quick & Win                        | Long Term View                       |
-  | 접근 방식   | Problem Solving                    | Problem Definition                   |
+    | ----------- | ---------------------------------- | ------------------------------------ |
+    | 1차 목표    | Speed & Test                       | Accuracy & Deploy                    |
+    | 과제의 유형 | Quick & Win                        | Long Term View                       |
+    | 접근 방식   | Problem Solving                    | Problem Definition                   |
 
 
 
@@ -551,9 +551,9 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - 포트폴리오 사분면 분석을 통한 과제 우선순위 선정
 
-  ![pflo_4_layer](https://user-images.githubusercontent.com/291782/160415872-abf3a83b-f41d-42ae-9a34-b4f0d357843d.png)
+    ![pflo_4_layer](https://user-images.githubusercontent.com/291782/160415872-abf3a83b-f41d-42ae-9a34-b4f0d357843d.png)
 
-  -   분석과제의 우선순위를 '**시급성**'에 둔다면 3 > 4 > 2 영역 순, '**난이도**'에 둔다면 3 > 1 > 2 영역순으로 의사결정
+    -   분석과제의 우선순위를 '**시급성**'에 둔다면 3 > 4 > 2 영역 순, '**난이도**'에 둔다면 3 > 1 > 2 영역순으로 의사결정
 
 
 
@@ -588,11 +588,11 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - 이산형 확류변수 예시 : 동전 2개를 던져서 앞/뒷면이 나오는 경우의 수(H:앞, T:뒤)
 
-  | 표본공간(&Omega;) | HH(사건) | HT   | TH   | TT   | 합계 |
-  | ----------------- | -------- | ---- | ---- | ---- | ---- |
-  | P(x)              | 1/4      | 1/4  | 1/4  | 1/4  | 1    |
+    | 표본공간(&Omega;) | HH(사건) | HT   | TH   | TT   | 합계 |
+    | ----------------- | -------- | ---- | ---- | ---- | ---- |
+    | P(x)              | 1/4      | 1/4  | 1/4  | 1/4  | 1    |
 
-  
+    
 
 1) 베르누이  확률분포(Bernoulli distribution)
 
@@ -635,13 +635,13 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - 국내 인터넷 포털 사이트의 점유율은 아래와 같다.  12명을 임의로 뽑아 사용 사이트를 알아보았을 때, 네이버 7명, 구글 3명, 다음과 ZUM이 각 1명, 기타는 0명이 사용할 확률을 구하시오
 
-  네이버 : 61%, 구글 : 30%, 다음 : 7%, ZUM: 1%, 기타 : 1%
+    네이버 : 61%, 구글 : 30%, 다음 : 7%, ZUM: 1%, 기타 : 1%
 
 - $\dfrac {12!} {7! \times 3! \times 1! \times 1! \times 0!} \times 0.61^7 \times 0.3^3 \times 0.07^1 \times 0.01^1 \times 0.01^0 = 0.0094$
 
-  ​      
+    ​      
 
-  ​      
+    ​      
 
 5) 포아송분포 (Poisson distribution)
 
@@ -753,79 +753,79 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 1. 이산형 확률변수
 
-   -   베르누이 확률분포 (Bernoulli distribution)
+    -   베르누이 확률분포 (Bernoulli distribution)
 
-       -   결과가 2개만 나오는 경우 **성공 또는 실패** (예. 동전 던기지, 시험의 합격/불합격 등)
-       -   $P(X = x) = P^x . (1-p)$<sup>1-x</sup> 
-       -   (x= 1 or 0), 기댓값: $E(x) = p$, 분산 :$var(x) = p(1-p)$
-       -   예) 추신수가 안타를 칠 확률은 베르누이 분포를 따른다.
-   -   이항분포 (Binomial distribution)
+        -   결과가 2개만 나오는 경우 **성공 또는 실패** (예. 동전 던기지, 시험의 합격/불합격 등)
+        -   $P(X = x) = P^x . (1-p)$<sup>1-x</sup> 
+        -   (x= 1 or 0), 기댓값: $E(x) = p$, 분산 :$var(x) = p(1-p)$
+        -   예) 추신수가 안타를 칠 확률은 베르누이 분포를 따른다.
+    -   이항분포 (Binomial distribution)
 
-       -   베르누이 시행을 n번 반복했을 때 k번 성공할 확률
-       -   n번 시행 중에 각 시행의 확률이 p일 때, k번 성공할 확률분포
-       -   $P(X = k) = _nC_kP^k(1-p)$<sup>n-k</sup> , $_nC_k = \dfrac {n!}{k!(n-k)!}$
-       -   기댓값 : $E(X) = np$, 분산 : $V(X) = np(1-p) $  (단, n과 k가 1이면 베르누이 시행)
-       -   추신수가 오늘 경기에서 5번 타석에 들어와서 3번 안타를 칠 확률은 이항분포를 따른다. (n=5, k=3, 안타를 칠 확률 P(x) = 타율로 적용 가능)
-       -   성공할 확률 p가 0이나 1에 가깝지 않고 n이 충분히 크면 이항분포는 정규분포에 가까워 진다. 성공할 확률 p가 1/2에 가까우면 종모양이 된다.
-   -   기하분포 (Geometric distribution)
-       -   성공확률이 p인 베르누이 시행에서 첫번째 성공이 있기까지 X번 실패할 확률
-       -   예) 추신수가 오늘 경기에서 5번 타석에 들어와서 3번째 타석에서 안타를 칠 확률은 기하분포를 따른다.
-   -   다항분포 (Multinomial distribution)
-       -   이항분포를 확장한 것으로 세가지 이상의 결과를 가지는 반복 시행에서 발생하는 확률 분포
-   -   포아송분포 (Poisson distiribution)
-       -   시간과 공간 내에서 발생하는 사건의 발생횟수에 대한 확률분포
-       -   예) 책에 오타가 5page 당 10개씩 나온다고 할 떄, 한 페이지에 오타가 3개 나올 확률, 추신수가 최근 5경기에서 홈런을 쳤을 경우, 오늘 경기에서 홈런을 못 칠 확률은 포아송 분포
-       -   &lambda; (람다) = 정해진 시간 안에 어떤 사건이 일어날 횟수에 대한 기댓값, y= 사건이 일어난 수
-       -   $P = \dfrac {\lambda^ne^{-\lambda}} {n!}$ (e는 자연상수)
-       -   기댓값 : $E(X) = \lambda$, 분산 : $V(X) = \lambda $
+        -   베르누이 시행을 n번 반복했을 때 k번 성공할 확률
+        -   n번 시행 중에 각 시행의 확률이 p일 때, k번 성공할 확률분포
+        -   $P(X = k) = _nC_kP^k(1-p)$<sup>n-k</sup> , $_nC_k = \dfrac {n!}{k!(n-k)!}$
+        -   기댓값 : $E(X) = np$, 분산 : $V(X) = np(1-p) $  (단, n과 k가 1이면 베르누이 시행)
+        -   추신수가 오늘 경기에서 5번 타석에 들어와서 3번 안타를 칠 확률은 이항분포를 따른다. (n=5, k=3, 안타를 칠 확률 P(x) = 타율로 적용 가능)
+        -   성공할 확률 p가 0이나 1에 가깝지 않고 n이 충분히 크면 이항분포는 정규분포에 가까워 진다. 성공할 확률 p가 1/2에 가까우면 종모양이 된다.
+    -   기하분포 (Geometric distribution)
+        -   성공확률이 p인 베르누이 시행에서 첫번째 성공이 있기까지 X번 실패할 확률
+        -   예) 추신수가 오늘 경기에서 5번 타석에 들어와서 3번째 타석에서 안타를 칠 확률은 기하분포를 따른다.
+    -   다항분포 (Multinomial distribution)
+        -   이항분포를 확장한 것으로 세가지 이상의 결과를 가지는 반복 시행에서 발생하는 확률 분포
+    -   포아송분포 (Poisson distiribution)
+        -   시간과 공간 내에서 발생하는 사건의 발생횟수에 대한 확률분포
+        -   예) 책에 오타가 5page 당 10개씩 나온다고 할 떄, 한 페이지에 오타가 3개 나올 확률, 추신수가 최근 5경기에서 홈런을 쳤을 경우, 오늘 경기에서 홈런을 못 칠 확률은 포아송 분포
+        -   &lambda; (람다) = 정해진 시간 안에 어떤 사건이 일어날 횟수에 대한 기댓값, y= 사건이 일어난 수
+        -   $P = \dfrac {\lambda^ne^{-\lambda}} {n!}$ (e는 자연상수)
+        -   기댓값 : $E(X) = \lambda$, 분산 : $V(X) = \lambda $
 
 2. 연속형 확률변수
 
-   - 가능한 값이 실수의 어느 특정구간 전체에 해당하는 확률변수 (확률밀도함수)
+    - 가능한 값이 실수의 어느 특정구간 전체에 해당하는 확률변수 (확률밀도함수)
 
-   - $ f(x)\ge 0 $     $\int_{-\infty}^{\infty}f(x)dx = 1$
+    - $ f(x)\ge 0 $     $\int_{-\infty}^{\infty}f(x)dx = 1$
 
-   - 균일분포 (일양분포, Uniform distiribution)
+    - 균일분포 (일양분포, Uniform distiribution)
 
-     - 모든 확률변수 X가 균일한 확률을 가지는 확률분포 (다트의 확률분포)
-     - $E(X) = \dfrac {a+b}{2}, Var(X) = {(b-a)^2}{12}$
-     - ![uniform-distribution](https://user-images.githubusercontent.com/291782/161756609-ae577e06-5c55-410f-b205-63f1c5afd9b6.png)
+        - 모든 확률변수 X가 균일한 확률을 가지는 확률분포 (다트의 확률분포)
+        - $E(X) = \dfrac {a+b}{2}, Var(X) = {(b-a)^2}{12}$
+        - ![uniform-distribution](https://user-images.githubusercontent.com/291782/161756609-ae577e06-5c55-410f-b205-63f1c5afd9b6.png)
 
-   - 정규분포 (Normal distribution)
+    - 정규분포 (Normal distribution)
 
-     - 평균이 &mu; (뮤) 이고, 표준편차가 &sigma; (시그마) 인 X의 확률밀도 함수
-     - 표준편차가 클 경우 퍼져보이는 그래프가 나타남
-     - 표준정규분포는 평균이 0 이고, 표준편차가 1인 정규분포
-     - 정규분포를 표준정규분포로 만들기 위해서는 $Z = \dfrac {X - \mu} {\sigma}$  식을 이용
-     - ![normal-distribution](https://user-images.githubusercontent.com/291782/161757336-f8a45f83-945c-4560-98b3-eee70cde4fa1.png)
+        - 평균이 &mu; (뮤) 이고, 표준편차가 &sigma; (시그마) 인 X의 확률밀도 함수
+        - 표준편차가 클 경우 퍼져보이는 그래프가 나타남
+        - 표준정규분포는 평균이 0 이고, 표준편차가 1인 정규분포
+        - 정규분포를 표준정규분포로 만들기 위해서는 $Z = \dfrac {X - \mu} {\sigma}$  식을 이용
+        - ![normal-distribution](https://user-images.githubusercontent.com/291782/161757336-f8a45f83-945c-4560-98b3-eee70cde4fa1.png)
 
-   - 지수분포 (Exponential distribution)
+    - 지수분포 (Exponential distribution)
 
-     - 어떤 사건이 발생할 때까지 경과 시간에 대한 연속확률분포이다.
-     - 예) 전자렌지의 수명시간, 콜센터에 전화가 걸려올때 까지의 시간, 은행에 고객이 내방하는데 걸리는 시간, 정류소에서 버스가 올 때까지의 시간
-     - ![exponential-distribution](https://user-images.githubusercontent.com/291782/161757625-0f01dde3-c578-4d62-b92d-8e2c667ec95c.png)
+        - 어떤 사건이 발생할 때까지 경과 시간에 대한 연속확률분포이다.
+        - 예) 전자렌지의 수명시간, 콜센터에 전화가 걸려올때 까지의 시간, 은행에 고객이 내방하는데 걸리는 시간, 정류소에서 버스가 올 때까지의 시간
+        - ![exponential-distribution](https://user-images.githubusercontent.com/291782/161757625-0f01dde3-c578-4d62-b92d-8e2c667ec95c.png)
 
-   - t분포 (t-distribution)
+    - t분포 (t-distribution)
 
-     - 표준정규분포와 같이 평균이 0을 중심으로 좌우가 동일한 분포를 따른다.
-     - 표본이 커져서 (30개 이상) 자유도가 증가하면 표준정규분포와 거의 같은 분포가 된다.
-     - 데이터가 연속형일 경우 활용한다.
-     - **두 집단의 평균이 동일한지** 알고자 할 때 검정통계량으로 활용된다.
-     - ![t-distribution](https://user-images.githubusercontent.com/291782/161783614-810d0d10-ffe0-483c-99c2-93a7f7159e2f.png)
+        - 표준정규분포와 같이 평균이 0을 중심으로 좌우가 동일한 분포를 따른다.
+        - 표본이 커져서 (30개 이상) 자유도가 증가하면 표준정규분포와 거의 같은 분포가 된다.
+        - 데이터가 연속형일 경우 활용한다.
+        - **두 집단의 평균이 동일한지** 알고자 할 때 검정통계량으로 활용된다.
+        - ![t-distribution](https://user-images.githubusercontent.com/291782/161783614-810d0d10-ffe0-483c-99c2-93a7f7159e2f.png)
 
-   - X<sup>2</sup>-분포 (chi-square distribution, 카이제곱분포)
+    - X<sup>2</sup>-분포 (chi-square distribution, 카이제곱분포)
 
-     - 모평균과 모분산이 알려지지 않은 모집단의 모분산에 대한 가설 검정에 사용되는 분포
-     - **두 집단 간의 동질성 검정에 활용**된다. (범주형 자료에 대해 얻어진 관측값과 기대값의 차이를 보는 적합성 검정에 활용)
-     - ![x2-distribution](https://user-images.githubusercontent.com/291782/161784229-f6906799-74d1-4fd5-a6c6-06bcf9cadaaa.png)
+        - 모평균과 모분산이 알려지지 않은 모집단의 모분산에 대한 가설 검정에 사용되는 분포
+        - **두 집단 간의 동질성 검정에 활용**된다. (범주형 자료에 대해 얻어진 관측값과 기대값의 차이를 보는 적합성 검정에 활용)
+        - ![x2-distribution](https://user-images.githubusercontent.com/291782/161784229-f6906799-74d1-4fd5-a6c6-06bcf9cadaaa.png)
 
-   - F-분포 (F-distribution)
+    - F-분포 (F-distribution)
 
-     - **두 집단간 분산의 동일성 검정**에 사용되는 검정 통계량 분포
-     - 확률변수는 항상 양의 값만을 갖고 X<sup>2</sup> 분포와 달리 자유도를 2개 가지고 있으며 자유도가 커질수록 정규분포에 가까워진다.
-     - ![f-distribution](https://user-images.githubusercontent.com/291782/161784584-b404679b-b455-40d9-91f8-1ffbb0589f98.png)
+        - **두 집단간 분산의 동일성 검정**에 사용되는 검정 통계량 분포
+        - 확률변수는 항상 양의 값만을 갖고 X<sup>2</sup> 분포와 달리 자유도를 2개 가지고 있으며 자유도가 커질수록 정규분포에 가까워진다.
+        - ![f-distribution](https://user-images.githubusercontent.com/291782/161784584-b404679b-b455-40d9-91f8-1ffbb0589f98.png)
 
-     
+        
 
 #### 분해시계열
 
@@ -833,13 +833,13 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - 분해식의 일반적 정의 : $Z_t = f(T_t, S_t, C_t, I_t)$
 
-  > T<sub>t</sub> : 경향(추세)요인 : 자료가 오르거나 내리는 추세, 선형, 이차식 형태, 지수적 형태 등
-  >
-  > S<sub>t</sub> : 계절요인 : 요일, 월, 사계절 각 분기에 의한 변화 등 고정된 주기에 따라 자료가 변하는 경우
-  >
-  > C<sub>t</sub> : 순환요인 : 경제적이나 자연적인 이유 없이 알려지지 않은 주기를 가지고 변화하는 자료
-  >
-  > I<sub>t</sub> : 불규칙요인 : 위의 세 가지 요인으로 설명할 수 없는 오차에 해당하는 요인
+    > T<sub>t</sub> : 경향(추세)요인 : 자료가 오르거나 내리는 추세, 선형, 이차식 형태, 지수적 형태 등
+    >
+    > S<sub>t</sub> : 계절요인 : 요일, 월, 사계절 각 분기에 의한 변화 등 고정된 주기에 따라 자료가 변하는 경우
+    >
+    > C<sub>t</sub> : 순환요인 : 경제적이나 자연적인 이유 없이 알려지지 않은 주기를 가지고 변화하는 자료
+    >
+    > I<sub>t</sub> : 불규칙요인 : 위의 세 가지 요인으로 설명할 수 없는 오차에 해당하는 요인
 
 
 
@@ -848,11 +848,11 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 #### 데이터마이닝의 분석방법
 
 - 지도학습 (Supervisied Learning)
-  - 의사결정나무 (DT), 인공신경망 (Artifician Neural Network), 일반화 선형 모형 (GLM, Generalized Linear Model)
-  - 회귀분석 (regression analysis), 로지스틱 회귀분석 (logistic regression analysis), 사례기반 추론 (case-based reasoning), 최근접이웃법 (KNN)
+    - 의사결정나무 (DT), 인공신경망 (Artifician Neural Network), 일반화 선형 모형 (GLM, Generalized Linear Model)
+    - 회귀분석 (regression analysis), 로지스틱 회귀분석 (logistic regression analysis), 사례기반 추론 (case-based reasoning), 최근접이웃법 (KNN)
 - 비지도학습 (Unsupervised Learning)
-  - OLAP (On-Line Analytical Processing), 연관성 규칙발견 (Association Rule Discovery, Market Basket)
-  - 군집분석 (K-Means Clustering), SOM (Slef Organizing Map)
+    - OLAP (On-Line Analytical Processing), 연관성 규칙발견 (Association Rule Discovery, Market Basket)
+    - 군집분석 (K-Means Clustering), SOM (Slef Organizing Map)
 
 
 
@@ -864,32 +864,32 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - 이때 모형의 적합을 통해 추정된 확률을 사후확률(Posterior Probability)라고 함
 
-  > 오즈비(odds ratio) : 오즈(odds)는 성공할 확률이 실패할 확률의 몇 배인지를 나타내는 확률
-  >
-  > ex) 16강에 한국과 브라질이 진출을 성공/실패할 확률과 각각의 오즈와 오즈비는 아래와 같음
-  >
-  > |  구분  | 16강 성공확률 | 16강 실패확률 |
-  > | :----: | :-----------: | :-----------: |
-  > | 브라질 |      0.8      |      0.2      |
-  > |  한국  |      0.1      |      0.9      |
-  >
-  > odds (브라질) : $\dfrac {0.8} {1 - (0.8)} = \dfrac {0.8} {0.2} = 4$
-  >
-  > odds (한국) : $\dfrac {0.1} {1-0.1} = \dfrac {1} {9}$
-  >
-  > Odds ratio : $\dfrac {odds(브라질)} {odds(한국)} = \dfrac {4}{\dfrac {1}{9}} = 36$
-  >
-  > 오즈비가 36 이 나타나 브라질이 16강에 진출할 확률이 한국의 16강 진출 확률보다 36배 높다고 볼 수 있다.
+    > 오즈비(odds ratio) : 오즈(odds)는 성공할 확률이 실패할 확률의 몇 배인지를 나타내는 확률
+    >
+    > ex) 16강에 한국과 브라질이 진출을 성공/실패할 확률과 각각의 오즈와 오즈비는 아래와 같음
+    >
+    > |  구분  | 16강 성공확률 | 16강 실패확률 |
+    > | :----: | :-----------: | :-----------: |
+    > | 브라질 |      0.8      |      0.2      |
+    > |  한국  |      0.1      |      0.9      |
+    >
+    > odds (브라질) : $\dfrac {0.8} {1 - (0.8)} = \dfrac {0.8} {0.2} = 4$
+    >
+    > odds (한국) : $\dfrac {0.1} {1-0.1} = \dfrac {1} {9}$
+    >
+    > Odds ratio : $\dfrac {odds(브라질)} {odds(한국)} = \dfrac {4}{\dfrac {1}{9}} = 36$
+    >
+    > 오즈비가 36 이 나타나 브라질이 16강에 진출할 확률이 한국의 16강 진출 확률보다 36배 높다고 볼 수 있다.
 
 - 선형회귀분석과 로지스틱 회귀분석 비교
 
-  |    목적     |  선형회귀분석  |         로지스틱 회귀분석          |
-  | :---------: | :------------: | :--------------------------------: |
-  |  종속변수   |  연속형 변수   |               (0, 1)               |
-  | 계수 추정법 |   최소제곱법   |           최대우도추정법           |
-  |  모형 검정  | F-검정, T-검정 | 카이제곱 검정 (X<sup>2</sup>-test) |
+    |    목적     |  선형회귀분석  |         로지스틱 회귀분석          |
+    | :---------: | :------------: | :--------------------------------: |
+    |  종속변수   |  연속형 변수   |               (0, 1)               |
+    | 계수 추정법 |   최소제곱법   |           최대우도추정법           |
+    |  모형 검정  | F-검정, T-검정 | 카이제곱 검정 (X<sup>2</sup>-test) |
 
-  > 최대우도추정법 (MLE : Maximum Likelihood Estimation) : 모수가 미지의 &theta; (theta)인 확률분포에서 뽑은 표본(관측치) x들을 바탕으로 &theta;를 추정하는 기법
+    > 최대우도추정법 (MLE : Maximum Likelihood Estimation) : 모수가 미지의 &theta; (theta)인 확률분포에서 뽑은 표본(관측치) x들을 바탕으로 &theta;를 추정하는 기법
 
 - glm() 함수를 활용하여 로지스틱 회귀분석 실행
 
@@ -905,7 +905,19 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - R<sup>2</sup> (결정계수) 값 검정
 
-  >   r(상관계수)는 회귀분석 이전의 단계에서 실행하여 설명력 확인
+    >   r(상관계수)는 회귀분석 이전의 단계에서 실행하여 설명력 확인
+
+
+
+#### 회귀분석의 영향력 진단
+
+-   영향력 진단이란 **적합된 회귀모형의 안전성을 평가하는 통계적인 방법**
+-   선형회귀분석에서 **회귀직선의 기울기에 영향을 크게 주는 점을 영향점**이라고 함
+-   영향력 진단 방법에는 Cook's distance, DFBETAS, DFFITS, Leverage H 등이 있다.
+    -   Cook's distance : 쿡의 거리가 **기준값인 1보다 클 경우 영향치**로 간주
+    -   DFBETAS : 값이 크지면 영향치 또는 이상치일 가능성 높음. **기준값은 2나 sqrt(n)**(표본을 고려한 경우), DFBETAS 값이 **기준값보다 클 경우 영향치**일 가능성이 높다.
+    -   DFFITS : **기준값인 $2\sqrt{((p+1)/n)}$ 보다 클수록 영향치**일 가능성이 높다
+    -   Leverage H : 관측치가 다른 관측치 집단으로부터 떨어진 정도를 의미하며, **2 x (p+1)/n** 보다 크면 영향치 이거나 이상치라고 본다.
 
 
 
@@ -914,22 +926,22 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 의사결정나무는 주어진 **입력값에 대하여 출력값을 예측하는 모형**으로 분류나무와 회귀나무 모형이 있다.
 
 - 장점
-  - 결과를 누구에게나 설명하기 용이
-  - 만드는 방법이 계산적으로 복잡하지 않음
-  - 대용량 데이터에서도 빠르게 만들 수 있음
-  - 비정상 잡음 데이터에 대해서도 민감함 없이 분류 가능
-  - 한 변수와 상관성이 높은 다른 불필요한 변수가 있어도 크게 영향을 받지 않음
-  - 설명변수나 목표변수에 수치형변수와 범주형변수를 모두 사용 가능하다.
-  - 모형 분류 정확도가 높다.
+    - 결과를 누구에게나 설명하기 용이
+    - 만드는 방법이 계산적으로 복잡하지 않음
+    - 대용량 데이터에서도 빠르게 만들 수 있음
+    - 비정상 잡음 데이터에 대해서도 민감함 없이 분류 가능
+    - 한 변수와 상관성이 높은 다른 불필요한 변수가 있어도 크게 영향을 받지 않음
+    - 설명변수나 목표변수에 수치형변수와 범주형변수를 모두 사용 가능하다.
+    - 모형 분류 정확도가 높다.
 - 단점
-  - 새로운 자료에 대한 과적합 발생할 가능성이 높다.
-  - 분류 경계선 부근의 자료값에 대해서 오차가 크다.
-  - 설명변수 간의 중요도를 판단하기 쉽지 않다.
+    - 새로운 자료에 대한 과적합 발생할 가능성이 높다.
+    - 분류 경계선 부근의 자료값에 대해서 오차가 크다.
+    - 설명변수 간의 중요도를 판단하기 쉽지 않다.
 - **교호작용** 효과의 파악 : 여러 개의 예측변수들을 결합해 목표변수에 작용하는 규칙을 파악하고자 하는 경우
 - 알고리즘
-  - CART (Classification and Regression Tree) : 불순도의 측도 지니지수, 이진분리
-  - C4.5와 C5.0 : CART와 다르게 다지분리 가능. 불순도 측도 엔트로피 지수
-  - CHAID(CHi-Squared Automatic Interaction Detection) : 가지치기 않함. 적당한 크기에서 나무 성장을 중지. 입력변수는 반드시 범주형. 불순도 측도 카이제곱 통계량 사용
+    - CART (Classification and Regression Tree) : 불순도의 측도 지니지수, 이진분리
+    - C4.5와 C5.0 : CART와 다르게 다지분리 가능. 불순도 측도 엔트로피 지수
+    - CHAID(CHi-Squared Automatic Interaction Detection) : 가지치기 않함. 적당한 크기에서 나무 성장을 중지. 입력변수는 반드시 범주형. 불순도 측도 카이제곱 통계량 사용
 
 
 
@@ -976,21 +988,21 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - **SOM은 비지도 신경망으로 고차원의 데이터를 이해하기 쉬운 저차원의 뉴런으로 정렬**하여 지도의 형태로 형상화 한다.
 
-  <img width="466" alt="image" src="https://user-images.githubusercontent.com/291782/163676024-410958e8-d1fa-46b2-abe2-26a2e42e6fb6.png">
+    <img width="466" alt="image" src="https://user-images.githubusercontent.com/291782/163676024-410958e8-d1fa-46b2-abe2-26a2e42e6fb6.png">
 
 
 
 나. 구성
 
 - SOM 모델은 위 그림과 같이 두 개의 인공신경망 층으로 구성되어 있다.
-  1. 입력층 (input layer: 입력벡터를 받는 층)
-     - **입력 변수의 개수와 동일하게 뉴런 수가 존재**한다.
-     - 입력층의 자료는 학습을 통하여 경쟁층에 정렬되는데, 이를 지도 (map)라 부른다.
-     - 입력층에 있는 뉴런은 경쟁층에 있는 뉴런들과 연결되어 있으며, 이때 완전연결 (fully connected)되어 있다.
-  2. 경쟁층 (competitive layer : 2차원 격자(grid)로 구성된 층)
-     - 입력벡터의 특성에 따라 벡터가 한 점으로 클러스터링 되는 층
-     - SOM은 경쟁 학습으로 각각의 뉴런이 입력 벡터와 얼마나 가까운가를 계산하여 연결 강도(connection weight)를 반복적으로 재조정하며 학습한다.
-     - 입력 층의 표본 벡터에 가장 가까운 프로토타입 벡터를 선택해 BMU(Best Matching Unit)라고 하며, **코호넨의 승자 독점의 학습 규칙**에 따라 위상학적 이웃 (topological neighbors)에 대한 연결 강도를 조정한다.
+    1. 입력층 (input layer: 입력벡터를 받는 층)
+        - **입력 변수의 개수와 동일하게 뉴런 수가 존재**한다.
+        - 입력층의 자료는 학습을 통하여 경쟁층에 정렬되는데, 이를 지도 (map)라 부른다.
+        - 입력층에 있는 뉴런은 경쟁층에 있는 뉴런들과 연결되어 있으며, 이때 완전연결 (fully connected)되어 있다.
+    2. 경쟁층 (competitive layer : 2차원 격자(grid)로 구성된 층)
+        - 입력벡터의 특성에 따라 벡터가 한 점으로 클러스터링 되는 층
+        - SOM은 경쟁 학습으로 각각의 뉴런이 입력 벡터와 얼마나 가까운가를 계산하여 연결 강도(connection weight)를 반복적으로 재조정하며 학습한다.
+        - 입력 층의 표본 벡터에 가장 가까운 프로토타입 벡터를 선택해 BMU(Best Matching Unit)라고 하며, **코호넨의 승자 독점의 학습 규칙**에 따라 위상학적 이웃 (topological neighbors)에 대한 연결 강도를 조정한다.
 
 
 
@@ -1017,8 +1029,8 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 #### 사회연결망분석의 중심성
 
 - 연결정도 중심성 (Degree centrality) : 한 점에 직접적으로 연결된 점들의 합
-  - 인디그리중심성(In-Degree) : 한 점이 다른점으로부터 화살표를 받는 관계의 정도(영향을 받는 관계)
-  - 아웃디그리중심성(Out-Degree) : 어떤점이 다른점에 화살표를 주는 정도 (영향을 주는 관계)
+    - 인디그리중심성(In-Degree) : 한 점이 다른점으로부터 화살표를 받는 관계의 정도(영향을 받는 관계)
+    - 아웃디그리중심성(Out-Degree) : 어떤점이 다른점에 화살표를 주는 정도 (영향을 주는 관계)
 - 근접 중심성 (Closeness centrality) : 한 노드로부터 다른 노드에 도달하기까지 필요한 최소 단계의 합
 - 매개 중심성 (Betweenness centrality) : 네트워크 내에서 한 점이 담당하는 매개자 혹은 중재자 역할의 정도
 - 위세 중심성 (Eigenvector centrality) : 보나시치(Bonacich) 권련지수 : 위에 중심성의 일반적인 형태로, 연결된 노드의 중요성에 가중치를 둬 노드의 중심성을 측정하는 방법
@@ -1031,26 +1043,26 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 1. 단순랜덤 추출법 (simple random sampling)
 
-   -   각 샘플에 번호를 부여하여 n개를 추출하는 방법으로 각 샘플은 선택될 확률이 동일하다. (복원, 비복원 추출)
+    -   각 샘플에 번호를 부여하여 n개를 추출하는 방법으로 각 샘플은 선택될 확률이 동일하다. (복원, 비복원 추출)
 
 2. 계통추출법 (systematic sampling)
 
-   -   단순랜덤 추출법의 변형된 방식으로 샘플을 나열하여 K개씩 n개의 구간으로 나누고 첫 구간에서 하나를 임의로 선택한 후에 K개식 띄어서 n 개의 표본을 선택
-   -   ![systematic-sampling](https://user-images.githubusercontent.com/291782/161560760-0d60d365-a300-4262-8b09-5e9d64125e21.png)
+    -   단순랜덤 추출법의 변형된 방식으로 샘플을 나열하여 K개씩 n개의 구간으로 나누고 첫 구간에서 하나를 임의로 선택한 후에 K개식 띄어서 n 개의 표본을 선택
+    -   ![systematic-sampling](https://user-images.githubusercontent.com/291782/161560760-0d60d365-a300-4262-8b09-5e9d64125e21.png)
 
 3. 집락추출법 (cluster random sampling)
 
-   -   군집을 구분하고 군집별로 단순랜덤 추출법을 수행한 후, 모든 자료를 활용하거나 샘플링하는 방법
-   -   ![cluster-random-sampling](https://user-images.githubusercontent.com/291782/161560900-294b7296-b204-41f2-9170-0f60ae4d9fc4.png)
+    -   군집을 구분하고 군집별로 단순랜덤 추출법을 수행한 후, 모든 자료를 활용하거나 샘플링하는 방법
+    -   ![cluster-random-sampling](https://user-images.githubusercontent.com/291782/161560900-294b7296-b204-41f2-9170-0f60ae4d9fc4.png)
 
 4. 층화추출법 (stratified random sampling)
 
-   -   이질적인 원소들로 구성된 모집단에서 각 계층을 고루 대표할 수 있도록 표본을 추출하는 방법으로, 유사한 원소끼리 몇 개의 층(stratum)으로 나누어서 각 층에서 랜덤 추출하는 방법
-   -   ![stratified-random-sampling](https://user-images.githubusercontent.com/291782/161561325-a774c94f-ce60-4430-a2fb-f91dcdf969c2.png)
+    -   이질적인 원소들로 구성된 모집단에서 각 계층을 고루 대표할 수 있도록 표본을 추출하는 방법으로, 유사한 원소끼리 몇 개의 층(stratum)으로 나누어서 각 층에서 랜덤 추출하는 방법
+    -   ![stratified-random-sampling](https://user-images.githubusercontent.com/291782/161561325-a774c94f-ce60-4430-a2fb-f91dcdf969c2.png)
 
-   
+    
 
-   
+    
 
 #### 측정방법 (아주중요)
 
@@ -1081,9 +1093,9 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 - 재현도(Recall) = 민감도(Sensitive) = $\dfrac {TP}{TP+FN}$ = TPR(참긍정률)
 - 특이도(Specificity, TNR, True Negative Rate) = $\dfrac{TN}{TN+FP}$
 - F1-Score 에 들어가는 지표는? 정밀도(Precision) 와 재현율(Recall, 민감도)
-  - 식 = $2 × \dfrac {Precision × Recall}{Precision + Recall}  $ 
-  - 재현율과 정밀도 값이 모두 클 때 F1-Score도 큰 값을 가진다
-  - F1-Score는 민감도와 정밀도를 합한 **성능평가지표**로 0~1 사이의 값을 가진다. 1이 좋음
+    - 식 = $2 × \dfrac {Precision × Recall}{Precision + Recall}  $ 
+    - 재현율과 정밀도 값이 모두 클 때 F1-Score도 큰 값을 가진다
+    - F1-Score는 민감도와 정밀도를 합한 **성능평가지표**로 0~1 사이의 값을 가진다. 1이 좋음
 
 
 
@@ -1101,21 +1113,21 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 1. 지지도 (support)
 
-   - 전체 거래 중 항목 A와 항목 B를 동시에 포함하는 거래의 비율로 정의
-   - 지지도(support) = $P(A \cap B) = \dfrac {A와 B가 동시에 포함된 거래수} {전체 거래수} = \dfrac {A \cap B} {전체}$
+    - 전체 거래 중 항목 A와 항목 B를 동시에 포함하는 거래의 비율로 정의
+    - 지지도(support) = $P(A \cap B) = \dfrac {A와 B가 동시에 포함된 거래수} {전체 거래수} = \dfrac {A \cap B} {전체}$
 
 2. 신뢰도 (confidence)
 
-   - 항목 A를 포함한 거래 중에서 항목 A와 항목 B가 같이 포함될 확률. 연관성의 정도를 파악 가능
-   - 신뢰도(confidence) = $\dfrac {P(A \cap B)} {P(A)} = \dfrac {A와 B가 동시에 포함된 거래수} {A를 포함하는 거래수} = \dfrac {지지도} {P(A)}$
+    - 항목 A를 포함한 거래 중에서 항목 A와 항목 B가 같이 포함될 확률. 연관성의 정도를 파악 가능
+    - 신뢰도(confidence) = $\dfrac {P(A \cap B)} {P(A)} = \dfrac {A와 B가 동시에 포함된 거래수} {A를 포함하는 거래수} = \dfrac {지지도} {P(A)}$
 
 3. 향상도 (Lift)
 
-   - A가 구매되지 않았을 떄 품목 B의 구매확률에 비해 A가 구매됐을 때 품목 B의 구매확률의 증가 비이다. 연관규칙 A&rarr;B는 품목 A와 품목 B의 구매가 서로 관련이 없는 경우에 향상도가 1이 된다.
+    - A가 구매되지 않았을 떄 품목 B의 구매확률에 비해 A가 구매됐을 때 품목 B의 구매확률의 증가 비이다. 연관규칙 A&rarr;B는 품목 A와 품목 B의 구매가 서로 관련이 없는 경우에 향상도가 1이 된다.
 
-   - 향상도(lift) = $\dfrac {P(B|A)} {P(B)} = \dfrac {P(A \cap B)} {P(A)P(B)} = \dfrac {A와 B가 동시에 포함된 거래수} {A를 포함하는 거래수 \; X \; B를 포함하는 거래수} = \dfrac {신뢰도} {P(B)}$ 
+    - 향상도(lift) = $\dfrac {P(B|A)} {P(B)} = \dfrac {P(A \cap B)} {P(A)P(B)} = \dfrac {A와 B가 동시에 포함된 거래수} {A를 포함하는 거래수 \; X \; B를 포함하는 거래수} = \dfrac {신뢰도} {P(B)}$ 
 
-     <img width="935" alt="support-confidence-lift" src="https://user-images.githubusercontent.com/291782/163676755-3b1a3876-f2d0-4ce5-b748-1bf5f4038e19.png">
+        <img width="935" alt="support-confidence-lift" src="https://user-images.githubusercontent.com/291782/163676755-3b1a3876-f2d0-4ce5-b748-1bf5f4038e19.png">
 
 
 
@@ -1127,9 +1139,9 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - SSR / SST (전체 제곱합에서 회귀제곱합의 비율), $0 \le R^2 \le 1$
 
-  > $SST = \displaystyle \sum(y_i - \overline{y})^2 , \quad SSE = \displaystyle \sum (y_i - \hat{y_i})^2, \quad SSR = SST - SSE$
+    > $SST = \displaystyle \sum(y_i - \overline{y})^2 , \quad SSE = \displaystyle \sum (y_i - \hat{y_i})^2, \quad SSR = SST - SSE$
 
-- 단순선형회귀분석에서는 결정계수는 상관계수 r ( -1 < r < 1)의 제곱과 같다.
+- 단순선형회귀분석에서는 결정계수는 **상관계수 r ( -1 < r < 1)**의 제곱과 같다.
 
 - 결정계수(R<sup>2</sup>)를 통해 추정된 회귀식이 얼마나 타당한지 검토한다. (결정계수가 1에 가까울수록 회귀모형이 자료를 잘 설명함)
 
@@ -1141,9 +1153,9 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 
 - 수정 결정계수 (adjusted R<sup>2</sup>) 식
 
-  $R_a^2 = 1 - \dfrac {(n-1)(1-R^2)} {n - k - 1} \newline = 1- \dfrac {(n-1) \times (\dfrac {SSE} {SST})} {n-k-1} \newline = 1 - (n-1)\dfrac {MSE} {SST} \newline (k:독립변수 개수, n: 데이터 개수)$
+    $R_a^2 = 1 - \dfrac {(n-1)(1-R^2)} {n - k - 1} \newline = 1- \dfrac {(n-1) \times (\dfrac {SSE} {SST})} {n-k-1} \newline = 1 - (n-1)\dfrac {MSE} {SST} \newline (k:독립변수 개수, n: 데이터 개수)$
 
-  
+    
 
 
 
@@ -1152,10 +1164,10 @@ EAI (Enterprise Application Integration), ESB (Enterprise Service Bus)
 - 예측값과 실제값의 차이
 
 - ```R
-  Residuals:
-    Min        1Q       Median     3Q       Max
-  -29.056    -9.525    -2.272    9.215    43.201
-  ```
+    Residuals:
+      Min        1Q       Median     3Q       Max
+    -29.056    -9.525    -2.272    9.215    43.201
+    ```
 
 - 잔차의 최솟값(Min), 사분위수(1Q, Median, 3Q), 최대값(Max)을 보여줌
 
@@ -1197,16 +1209,16 @@ F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12
 Multiple R-squared, Adjusted R-squared, F-statistic, p-value는 모형이 데이터에 잘 맞는 정도를 보여주는 지표들이다.
 
 - Multiple R-squared: 0.6511
-  - 모형 적합도(혹은 설명력)
-  - `dist`의 분산을 `speed`가 약 65%를 설명한다
-  - 각 사례마다 `dist`에 차이가 있다.
+    - 모형 적합도(혹은 설명력)
+    - `dist`의 분산을 `speed`가 약 65%를 설명한다
+    - 각 사례마다 `dist`에 차이가 있다.
 - Adjusted R-squared: 0.6438
-  - 독립변수가 여러 개인 다중회귀분석에서 사용
-  - 독립변수의 개수와 표본의 크기를 고려하여 R-squared를 보정
-  - 서로 다른 모형을 비교할 때는 이 지표가 높은 쪽은 선택한다
+    - 독립변수가 여러 개인 다중회귀분석에서 사용
+    - 독립변수의 개수와 표본의 크기를 고려하여 R-squared를 보정
+    - 서로 다른 모형을 비교할 때는 이 지표가 높은 쪽은 선택한다
 - F-statistic: 89.57 on 1 and 48 DF, p-value: 1.49e-12
-  - 회귀모형에 대한 (통계적) 유의미성 검증 결과, 유의미함 (p < 0.05)
-  - 즉, 이 모형은 주어진 표본 뿐 아니라 모집단에서도 의미있는 모형이라 할 수 있음
+    - 회귀모형에 대한 (통계적) 유의미성 검증 결과, 유의미함 (p < 0.05)
+    - 즉, 이 모형은 주어진 표본 뿐 아니라 모집단에서도 의미있는 모형이라 할 수 있음
 
 
 
@@ -1221,6 +1233,170 @@ Multiple R-squared, Adjusted R-squared, F-statistic, p-value는 모형이 데이
 다음으로 독립변수에 대해 보고한다.
 
 > speed의 회귀계수는 3.9324로, dist에 대하여 유의미한 예측변인인 것으로 나타났다(t(48) = 9.464, p < 0.05).
+
+
+
+#### 결측값 처리 방법
+
+-   단순 대치법
+    -   단순 삭제
+    -   평균 대치법 : 비조건부 평균 대치법 (단순 평균), 조건부 평균 대치법 (회귀분석을 활용하여 대치)
+    -   단순확률 대치법 : 어떤 적절한 확률값을 부여한 후 대치하는 방법. Hot-deck 방법, nearest neighbor 방법
+-   다중 대치법 : 단순 대치법을 여러번
+    -   **m번의 대치를 통한 m개의 가상적 완전한 자료**를 만들어서 분석하는 방법
+    -   **대치**(imputation step) > **분석** (analysis step) > **결합** (combination step) 의 **3단계**를 거침
+
+
+
+#### 정상성
+
+-   정상성은 **평균이 일정, 분산이 일정, 공분산**도 단지 시차에만 의존하고 실제 특정 시점 t, s에는 의존하지 않을 떄 만족함
+
+-   평균이 일정할 경우
+
+    -   모든 시점에 대해 일정한 평균을 가짐
+    -   평균이 일정하지 않은 **시계열은 차분(difference)**을 통해 정상화 할 수 있다.
+
+    > 차분이란?
+    >
+    > - 현시점 자료에서 전시점 자료를 빼는 것
+    > - 일반차분 (regular difference) : 바로 전 시점의 자료를 빼는 방법
+    > - 계절차분 (seasonal difference) : 여러 시점 전의 자료를 뺴는 방법, 주로 계절성을 갖는 자료를 정상화 하는데 사용
+
+-   분산이 일정
+
+    -   분산도 시점에 의존하지 않고 일정해야함
+    -   분산이 일정하지 않을 경우 **변환 (transformation)을 통해 정상화** 할 수 있다.
+
+-   공분산도 단지 시차에만 의존, 실제 특정 시점 t, s에는 의존하지 않는다.     
+
+
+
+#### 시계열 자료 분석방법
+
+##### 가. 분석방법
+
+- 회귀분석 (계량경제) 방법, Box-Jenkins 방법, 지수평활법, 시계열 분해법 등이 있다.
+
+
+
+##### 나. 자료 형태에 따른 분석 방법
+
+- 일변량 시계열 분석
+    - Box-Jenkins (ARMA), 지수 평활법, 시계열 분해법 등이 있다.
+    - 시간(t)을 설명변수로 한 회귀모형주가, 소매물가지수 등 하나의 변수에 관심을 갖는 경우의 시계열 분석
+- 다중 시계열
+    - 계량경제 모형, 전이함수 모형, 개입분석, 상태공간 분석, 다변량 ARIMA 등
+    - 여러개의 시간(t)에 따른 변수들을 활용하는 시계열 분석
+    - 예) 이자율, 인플레이션이 환율에 미치는 요인
+
+
+
+##### 다. 이동평균법
+
+- 개념
+    - 추세를 파악하여 다음 기간을 예측하는 방법
+    - n개의 시계열 데이터를 m기간으로 이동평균하면 n-m+1개의 이동평균 데이터가 생성된다.
+- 특징
+    - 간단하고 쉽게 미래를 예측가능, 자료의 수가 많고 안정된 패턴을 보이는 경우 예측의 품질이 높음
+    - 특정 기간안에 속하는 시계열에 대해서는 동일한 가중치를 부여
+    - 불규칙변동이 심하지 않은 경우에는 짧은 기간(m의 개수가 적음), 반대로 불규칙변동이 심한 경우 긴 기간 (m의 개수가 많음)의 평균을 사용
+    - 이동평균에서 가장 중요한 것은 적절한 기간을 사용하는 것. 즉, 적절한 n의 개수를 결정하는 것.
+
+
+
+##### 라. 지수평활법 (Exponential Smoothing)
+
+- 개념
+    - 일정기간의 평균을 이용하는 이동평균법과 달리 모든 시계열 자료를 사용하여 평균을 구하며, 시간의 흐름에 따라 최근 시계열에 더 많은 가중치를 부여하여 미래를 예측하는 방법
+- 특징
+    - 단기간에 발생하는 불규칙변동을 평활하는 방법
+    - 자료의 수가 많고, 안정된 패턴을 보이는 경우일수록 예측 품질이 높음
+    - 지수평활법에서 가중치의 역할을 하는 것은 지수평활계수(&alpha;)이며, 불규칙변동이 큰 시계열의 경우 지수평활계수는 작은 값을, 불규칙변동이 작은 시계열의 경우, 큰 값의 지수평활계수를 적용(generally, &alpha; is between 0.05 and 0.3)
+    - 지수평활계수는 예측오차 (실제 관측치와 예측치 사이의 잔차제곱합)를 비교하여 예측오차가 가장 작은 값을 선택하는 것이 바람직함
+    - 지수평활계수는 과거로 갈수록 지속적으로 감소함
+    - 지수평활법은 불규칙변동의 영향을 제거하는 효과가 있으며, 중기 예측 이상에 주로 사용됨
+    - 단, 단순지수 평활법의 경우, 장기추세나 계절변동이 포함된 시계열의 예측에는 적합하지 않음
+
+
+
+#### 시계열모형
+
+##### 가. 자기회귀 모형 (AR모형, autoregressive model)
+
+- p 시점 전의 자료가 현재 자료에 영향을 주는 모형
+
+- $Z_t = \Phi_1Z_{t-1} + \Phi_2Z_{t-2} + ... + \Phi_pZ_{t-p} + \alpha_t$
+
+- >- Z<sub>t</sub> : 현재 시점의 시계열 자료
+    >- Z<sub>t-1</sub>, Z<sub>t-2</sub> ..., Z<sub>p</sub> : 이전, 그 이전 시점 p의 시계열 자료
+    >- &Phi;<sub>p</sub> : p 시점이 현재에 어느 정도 영향을 주는지를 나타내는 모수
+    >- &alpha;<sub>t</sub> : 백색잡음과정 (white noise process) : 시계열분석에서 오차항을 의미
+    >- 평균이 0, 분산이 &sigma;<sup>2</sup>, 자기공분산이 0인 경우를 뜻하며, 시계열간 확률적 독립인 경우 강(strictly) 백색잡음 과정이라고 한다. 백색잡음 과정이 정규분포를 따를 경우 이를 가우시안(Gaussian) 백색잡음과정이라고 한다.
+
+- AR(1) 모형 : Z<sub>t</sub> = &Phi;<sub>1</sub>Z<sub>t-1</sub> + &alpha;<sub>t</sub>, 직전 시점 데이터로만 분석
+
+- AR(2) 모형 : Z<sub>t</sub> = &Phi;<sub>1</sub>Z<sub>t-1</sub> + &Phi;<sub>2</sub>Z<sub>t-2</sub> + &alpha;<sub>t</sub>, 연속된 2시점 정도의 데이터로 분석
+
+- AR(2) 모형의 자기상관함수(ACF)와 편자기상관함수(PACF)
+
+- <img width="584" alt="acf-pacf" src="https://user-images.githubusercontent.com/291782/162600723-a762b3b5-6461-4b8c-972e-c100914b3da5.png">
+
+
+
+##### 나. 이동평균 모형 (MA 모형, Moving Average model)
+
+- 유한한 개수의 백색잡음의 결합이므로 언제나 정상성을 만족
+- 1차 이동평균모형 (MA1 모형)은 이동평균모형 중에서 가장 간단한 모형으로 시계열이 같은 시점의 백색잡음과 바로 전 시점의 백색잡음의 결합으로 이뤄진 모형
+- Z<sub>t</sub> = &alpha;<sub>t</sub> - &phi;<sub>1</sub>&alpha;<sub>t-1</sub> -  &phi;<sub>2</sub>&alpha;<sub>t-2</sub> - ... -  &phi;<sub>p</sub>&alpha;<sub>t-p</sub> 
+- 2차 이동평균모형 (MA2 모형)은 바로 전 시점의 백색잡음과 시차가 2인 백색잡음의 결합으로 이뤄진 모형
+- Z<sub>t</sub> = &alpha;<sub>t</sub> - &phi;<sub>1</sub>&alpha;<sub>t-1</sub>
+- AR모형과 반대로 ACF에서 절단점을 갖고, PACF가 빠르게 감소
+- $Z_t = \alpha_t - \phi1\alpha_{t-1} - \phi_2\alpha_{t-2}$
+
+
+
+##### 다. 자기회귀누적이동평균 모형 (ARIMA(p,d,q) 모형, autoregressive integrated moving average model)
+
+- ARIMA 모형은 비정상시계열 모형이다
+
+- ARIMA 모형은 차분이나 변환을 통해 AR모형이나 MA모형, 이 둘을 합친 ARMA 모형으로 정상화 할 수 있다.
+
+- p는 AR모형, q는 MA모형과 관련이 있는 차수
+
+- 시계열 {Z<sub>t</sub>}의 d번 차분한 시계열이 ARMA (p, q) 모형이면, 시계열 {Z<sub>t</sub>}는 차수가 p,d,q인 ARIMA 모형, 즉 ARIMA(p,d,q) 모형을 갖는다고 한다.
+
+- d=0이면 ARMA(p, q) 모형이라 부르고, 이 모형은 정상성을 만족한다. (ARMA (0 , 0)일 경우 정상화가 불필요)
+
+- p=0 이면 IMA (d, q) 모형이라 부르고, d번 차분하면 MA(q) 모형을 따른다.
+
+- q = 0이면 ARI (p, d) 모형이라 부르며, d번 차분한 시계열이 AR (p) 모형을 따른다.
+
+    > ARIMA (0, 1, 1)의 경우에는 1차분 후 MA(1) 활용
+    >
+    > ARIMA (1, 1, 0)의 경우에는 1차분후 AR(1) 활용
+    >
+    > ARIMA (1, ,1 2)의 경우에는 1차분 후 AR(1), MA(2), ARMA (1, 2) 선택 활용
+    >
+    > => 이런 경우 가장 간단한 모형을 선택하거나 AIC 를 적용하여 점수가 가장 낮은 모형을 선정
+
+
+
+##### 라. 분해 시계열
+
+- 시계열에 영향을 주는 일반적인 요인을 시계열에서 분리해 분석하는 방법을 말하며 회귀분석적인 방법을 주로 사용
+
+- 분해식의 일반적 정의 : $Z_t = f(T_t, S_t, C_t, I_t)$
+
+    > T<sub>t</sub> : 경향(추세)요인 : 자료가 오르거나 내리는 추세, 선형, 이차식 형태, 지수적 형태 등
+    >
+    > S<sub>t</sub> : 계절요인 : 요일, 월, 사계절 각 분기에 의한 변화 등 고정된 주기에 따라 자료가 변하는 경우
+    >
+    > C<sub>t</sub> : 순환요인 : 경제적이나 자연적인 이유 없이 알려지지 않은 주기를 가지고 변화하는 자료
+    >
+    > I<sub>t</sub> : 불규칙요인 : 위의 세 가지 요인으로 설명할 수 없는 오차에 해당하는 요인
+
+
 
 
 
@@ -1324,35 +1500,35 @@ Multiple R-squared, Adjusted R-squared, F-statistic, p-value는 모형이 데이
 
 - 산점도
 
-  ![scatterplot](https://user-images.githubusercontent.com/291782/158017483-7c785a0c-2e4c-4840-97f0-7dab7b8d36ff.png)
+    ![scatterplot](https://user-images.githubusercontent.com/291782/158017483-7c785a0c-2e4c-4840-97f0-7dab7b8d36ff.png)
 
 
 
 - 점 그래프
 
-  ![point-graph](https://user-images.githubusercontent.com/291782/168115035-f7be41ff-7380-462e-9960-73eb863da672.png)
+    ![point-graph](https://user-images.githubusercontent.com/291782/168115035-f7be41ff-7380-462e-9960-73eb863da672.png)
 
-  
+    
 
 - 평행좌표계
 
-  ![parallel-graph](https://user-images.githubusercontent.com/291782/158017799-206cfc73-ef4f-4a2e-b161-44727750d9a1.png)
+    ![parallel-graph](https://user-images.githubusercontent.com/291782/158017799-206cfc73-ef4f-4a2e-b161-44727750d9a1.png)
 
-  
+    
 
 
 
 - 다차원 척도법
 
-  ![mds-graph](https://user-images.githubusercontent.com/291782/168115621-282a7350-ff8e-423e-a6a9-974f54d60089.png)
+    ![mds-graph](https://user-images.githubusercontent.com/291782/168115621-282a7350-ff8e-423e-a6a9-974f54d60089.png)
 
 
 
 - 지도 매핑
 
-  ![map-mapping](https://user-images.githubusercontent.com/291782/168115803-af72e984-3b60-46a1-b49b-6b011b886013.png)
+    ![map-mapping](https://user-images.githubusercontent.com/291782/168115803-af72e984-3b60-46a1-b49b-6b011b886013.png)
 
-  
+    
 
 
 
@@ -1423,23 +1599,23 @@ Multiple R-squared, Adjusted R-squared, F-statistic, p-value는 모형이 데이
 
 - 위치 : 정보를 공간적인 위치에 배열하는 방법으로 지리적인 것만이 아니라 공간적으로 구분하는 것 모두를 포괄한다.
 
-  ![latch-location](https://user-images.githubusercontent.com/291782/168120447-af159c41-e9fe-4d94-8a00-2cf37f6b7d1e.png)
+    ![latch-location](https://user-images.githubusercontent.com/291782/168120447-af159c41-e9fe-4d94-8a00-2cf37f6b7d1e.png)
 
 - 알파벳 : 알파벳 또는 가나다순으로 정렬하는 방법이 흔히 사용됨
 
-  ![latch-alphabet](https://user-images.githubusercontent.com/291782/168120675-1fe8feda-6be0-4031-b0a5-d64c0fa164e1.png)
+    ![latch-alphabet](https://user-images.githubusercontent.com/291782/168120675-1fe8feda-6be0-4031-b0a5-d64c0fa164e1.png)
 
 - 시간 : **연도별 시간 순서**에 따라 강아지를 분류
 
-  ![latch-time](https://user-images.githubusercontent.com/291782/168120883-d4f7f5c3-b178-4c2a-ac05-7618b4c7a098.png)
+    ![latch-time](https://user-images.githubusercontent.com/291782/168120883-d4f7f5c3-b178-4c2a-ac05-7618b4c7a098.png)
 
 - 카테고리 : 정보의 속성에 따라 분류할 떄 적합. 상점의 상품분류, 도서관의 서적 분류 등
 
-  ![latch-category](https://user-images.githubusercontent.com/291782/168121082-3f162705-36ce-41f4-a3b5-24b5c07e36bf.png)
+    ![latch-category](https://user-images.githubusercontent.com/291782/168121082-3f162705-36ce-41f4-a3b5-24b5c07e36bf.png)
 
 - 위계(가중치) : 고도의 변화(낮음에서 높음), 가격의 변화(싼 것에서 비싼것) 등 **정보의 변화에 따라 데이터의 값이나 중요도의 순서로 정보를 조직화 하는 것**
 
-  ![latch-hierarchy](https://user-images.githubusercontent.com/291782/168121378-1652c57f-40bc-48ae-9455-66ff33ae53eb.png)
+    ![latch-hierarchy](https://user-images.githubusercontent.com/291782/168121378-1652c57f-40bc-48ae-9455-66ff33ae53eb.png)
 
 
 
