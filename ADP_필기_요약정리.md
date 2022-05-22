@@ -1624,6 +1624,11 @@ Multiple R-squared, Adjusted R-squared, F-statistic, p-value는 모형이 데이
     ![type1-type2-error](https://user-images.githubusercontent.com/291782/169569549-6abd1668-32ee-40b3-8434-8db458d2c278.png)
 
 
+#### IQR 및 RANGE
+
+-   IQR = Q3 - Q1 
+-   RANGE = MAX - MIN
+
 
 ### 5과목 데이터 시각화
 
