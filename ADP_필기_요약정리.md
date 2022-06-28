@@ -2417,3 +2417,6 @@ F-statistic: 24.42 on 4 and 42 DF,  p-value: 1.717e-10
         -   PCAF 그래프를 통해 **AR(3) 모형** 생성
         -   auto.arima 활용하여 **ARIMA(0, 1, 1) 모형 선정**
         -   ARIMA(0, 1, 1)로 예측 결과, **43 ~ 52번째 왕의 사망 시 나이는 67.65살로 예측한다는 결론을 도출**
+
+
+arima, sarima, timeline 
