@@ -1090,3 +1090,9 @@
 
     ![latch-hierarchy](https://user-images.githubusercontent.com/291782/168121378-1652c57f-40bc-48ae-9455-66ff33ae53eb.png)
 
+
+
+
+
+
+arima, sarima 정리 필요
