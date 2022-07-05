@@ -2085,6 +2085,8 @@ F-statistic: 35.19 on 1 and 7 DF,  p-value: 0.0005805
        | 오차 | 오차제곱합(SSE)  | n-k-1  | MSE = SSE / (n-k-1) |               |
        |  계  | 전체제곱합 (SST) |  n-1   |                     |               |
 
+     - 회귀자유도(k) + 오차자유도(n-k-1) = 전체자유도(n-1) 
+     - F(회귀자유도, 오차자유도)  = F(k, n-k-1)   ([참조블로그](https://hyen4110.tistory.com/50))
      - 모형의 설명력은 결정계수(R<sup>2</sup>)나 수정결정계수(R<sub>a</sub><sup>2</sup>)를 확인
 
      - 모형의 적합성 : 잔차와 종속변수의 산점도로 확인
@@ -2809,6 +2811,7 @@ Coefficients:
    - 각 셀에 대한 ((실제도수 - 기대도수)의 제곱 / 기대도수)의 합
    - 기대도수 = 행의 합계 X 열의 합계 / 전체 합계
    - $X^2 =\displaystyle \sum_{i=1}^k \dfrac {(O_i - B_i)^2} {B_i}$ (k: 범주의 수, O: 실제도수, B: 기대도수)
+   - ([카이제곱 참조블로그](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=soulfree90&logNo=50172915445))
 
 2. 지니지수
 
