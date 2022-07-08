@@ -2100,6 +2100,25 @@ F-statistic: 35.19 on 1 and 7 DF,  p-value: 0.0005805
            -   분산팽창요인 (VIF) : 4보다 크면 다중공선성이 존재, 10보다 크면 심각한 문제가 있는것으로 해석
            -   상태지수 : 10이상이면 문제가 있음, 30보다 크면 심각한 문제가 있음
 
+     - 분산분석표 (위 아래 중 뭐가 맞음?? **중요*****) [출처](https://m.blog.naver.com/leejist/221381304538)
+
+     -   | 원천     | 제곱합(SS) | 자유도(df) | 평균제곱(MS)    | F             |
+         | -------- | ---------- | ---------- | --------------- | ------------- |
+         | 집단간   | SSB        | k-1        | MSB = SSB / k-1 | F = MSB / MSW |
+         | 집단내   | SSW        | n-k        | MSW = SSW / n-k | F(k-1, n-k)   |
+         | 총(합계) | SST        | n-1        |                 |               |
+
+       -   총제곱합 = 집단간 제곱합 + 집단내 제곱합
+           -   SSB (Sum of Squared Between groups, 집단간 제곱합)
+           -   SSW (Sum of Squared Within groups, 집단내 제곱합)
+           -   SST (Sum of Squared Total, 총제곱합)
+       -   총평균제곱 = 집단간 평균제곱 + 집단내 평균제곱
+           -   MSB (Mean of Squared Between groups, 집단간 평균제곱)
+           -   MSW (Mean of Squared Within groups, 집단내 평균제곱)
+           -   MST (Mean of Squared Total, 총평균 제곱)
+           -   k: 집단의 수, n: 관측치의 수(표본의 수)
+
+
    
 
 4. #### 4. 회귀분석의 종류 (p.316)
