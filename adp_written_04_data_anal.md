@@ -646,7 +646,7 @@
 
 - 사건 B가 일어난 것을 전제로 한 사건 A의 조건부 확률을 다음과 같이 구할 수 있는것
 
-- >  $P(A|B) = \dfrac{P(B\cap A)}{P(B)} = \dfrac {P(A)P(B|A)} {P(B)} = \dfrac {P(A)P(B|A)} {P(A)P(B|A) + P(A^C)P(B|A^C)}$
+- >  $P(A|B) = \dfrac{P(B\cap A)}{P(B)} = \dfrac {P(B|A)P(A)} {P(B)} = \dfrac {P(B|A)P(A)} {P(B|A)P(A) + P(B|A^C)P(A^C)}$
 
 - P(A|B) : 사건 B가 발생했을 때 사건 A가 발생할 확률 > 사후확률 (posterior)
 
