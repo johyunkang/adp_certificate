@@ -912,34 +912,69 @@
 
 ##### 가. SNA (Social Network Analysis) 정의
 
--   개인과 집단들 간의 관계를 노드와 링크로 모델링하여 그것의 위상구조와 확산 및 진화 과정을 계량적으로 분석하는 방법론
+-   **개인과 집단들 간의 관계를 노드와 링크로 모델링**하여 그것의 위상구조와 확산 및 진화 과정을 계량적으로 분석하는 방법론
 -   개인의 인간관계가 인터넷으로 확대된 사람 사이의 네트워크
--   개인 또는 집단이 하나의 노드(node), 연결은 선(link 또는 edge)으로 표현됨
+-   **개인 또는 집단이 하나의 노드(node)**, **연결은 선(link 또는 edge)으로 표현**됨
 
 ##### 나. SNA 분류
 
-1.   집합론적 방법
-     -   각 객체들 간의 관계를 관계 쌍(pairs of elements)으로 표현
-2.   그래프 이론을 이용한 방법
-     - 객체를 점(노드 or 꼭지점)으로 표현하고, 연결은 두 점을 연결하는 선으로 표현
-3.   행렬을 이용한 방법
-     - 각 객체를 행과 열에 배치하고, 각 객체간의 관계가 존재하면 1을 넣고, 존재하지 않으면 0을 넣음.
+1. 집합론적 방법
+
+   - **각 객체들 간의 관계를 관계 쌍(pairs of elements)으로 표현**
+
+     ![sna-pair](https://user-images.githubusercontent.com/291782/182100051-5a2c497f-d321-49a9-81fb-8f6d7d4c105f.png)
+
+     
+
+2. 그래프 이론을 이용한 방법
+
+   - 객체를 점(노드 or 꼭지점)으로 표현하고, 연결은 두 점을 연결하는 선으로 표현
+
+     ![sna-graph](https://user-images.githubusercontent.com/291782/182100213-dce9ad48-af1a-4129-80ac-72c3f26761c4.png)
+
+     
+
+3. 행렬을 이용한 방법
+
+   - 각 객체를 행과 열에 배치하고, 각 객체간의 관계가 존재하면 1을 넣고, 존재하지 않으면 0을 넣음.
+
+     ![sna-matrix](https://user-images.githubusercontent.com/291782/182100345-cecd1971-b3d9-466a-b292-1e30b76fd880.png)
+
+     
+
+     
 
 #### 2. 사회연결망 분석에서 네트워크 구조를 파악하기 위한 기법
 
+- 사회연결망 분석을 위한 4가지 기법
+  - 중심성 (Centrality)
+  - 밀도 (Density)
+  - 구조적 틈새 (Structural hole)
+  - 집중도 (Centralization)
+
 ##### 가. 중심성(Centrality)
 
-- 연결정도 중심성 (Degree centrality) : 한 점에 직접적으로 연결된 점들의 합
-- 근접 중심성 (Closeness centrality) : 한 노드로부터 다른 노드에 도달하기까지 필요한 최소 단계의 합
-- 매개 중심성 (Betweenness centrality) : 네트워크 내에서 한 점이 담당하는 매개자 혹은 중재자 역할의 정도
-- 위세 중심성 (Eigenvector centrality) : 보나시치(Bonacich) 권련지수 : 위에 중심성의 일반적인 형태로, 연결된 노드의 중요성에 가중치를 둬 노드의 중심성을 측정하는 방법
+- 연결정도 중심성 (Degree centrality)
+  - **한 점에 직접적으로 연결된 점들의 합**
+  - 연결된 노드의 수가 많을수록 연결정도 중심성이 높아짐
+
+- 근접 중심성 (Closeness centrality) 
+  - **한 노드로부터 다른 노드에 도달하기까지 필요한 최소 단계의 합**
+  - 근접 중심성이 높을수록 네트워크의 중앙에 위치함
+- 매개 중심성 (Betweenness centrality)
+  - 네트워크 내에서 한 점이 담당하는 **매개자 혹은 중재자 역할의 정도**
+  - 한 노드가 연결망 내의 다른 노드들 사이의 최다 연결 경로 위에 위치하면 할수록 그 노드의 매개중심성이 높음
+- 위세 중심성 (Eigenvector centrality)
+  - **보나시치(Bonacich) 권련지수** : 위에 중심성의 일반적인 형태로, 연결된 노드의 중요성에 가중치를 둬 노드의 중심성을 측정하는 방법
+  - 자신의 연결정도 중심성으로부터 발생하는 영향력과 자신과 연결된 타인의 영향력을 합하여 결정
 
 #### 3. SNA 적용
 
 - 소셜 네트워크 분석은 통신, 온라인 소셜 미디어, 게임 및 유통업체에서 관심이 높다.
 - 분석용 솔루션으로는 KXEN, SAS, XTRACT, Indiro, Onalytica, Unicet, Pajek, Inflow 등이 있다.
+- R과 하둡을 연동하는 RHadoop, RHIPE와 같은 기술을 활용해 소셜 네트워크 분석을 수행하는 방법도 있다.
 
-#### 4. SNA 단계
+#### 4. SNA 단계 4단계
 
 1. 그래프 생성단계
 2. 그래프를 목적에 따라 가공하여 분석하는 단계
@@ -957,13 +992,28 @@ degree, shortest paths, reachability, density, reciprocity, transitivity, triad 
 ##### 나. 커뮤니티의 수를 측정하는 방법 (community detection)
 
 1. WALKRAP 알고리즘
+
    - 일련의 random walk 과정을 통해 커뮤니티를 발견한다.
+
+   - 각 버텍스(vertex, 그래프의 꼭지점)를 하나의 커뮤니티로 취급해 점차 더 큰 그룹을 병합하면서 클러스터링 한다.
+
+     ![sna-walkrap](https://user-images.githubusercontent.com/291782/182102867-971745fe-7b29-402f-8547-e5aab06be5c2.png)
+
+     
+
 2. Edge Betweenness method
+
    - 그래프에 존재하는 최단거리 (shortest path) 중 몇 개가 그 edge (연결, link)를 거쳐가는 지를 이용해 edge-betweenness 점수를 측정한다.
+
+   - 높은 edge-betweenness 점수를 갖는 edge가 클러스터를 분리하는 속성을 가진다고 가정한다.
+
+     ![sna-edge-betweenness](https://user-images.githubusercontent.com/291782/182103059-3c8db81e-7372-413a-af1a-e3ae0ac02fdb.png)
+
+     
 
 #### 6. 활용방안
 
-- 소셜 네트워크 분석은 데이터가 몇개의 집단으로 구성되는지, 집단 간의 특징은 무엇이고, 해당 집단에서 영향력 있는 고객은 누구인지, 시간의 흐름과 고객 상태의 변화에 따라 다음에 누가 영향을 받을지를 기반으로 churn/acquisition prediction, fraud, product recommendation 등에 활용한다.
+- 소셜 네트워크 분석은 데이터가 **몇개의 집단으로 구성되는지, 집단 간의 특징은 무엇이고, 해당 집단에서 영향력 있는 고객은 누구인지, 시간의 흐름과 고객 상태의 변화에 따라 다음에 누가 영향을 받을지**를 기반으로 churn/acquisition prediction, fraud, product recommendation 등에 활용한다.
 
 
 
