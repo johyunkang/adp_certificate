@@ -940,6 +940,12 @@
 
      ![sna-matrix](https://user-images.githubusercontent.com/291782/182100345-cecd1971-b3d9-466a-b292-1e30b76fd880.png)
 
+     - 1원(1 mode)자료 : 행과 열에 같은 개체가 배열되는 것
+     - 2원(2 mode)자료 : 행과 열에 다른 개체가 배열되는 것
+
+     
+
+     
      
 
      
