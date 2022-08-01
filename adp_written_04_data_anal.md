@@ -878,7 +878,17 @@
 
 #### 5. Term-Document Matrix
 
--   텍스트 마이닝을 불러온 문서에 대해 plain text로 전환, 공백 제거, lowercase로 변환, 불용어(stopward) 처리, 어간추출(stemming) 등의 작업을 수행한 다음에 문서 번호와 단어 간의 사용 여부 또는 빈도수를 이용해 matrix를 만드는 작업이 term document matrix이다.
+-   텍스트 마이닝을 불러온 문서에 대해 `plain text`로 전환, `공백 제거`, `lowercase`로 변환, 불용어(`stopward`) 처리, 어간추출(`stemming`) 등의 작업을 수행한 다음에 문서 번호와 단어 간의 사용 여부 또는 빈도수를 이용해 matrix를 만드는 작업이 term document matrix이다.
+
+```R
+> data(crude, package = "tm")
+> m <- TermDocumentMatrix(crude, control = list(removePunctuation=T, stopwords=T))
+> inspect(m) #-- 단어별 문서에서 나온 갯수
+> findFreqTerms(m, 10) #-- 10개 이상 사용된 단어를 표시
+> findAssocs(m, "oil", 0.7) #-- "old" 단어와 70프로 이상 연관성이 있는 단어를 표시
+```
+
+
 
 #### 6. Dictionary
 
