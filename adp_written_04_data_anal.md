@@ -1210,6 +1210,164 @@ degree, shortest paths, reachability, density, reciprocity, transitivity, triad 
 ### 2절 R기초-2
 
 ### 3절 입력과 출력
+#### 1. 데이터 분석 과정
+
+### 4절 데이터 구조와 데이터 프레임 - 1
+
+#### 1. 벡터(Vector)
+
+##### 가. 벡터들은 동질적이다.
+
+-   한 벡터의 모든 원소는 같은 자료형 또는 같은 모드(mode)를 가진다.
+
+##### 나. 벡터는 위치로 인덱스 된다.
+
+##### 다. 벡터는 인덱스를 통해 여러 개의 원소로 구성된 하위 벡터를 반환할 수 있다.
+
+-   V[c(2,3)]은 v벡터의 2, 3번째 원소로 구성된 하위벡터이다.
+
+-   ```R
+    > vec
+     [1]  1  2  3  4  5  6  7  8  9 10
+    > vec[c(2,3)]
+    [1] 2 3
+    ```
+
+##### 라. 벡터 원소들은 이름을 가질 수 있다.
+
+
+
+#### 2. 리스트 (List)
+
+##### 가. 리스트는 이질적이다.
+
+-   여러 자료형의 원소들이 포함될 수 있다.
+
+##### 나. 리스트는 위치로 인덱스 된다.
+
+-   ```R
+    > list_data <- list("red", "green", c(10, 20, 30), TRUE, 21.25, 10.07)
+    > print(list_data)
+    [[1]]
+    [1] "red"
+    
+    [[2]]
+    [1] "green"
+    
+    [[3]]
+    [1] 10 20 30
+    
+    [[4]]
+    [1] TRUE
+    
+    [[5]]
+    [1] 21.25
+    
+    [[6]]
+    [1] 10.07
+    
+    > list_data[2]
+    [[1]]
+    [1] "green"
+    > list_data[[2]]
+    [1] "green"
+    ```
+
+##### 다. 리스트에서 하위 리스트를 추출할 수 있다.
+
+-   L[c(2, 3)]은 L리스트의 2, 3번째 원소로 이루어진 하위 리스트이다.
+
+##### 라. 리스트의 원소들은 이름을 가질 수 있다.
+
+
+
+#### 3. R에서의 자료형태(mode)
+
+|     객체      |                    예시                     |    모드(mode)     |
+| :-----------: | :-----------------------------------------: | :---------------: |
+|     숫자      |                    3.136                    |  수치형(numeric)  |
+|   숫자 벡터   |                c(2, 3, 4, 6)                |  수치형(numeric)  |
+|    문자열     |                    "Tom"                    | 문자형(character) |
+|  문자열 벡터  |           c("Tom", "yoon", "kim")           | 문자형(character) |
+|     요인      |          factor(c("A", "B", "C"))           |  수치형(numeric)  |
+|    리스트     |         list("Tom", "yoon", "Kim")          |   리스트(list)    |
+| 데이터 프레임 | data.frame(x=1:3, y=c("Tom", "yoon","kim")) |   리스트(list)    |
+|     함수      |                    print                    |  함수(function)   |
+
+```R
+> mode(factor(c("A","B", "C")))
+[1] "numeric"
+```
+
+
+
+#### 4. 데이터 프레임(data frame)
+
+##### 가. 특징
+
+-   강력하고 융연한 구조. SAS의 데이터셋을 모방해서 만들어 짐
+-   데이터 프레임의 리스트의 원소는 벡터 또는 요인이다.
+-   그 벡터와 요인은 데이터 프레임의 **열**이다.
+-   벡터와 요인들은 동일한 길이이다.
+-   데이터 프레임은 표 형태의 데이터 구조이며, 각 열은 서로 다른 데이터 형식을 가질 수 있다.
+-   **열에는 이름이 있어**야 한다.
+
+
+
+#### 5. 그 밖의 데이터 구조들
+
+##### 가. 단일값 (scalar)
+
+##### 나. 행렬(matrix)
+
+##### 다. 배열(arrays)
+
+##### 라. 요인 (factor)
+
+-   벡터처럼 생겼지만, R에서는 벡터에 있는 고유값(unique value)의 정보를 얻어내는데, 이 고유 값들을 요인의 수준(level)이라고 한다.
+-   요인의 두가지 주된 사용처로 범주형 변수, 집단분류가 있다.
+
+#### 6. 벡터, 리스트, 행렬 다루기
+
+
+
+### 4절 데이터 구조와 데이터 프레임 - 2
+
+#### 1. 데이터 프레임
+
+#### 2. 자료형 데이터 구조 변환
+
+#### 3. 데이터 구조 변경
+
+#### 4. 벡터의 기본 연산
+
+#### 5. 그 외에 간단한 함수
+
+
+
+### 5절 데이터 변형
+
+#### 1. 주요 코드
+
+-   데이터 프레임에 함수 적용 (apply 계열 함수)
+-   input 과 output의 형태에 따른 함수
+    -   apply (input: array, output: array).  e.g `apply(df, func)`
+    -   lapply (input: list or vector, output: list).  e.g `lapply(df, func)`
+    -   sapply (input: list or vector, output: vector or array).  e.g `sapply(df, func)`
+    -   vapply (input: list or vector, output: vector or array).  e.g `vapply(df, func)`
+    -   tapply (input: list or vector and factor, output: vector or array).  e.g `tapply(df, func)`
+    -   mapply (input: list or vector, output: vector or array).  e.g `mapply(df, func)`
+
+
+
+#### 2. 문자열 날짜 다루기
+
+
+
+### 3장 데이터 마트
+
+### 1절 데이터 변경 및 요약
+
 
 
 
