@@ -1362,7 +1362,7 @@ degree, shortest paths, reachability, density, reciprocity, transitivity, triad 
 
 #### 2. 문자열 날짜 다루기
 
-
+**기출문제**
 
 ### 3장 데이터 마트
 
