@@ -2479,6 +2479,14 @@ Coefficients:
    - % Captured of response : 반응검출율: 해당 등급의 실제 구매자 / 전체 구매자
    - % response : 반응률 = 해당 등급의 실제 구매자 / 200명 (=2000명 / 10구간)
    - Lift : 향상도 : 반응률 / 기본 향상도 (좋은 모델이라면 Lift가 빠른 속도로 감소해야 한다.)
+  예시
+
+    ![lift-chart01](https://user-images.githubusercontent.com/291782/185752452-8bdcc4c5-1245-4278-8a8c-b63ea5233fcd.png)
+
+    
+
+    ![lift-chart02](https://user-images.githubusercontent.com/291782/185752472-bdd1bea8-2dd1-45be-a54b-0e822c7d19c6.png)
+
 
    
 
